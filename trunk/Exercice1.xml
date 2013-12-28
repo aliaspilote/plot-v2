@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personne>
+  <Pheromones>
+    <Pheromone>
+      <PositionX>0</PositionX>
+      <PositionY>0</PositionY>
+      <Intensite>1</Intensite>
+      <Direction>2</Direction>
+      <Collision>true</Collision>
+    </Pheromone>
+    <Pheromone>
+      <PositionX>0</PositionX>
+      <PositionY>1</PositionY>
+      <Intensite>2</Intensite>
+      <Direction>3</Direction>
+      <Collision>true</Collision>
+    </Pheromone>
+    <Pheromone>
+      <PositionX>1</PositionX>
+      <PositionY>0</PositionY>
+      <Intensite>3</Intensite>
+      <Direction>4</Direction>
+      <Collision>true</Collision>
+    </Pheromone>
+    <Pheromone>
+      <PositionX>1</PositionX>
+      <PositionY>1</PositionY>
+      <Intensite>4</Intensite>
+      <Direction>5</Direction>
+      <Collision>true</Collision>
+    </Pheromone>
+  </Pheromones>
+</personne>
