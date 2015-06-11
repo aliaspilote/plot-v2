@@ -8,7 +8,8 @@
 
 
 
-namespace System {
+namespace Modelisator.Model
+{
 	public class Produit {
 
 		private string Nom;

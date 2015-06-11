@@ -9,12 +9,13 @@
 
 
 
-using System;
-namespace System {
+using Modelisator.Model;
+namespace Modelisator.Model
+{
 	public class Sauvegarde {
 
 		private string Nom;
-		private DateTime Date;
+		//private date Date;
 		private string Chemin;
 		public Produit m_Produit;
 

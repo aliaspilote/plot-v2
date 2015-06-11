@@ -9,7 +9,8 @@
 
 
 
-namespace System {
+namespace Modelisator.Model
+{
 	public class Equation {
 
 		private int NbrGP;
