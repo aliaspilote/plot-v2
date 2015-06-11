@@ -8,8 +8,9 @@
 
 
 
-using System;
-namespace System {
+using Modelisator.Model;
+namespace Modelisator.Model
+{
 	public class GrandeurPhysique {
 
 		private string Nom;

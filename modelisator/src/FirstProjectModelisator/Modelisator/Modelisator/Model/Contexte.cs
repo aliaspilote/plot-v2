@@ -9,8 +9,9 @@
 
 
 
-using System;
-namespace System {
+using Modelisator.Model;
+namespace Modelisator.Model
+{
 	public class Contexte {
 
 		private Produit ListeProduit;

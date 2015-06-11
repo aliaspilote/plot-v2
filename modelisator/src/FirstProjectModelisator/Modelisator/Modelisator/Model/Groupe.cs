@@ -9,7 +9,8 @@
 
 
 
-namespace System {
+namespace Modelisator.Model
+{
 	public class Groupe {
 
 		private string Nom;

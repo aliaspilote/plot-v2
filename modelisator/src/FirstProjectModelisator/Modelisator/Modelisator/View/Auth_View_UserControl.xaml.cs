@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Modelisator.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,29 +13,25 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MahApps.Metro.Controls;
-using Modelisator.View;
 
-namespace Modelisator
+namespace Modelisator.View
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour Auth_View_UserControl.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class Auth_View_UserControl : UserControl
     {
-        public MainWindow()
+        Auth_Model View_Model;
+
+        public Auth_View_UserControl()
         {
             InitializeComponent();
-            MainContentPage.Content = new Auth_View_UserControl();
+            View_Model = new Auth_Model();
         }
-
-        ContentControl MainContentPage
+        private void ConnecterClick(object sender, RoutedEventArgs e)
         {
-            get { return m_MainContentPage; }
-            set { m_MainContentPage = value; }
+            MessageBox.Show(View_Model.ClickConnect());
         }
 
     }
-
-  
 }
