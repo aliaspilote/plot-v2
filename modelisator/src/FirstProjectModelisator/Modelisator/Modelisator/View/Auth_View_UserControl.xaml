@@ -7,12 +7,12 @@
       VerticalAlignment="Stretch">
 
     <Grid MinHeight="250" MinWidth="380">
-        <Button Content="Se connecter" HorizontalAlignment="left" Margin="109,178,0,0" VerticalAlignment="Top" Width="126" Click="ConnecterClick" FontSize="15"/>
-        <Button Content="Quitter" HorizontalAlignment="left" Margin="253,178,0,0" VerticalAlignment="Top" Width="80" Click="ClickBoutonAnnuler" FontSize="15"/>
+        <Button Name="m_OkBtn" Content="Se connecter" HorizontalAlignment="left" Margin="109,178,0,0" VerticalAlignment="Top" Width="126" FontSize="15"/>
+        <Button Name="m_QuitBtn" Content="Quitter" HorizontalAlignment="left" Margin="253,178,0,0" VerticalAlignment="Top" Width="80" FontSize="15"/>
         <Label Content="Username" HorizontalAlignment="Left" Margin="28,85,0,0" VerticalAlignment="Top" FontSize="15"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="33,125,0,0" VerticalAlignment="Top" FontSize="15"/>
         <Label Content="Connexion" HorizontalAlignment="Left" Margin="28,24,0,0" VerticalAlignment="Top" Height="40" Width="128" FontSize="25"/>
-        <TextBox HorizontalAlignment="Left" Height="12" Margin="110,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125" FontSize="15"/>
-        <PasswordBox HorizontalAlignment="Left" Margin="110,127,0,0" VerticalAlignment="Top" Width="125" FontSize="15"/>
+        <TextBox Name="m_User" HorizontalAlignment="Left" Height="12" Margin="110,89,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="125" FontSize="15"/>
+        <PasswordBox Name="m_Password" HorizontalAlignment="Left" Margin="110,127,0,0" VerticalAlignment="Top" Width="125" FontSize="15"/>
     </Grid>
 </UserControl>

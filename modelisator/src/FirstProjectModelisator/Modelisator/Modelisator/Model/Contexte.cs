@@ -15,7 +15,23 @@ using Modelisator.Model;
 namespace Modelisator.Model {
 	public class Contexte {
 
-		public Contexte(){	}
+		public Contexte(){
+            ListeProduits = new List<Produit>();
+        }
+
+        Utilisateur m_user;
+
+        public Utilisateur User
+        {
+            get
+            {
+                return m_user;
+            }
+            set
+            {
+                m_user = value;
+            }
+        }
 
         public List<Produit> ListeProduits;
 

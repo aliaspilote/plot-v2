@@ -19,7 +19,10 @@ namespace Modelisator.Model {
 
         private string m_Nom;
 
-		public Groupe(){ }
+        public Groupe() { }
+        public Groupe(string nom) {
+            Nom = nom;
+        }
 
 		public string Nom{
 			get{

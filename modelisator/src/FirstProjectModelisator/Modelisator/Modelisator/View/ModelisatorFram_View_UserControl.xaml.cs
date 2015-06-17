@@ -24,5 +24,30 @@ namespace Modelisator.View
         {
             InitializeComponent();
         }
+
+        public StackPanel MenuTop_ContentPanel
+        {
+            get { return m_MenuTop_ContentPanel; }
+            set { m_MenuTop_ContentPanel = value; }
+        }
+
+        public StackPanel ProduitChoix_ContentPanel
+        {
+            get { return m_ProduitChoix_ContentPanel; }
+            set { m_ProduitChoix_ContentPanel = value; }
+        }
+
+        public StackPanel Info_ContentPanel
+        {
+            get { return m_Info_ContentPanel; }
+            set { m_Info_ContentPanel = value; }
+        }
+
+        public StackPanel EspaceTravail_ContentPanel
+        {
+            get { return m_EspaceTravail_ContentPanel; }
+            set { m_EspaceTravail_ContentPanel = value; }
+        }
+
     }
 }

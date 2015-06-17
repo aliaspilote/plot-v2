@@ -64,10 +64,15 @@
     <Compile Include="Model\Auth_Model.cs" />
     <Compile Include="Model\Contexte.cs" />
     <Compile Include="Model\Equation.cs" />
+    <Compile Include="Model\EspaceTravail_Model.cs" />
     <Compile Include="Model\GrandeurPhysique.cs" />
     <Compile Include="Model\Groupe.cs" />
     <Compile Include="Model\Historique.cs" />
+    <Compile Include="Model\Info_Model.cs" />
+    <Compile Include="Model\MenuTop_Model.cs" />
+    <Compile Include="Model\ModelisatorFrame_Model.cs" />
     <Compile Include="Model\Produit.cs" />
+    <Compile Include="Model\ProduitChoix_Model.cs" />
     <Compile Include="Model\Relation.cs" />
     <Compile Include="Model\Sauvegarde.cs" />
     <Compile Include="Model\Utilisateur.cs" />

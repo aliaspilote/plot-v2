@@ -22,20 +22,57 @@ namespace Modelisator.View
     public partial class Auth_View_UserControl : UserControl
     {
         Auth_Model View_Model;
+        /// <summary>
+        /// User  TextBox
+        /// </summary>
+        public TextBox User
+        {
+            get
+            {
+                return m_User;
+            }
+        }
+
+        /// <summary>
+        /// Password box
+        /// </summary>
+        public PasswordBox Password
+        {
+            get
+            {
+                return m_Password;
+            }
+        }
+
+        /// <summary>
+        /// The OK Button
+        /// </summary>
+        public Button OkBtn
+        {
+            get
+            {
+                return m_OkBtn;
+            }
+        }
+
+        /// <summary>
+        /// The Cancel Button
+        /// </summary>
+        public Button QuitBtn
+        {
+            get
+            {
+                return m_QuitBtn;
+            }
+        }
 
         public Auth_View_UserControl()
         {
             InitializeComponent();
             View_Model = new Auth_Model();
         }
-        private void ConnecterClick(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show(View_Model.ClickConnect());
-        }
 
-        private void ClickBoutonAnnuler(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Shutdown();
-        }
+
+
     }
 }

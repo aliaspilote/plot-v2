@@ -6,7 +6,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using Modelisator.ViewModel;
-using System.Threading;
 namespace Modelisator
 {
     /// <summary>
@@ -30,8 +29,7 @@ namespace Modelisator
         /// <param name="e"></param>
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            //Our Login Controller
-            Thread.Sleep(2000);
+            
             MainWindow main = new MainWindow();
             MainWindow = main;
             ModelisatorController = new MainController(this, main);
