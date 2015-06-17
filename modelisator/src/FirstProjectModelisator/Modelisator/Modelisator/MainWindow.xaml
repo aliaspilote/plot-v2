@@ -5,11 +5,11 @@
         Title="Modelisator Application"
         HorizontalAlignment="Stretch"
         VerticalAlignment="Stretch"
-        MinHeight="300"
+        MinHeight="450"
         MinWidth="800">
 
     <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="WhiteSmoke">
-        <ContentControl Name="m_MainContentPage" HorizontalAlignment="center" VerticalAlignment="center">
+        <ContentControl Name="m_MainContentPage" HorizontalAlignment="center" VerticalAlignment="center" Visibility="Visible">
         </ContentControl>
     </Grid>
 </Controls:MetroWindow>
