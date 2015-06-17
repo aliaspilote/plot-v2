@@ -25,7 +25,8 @@ namespace Modelisator
         public MainWindow()
         {
             InitializeComponent();
-            MainContentPage.Content = new Auth_View_UserControl();
+            //MainContentPage.Content = new Auth_View_UserControl();
+            MainContentPage.Content = new Object_List_UserControl();
         }
 
         ContentControl MainContentPage

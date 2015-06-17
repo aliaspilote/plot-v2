@@ -73,6 +73,9 @@
     <Compile Include="View\Auth_View_UserControl.xaml.cs">
       <DependentUpon>Auth_View_UserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Object_List_UserControl.xaml.cs">
+      <DependentUpon>Object_List_UserControl.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -86,6 +89,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\Auth_View_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Object_List_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
