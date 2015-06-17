@@ -5,18 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
      HorizontalAlignment="Stretch"
       VerticalAlignment="Stretch">
-    <Grid ScrollViewer.CanContentScroll="True" HorizontalAlignment="Left" Height="364" Margin="10,11,0,0" VerticalAlignment="Top" Width="330" Grid.ColumnSpan="3">
+    <Grid ScrollViewer.CanContentScroll="True" HorizontalAlignment="Left"  VerticalAlignment="Top" >
         <ContentControl>
-            <ItemsControl ItemsSource="{Binding Path=ListeTest}" BorderBrush="Black" BorderThickness="2">
+            <ItemsControl ItemsSource="{Binding}" BorderBrush="Black" BorderThickness="2">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="3" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                <DataTemplate>
-                    <TextBlock Text="{Binding}"/>
-                </DataTemplate>
             </ItemsControl>
+            
         </ContentControl>
     </Grid>
 </UserControl>
