@@ -19,9 +19,9 @@ namespace Modelisator.View
     /// Logique d'interaction pour Object_List_UserControl.xaml
     /// </summary>
     /// 
-    public class ab
+    public class objettest
     {
-        public ab (string ab)
+        public objettest(string ab)
         {
             a = ab;
         }
@@ -32,28 +32,35 @@ namespace Modelisator.View
         }
     }
 
-    public class ad
+    public class modeltest
     {
-        public List<ab> ListeTest;
-        public ad ()
+        public List<objettest> ListeTest;
+        public modeltest ()
         {
-            ListeTest = new List<ab>();
-            ListeTest.Add(new ab("tu es la"));
-            ListeTest.Add(new ab("tu es la"));
-            ListeTest.Add(new ab("tu es la"));
-            ListeTest.Add(new ab("tu es la"));
-            ListeTest.Add(new ab("tu es la"));
-            ListeTest.Add(new ab("tu es la"));
+            ListeTest = new List<objettest>();
+            ListeTest.Add(new objettest("AAAAAAA"));
+            ListeTest.Add(new objettest("BBBBB"));
+            ListeTest.Add(new objettest("DDDDDDDDDDDDD"));
+            ListeTest.Add(new objettest("BBBBB"));
+            ListeTest.Add(new objettest("DDDDDDDDDDDDD"));
+            ListeTest.Add(new objettest("BBBBB"));
+            ListeTest.Add(new objettest("DDDDDDDDDDDDD"));
+            ListeTest.Add(new objettest("BBBBB"));
+            ListeTest.Add(new objettest("DDDDDDDDDDDDD"));
+        }
+        public override string ToString()
+        {
+            return "bbbb";
         }
     }
     public partial class Object_List_UserControl : UserControl
     {
-        public ad Model;
+        public modeltest Model;
         public Object_List_UserControl()
         {
             InitializeComponent();
-            Model = new ad();
-            this.DataContext = Model;
+            Model = new modeltest();
+            this.DataContext = Model.ListeTest;
         }
     }
 }
