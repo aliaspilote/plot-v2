@@ -12,29 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MahApps.Metro.Controls;
-using Modelisator.View;
 
-namespace Modelisator
+namespace Modelisator.View
 {
     /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
+    /// Logique d'interaction pour Info_View_UserControl.xaml
     /// </summary>
-    public partial class MainWindow : MetroWindow
+    public partial class Info_View_UserControl : UserControl
     {
-        public MainWindow()
+        public Info_View_UserControl()
         {
             InitializeComponent();
-            //MainContentPage.Content = new Auth_View_UserControl();
         }
-
-        public StackPanel ContentPanel
-        {
-            get { return m_ContentPanel; }
-            set { m_ContentPanel = value; }
-        }
-        
     }
-
-  
 }
