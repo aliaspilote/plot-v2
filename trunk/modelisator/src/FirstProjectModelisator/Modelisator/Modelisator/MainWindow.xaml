@@ -7,10 +7,9 @@
         VerticalAlignment="Stretch"
         MinHeight="300"
         MinWidth="800">
-    
-    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-        <ContentControl Name="m_MainContentPage" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Background="WhiteSmoke">
+        <ContentControl Name="m_MainContentPage" HorizontalAlignment="center" VerticalAlignment="center">
         </ContentControl>
     </Grid>
 </Controls:MetroWindow>
