@@ -33,5 +33,9 @@ namespace Modelisator.View
             MessageBox.Show(View_Model.ClickConnect());
         }
 
+        private void ClickBoutonAnnuler(object sender, RoutedEventArgs e)
+        {
+            Application.Current.Shutdown();
+        }
     }
 }
