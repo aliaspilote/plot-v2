@@ -39,6 +39,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
@@ -70,11 +72,29 @@
     <Compile Include="Model\Sauvegarde.cs" />
     <Compile Include="Model\Utilisateur.cs" />
     <Compile Include="ViewModel\Auth_ViewModel.cs" />
+    <Compile Include="ViewModel\EspaceTravail_ViewModel.cs" />
+    <Compile Include="ViewModel\Info_ViewModel.cs" />
+    <Compile Include="ViewModel\MainController.cs" />
+    <Compile Include="ViewModel\MenuTop_ViewModel.cs" />
+    <Compile Include="ViewModel\ModelisatorFrame_ViewModel.cs" />
+    <Compile Include="ViewModel\ProduitChoix_ViewModel.cs" />
     <Compile Include="View\Auth_View_UserControl.xaml.cs">
       <DependentUpon>Auth_View_UserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Object_List_UserControl.xaml.cs">
-      <DependentUpon>Object_List_UserControl.xaml</DependentUpon>
+    <Compile Include="View\EspaceTravail_View_UserControl.xaml.cs">
+      <DependentUpon>EspaceTravail_View_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Info_View_UserControl.xaml.cs">
+      <DependentUpon>Info_View_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MenuTop_View_UserControl.xaml.cs">
+      <DependentUpon>MenuTop_View_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ModelisatorFram_View_UserControl.xaml.cs">
+      <DependentUpon>ModelisatorFram_View_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProduitChoix_View_UserControl.xaml.cs">
+      <DependentUpon>ProduitChoix_View_UserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -92,7 +112,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Object_List_UserControl.xaml">
+    <Page Include="View\EspaceTravail_View_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Info_View_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MenuTop_View_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ModelisatorFram_View_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProduitChoix_View_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,7 +161,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SplashScreen Include="splashScreen.PNG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </SplashScreen>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

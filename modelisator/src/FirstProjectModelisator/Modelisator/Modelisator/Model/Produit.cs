@@ -16,6 +16,9 @@ using Modelisator.Model;
 namespace Modelisator.Model {
 	public class Produit {
 
+
+        public List<GrandeurPhysique> GrandeurPhysiques;
+
         private string  m_Description;
         private string  m_Nom;
         private bool    m_Selectionne;
