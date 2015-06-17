@@ -20,11 +20,17 @@ namespace Modelisator.Model {
         private string m_MotDePasse;
         private string m_Nom;
 
-		public Contexte m_Contexte;
 
-		public Utilisateur(){
+        public Utilisateur()
+        {
 
-		}
+        }
+
+        public Utilisateur(string nom, Groupe grp)
+        {
+            m_Groupe = grp;
+            m_Nom = nom;
+        }
 
 		public Groupe Groupe{
 			get{

@@ -4,28 +4,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelisator.Model;
+using System.Threading;
 
 namespace Modelisator.ViewModel
 {
     public class MainController
     {
+
+        public Contexte Ctx;
+
         public MainController(System.Windows.Application app, MainWindow mainWindow)
         {
+
+            //Thread.Sleep(2000);
             App = app;
             MainWindow = mainWindow;
+            Ctx = new Contexte();
 
-            Auth_Controller = new Auth_ViewModel();
+            Auth_Controller = new Auth_ViewModel(Ctx);
+
+            Auth_Controller.OKHandler += RunModelisator;
+            Auth_Controller.CancelHandler += ExitModelisator;
+
 
             MainWindow.ContentPanel.Children.Add(Auth_Controller.View);
             SetupMainWindow();
         }
         private void RunModelisator(object sender, EventArgs args)
         {
-            ModelisatorFrame_ViewModel ModelisatorLauncher = new ModelisatorFrame_ViewModel(new Contexte());
+            ModelisatorFrame_ViewModel ModelisatorLauncher = new ModelisatorFrame_ViewModel(Ctx);
             MainWindow.ContentPanel.Children.Remove(Auth_Controller.View);
             MainWindow.ContentPanel.Children.Add(ModelisatorLauncher.View);
         }
-
+        private void ExitModelisator(object sender, EventArgs args)
+        {
+            App.Shutdown();
+        }
+        
         /// <summary>
         /// Exit GSys Application
         /// </summary>

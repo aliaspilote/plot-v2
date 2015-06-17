@@ -1,12 +1,11 @@
-﻿<Controls:MetroWindow x:Class="Modelisator.MainWindow"
+﻿<Controls:MetroWindow
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Modelisator Application"
-        HorizontalAlignment="Stretch"
-        VerticalAlignment="Stretch">
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        x:Class="Modelisator.MainWindow"
+        Title="Modelisator Application" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
 
-    <StackPanel Name="m_ContentPanel" HorizontalAlignment="center" VerticalAlignment="center" Visibility="Visible">
-        </StackPanel>
+    <StackPanel x:Name="m_ContentPanel" HorizontalAlignment="center" VerticalAlignment="Center" Visibility="Visible"/>
 
 </Controls:MetroWindow>
