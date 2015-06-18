@@ -47,9 +47,27 @@ namespace Modelisator.Model {
 
 		}
 
-		public void import(){
+        public void import()
+        {
+            List<GrandeurPhysique> liste = new List<GrandeurPhysique>();
+            var reader = new StreamReader(File.OpenRead(@"C:\Users\Taha\Desktop\bd.csv"));
+            while (!reader.EndOfStream)
+            {
+                var line = reader.ReadLine();
+                var values = line.Split(';');
+                GrandeurPhysique gp = new GrandeurPhysique();
+                (values[0]);
+                gp.set_unite(values[1]);
+                gp.set_valeur(Convert.ToDouble(values[2]));
+                gp.set_description(values[3]);
+                gp.set_calcul(Convert.ToBoolean(values[4]));
+                gp.set_selectionne(Convert.ToBoolean(values[5]));
+                gp.set_estpremier(Convert.ToBoolean(values[6]));
+                liste.Add(gp);
+            }
+            m_Produit.Liste_gp = liste;
 
-		}
+        }
 
 		public string Nom{
 			get{

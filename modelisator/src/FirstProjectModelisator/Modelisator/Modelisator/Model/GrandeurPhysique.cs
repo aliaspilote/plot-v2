@@ -25,6 +25,7 @@ namespace Modelisator.Model {
 		private string  m_Unite;
 		private double  m_Valeur;
 
+
         public  List<Equation> Equations;
 
 		public GrandeurPhysique(){		}
