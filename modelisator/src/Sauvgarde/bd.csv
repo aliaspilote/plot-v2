@@ -1,0 +1,9 @@
+X1;dimensionless;1;Description;false;false;false
+Tmax;°C;2;Description;false;false;false
+p0;Mpa;2;Description;true;false;false
+p;Mpa;9;Description;false;false;false
+dV;%;1,8;Description;false;true;false
+alpha_gas;%/°C;2;Description;false;false;false
+sigma;Mpa;12;Description;false;false;false
+R;mm;2;Description;false;false;true
+t;mm;2;Description;true;false;false
