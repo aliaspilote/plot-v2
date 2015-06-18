@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelisator.Model;
+using System.IO;
 
 namespace Modelisator.Model {
 	public class Sauvegarde {
@@ -20,7 +21,7 @@ namespace Modelisator.Model {
         private DateTime    m_Date;
         private string      m_Nom;
 
-		public List<Produit> Produits;
+		public Produit m_Produit;
 
 		public Sauvegarde(){		}
 
@@ -50,22 +51,22 @@ namespace Modelisator.Model {
         public void import()
         {
             List<GrandeurPhysique> liste = new List<GrandeurPhysique>();
-            var reader = new StreamReader(File.OpenRead(@"C:\Users\Taha\Desktop\bd.csv"));
+            var reader = new StreamReader(File.OpenRead(m_Chemin));
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
                 var values = line.Split(';');
                 GrandeurPhysique gp = new GrandeurPhysique();
-                (values[0]);
-                gp.set_unite(values[1]);
-                gp.set_valeur(Convert.ToDouble(values[2]));
-                gp.set_description(values[3]);
-                gp.set_calcul(Convert.ToBoolean(values[4]));
-                gp.set_selectionne(Convert.ToBoolean(values[5]));
-                gp.set_estpremier(Convert.ToBoolean(values[6]));
+                gp.Nom=values[0];
+                gp.Unite = values[1];
+                gp.Valeur=Convert.ToDouble(values[2]);
+                gp.Description=values[3];
+                gp.Calcule=Convert.ToBoolean(values[4]);
+                gp.Selectionne=Convert.ToBoolean(values[5]);
+                gp.EstPremier=Convert.ToBoolean(values[6]);
                 liste.Add(gp);
             }
-            m_Produit.Liste_gp = liste;
+            m_Produit.GrandeurPhysiques = liste;
 
         }
 
