@@ -43,6 +43,49 @@ namespace Modelisator.Model {
 			}
 		}
 
+
+        void EnnumRelation()
+        {
+            GrandeurPhysique gp1 = new GrandeurPhysique("GRP1");
+            GrandeurPhysique gp2 = new GrandeurPhysique("GRP2");
+            GrandeurPhysique gp3 = new GrandeurPhysique("GRP3");
+            GrandeurPhysique gp4 = new GrandeurPhysique("GRP4");
+            GrandeurPhysique gp5 = new GrandeurPhysique("GRP5");
+            GrandeurPhysique gp6 = new GrandeurPhysique("GRP6");
+            GrandeurPhysique gp7 = new GrandeurPhysique("GRP7");
+            GrandeurPhysique gp0 = new GrandeurPhysique("GRP0");
+
+            Dictionary<GrandeurPhysique, int> GP_Ennum = new Dictionary<GrandeurPhysique, int>();
+
+            GP_Ennum.Add(gp0, 0);
+            GP_Ennum.Add(gp1, 1);
+            GP_Ennum.Add(gp2, 2);
+            GP_Ennum.Add(gp3, 3);
+            GP_Ennum.Add(gp4, 4);
+            GP_Ennum.Add(gp5, 5);
+            GP_Ennum.Add(gp6, 6);
+
+            int[][] Matricerelations = new int[GP_Ennum.Count()][];
+            for ( int i = 0; i < GP_Ennum.Count(); i++ )
+            {
+                    Matricerelations[i] = new int[GP_Ennum.Count()];
+            }
+
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][1] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+            Matricerelations[0][0] = 0;
+        }
+
 	}//end Relation
 
 }//end namespace Modelisator.Model
