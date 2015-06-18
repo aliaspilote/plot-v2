@@ -16,7 +16,7 @@ using Modelisator.Model;
 namespace Modelisator.Model {
 	public class Produit {
 
-
+        public System.Collections.Generic.List<GrandeurPhysique> Liste_gp;
         public List<GrandeurPhysique> GrandeurPhysiques;
 
         private string  m_Description;
