@@ -56,6 +56,46 @@ namespace Modelisator.Model {
             return p;
         }
 
+        // calcul ofPressure of a liquid gas at 15°C (MPa)
+        static double equation23(double X1, double Tmax, double p)
+        {
+            // X1 : Coefficient of variation of the pressure (dimensionless)
+            // Tmax : Maximum temperature (°C)
+            // p :  Pressure of gas (MPa)
+            double p0;
+            p0 = p - (X1 * (Math.Pow(Tmax - 15, 2))) ;
+            return p0;
+        }
+
+        // calcul of (MPa)Coefficient of variation of the pressure (dimensionless)
+        static double equation24(double p, double Tmax, double p0)
+        {
+            // p : Pressure of gas (Mpa)
+            // Tmax : Maximum temperature (°C)
+            // p0 : Pressure of a liquid gas at 15°C (MPa)
+            double X1;
+            if (Tmax != 15)
+                X1 = (p - p0) / (Math.Pow(Tmax - 15, 2));
+            else
+                X1 = -1;
+            return X1;
+        }
+
+        // calcul of Maximum temperature (°C)
+        static double equation25(double X1, double p, double p0)
+        {
+            // X1 : Coefficient of variation of the pressure (dimensionless)
+            // p : Pressure of gas (MPa)
+            // p0 : Pressure of a liquid gas at 15°C (MPa)
+            double Tmax;
+            if (X1 != 0)
+                Tmax = Math.Sqrt((p - p0) / X1) + 15;
+            else 
+                Tmax = -1;
+            return Tmax;
+        }
+
+
         // calcul of Expansion of gas 
         static double equation2(double alpha_gas, double Tmax)
         {
@@ -65,6 +105,34 @@ namespace Modelisator.Model {
             dV = alpha_gas * (Tmax - 15);
             return dV;
         }
+
+
+        // calcul of Maximum temperature (°C) 
+        static double equation26(double alpha_gas, double dV)
+        {
+            // dV : Expansion of gas
+            // alpha_gas : Volumetric gaz expansion coefficient (% / °C)
+            double Tmax;
+            if (alpha_gas != 0)
+                Tmax = (dV / alpha_gas) + 15;
+            else
+                Tmax = -1;
+            return Tmax;
+        }
+
+        // calcul of  Volumetric gaz expansion coefficient (% / °C)
+        static double equation26(double Tmax, double dV)
+        {
+            // dV : Expansion of gas
+            // Tmax : Maximum temperature (°C)
+            double alpha_gas;
+            if (Tmax != 15)
+                alpha_gas = (dV / (Tmax-15));
+            else
+                alpha_gas = -1;
+            return alpha_gas;
+        }
+
 
         // calcul of Applied strass (Mpa)
         static double equation3(double p, double R, double t)
@@ -81,6 +149,51 @@ namespace Modelisator.Model {
 
         }
 
+        // calcul of Pressure of gas (Mpa)
+        static double equation27(double sigma, double R, double t)
+        {
+            // sigma : Applied strass (Mpa)
+            // R : Radius (mm)
+            // t : Thickness (mm)
+            double p;
+            if (R != 0)
+                p = (sigma * t) / R;
+            else
+                p = -1;
+            return p;
+
+        }
+
+        // calcul of Radius (mm)
+        static double equation28(double sigma, double p, double t)
+        {
+            // sigma : Applied strass (Mpa)
+            // p : Pressure of gas (Mpa)
+            // t : Thickness (mm)
+            double R;
+            if (p != 0)
+                R = (sigma * t) / p;
+            else
+                R = -1;
+            return R;
+        }
+
+
+        // calcul of Thickness (mm)
+        static double equation29(double sigma, double p, double R)
+        {
+            // sigma : Applied strass (Mpa)
+            // p : Pressure of gas (Mpa)
+            // R : Radius (mm)
+            double t;
+            if (sigma != 0)
+                t = (p * R) / sigma;
+            else
+                t = -1;
+            return t;
+
+        }
+
         // calcul of Useful thichness (mm)
         static double equation4(double p, double R, double sigma_y)
         {
@@ -93,6 +206,52 @@ namespace Modelisator.Model {
             else
                 tu = -1;
             return tu;
+        }
+
+
+
+        // calcul of Pressure of gas (Mpa)
+        static double equation30(double tu, double R, double sigma_y)
+        {
+            // tu : Useful thichness (mm)
+            // R : Radius (mm)
+            // sigma_y : Yield strenght (Mpa)
+            double p;
+            if (R != 0)
+                p = (tu * sigma_y) / R;
+            else
+                p = -1;
+            return p;
+        }
+
+        // calcul of Radius (mm)
+        static double equation31(double tu, double p, double sigma_y)
+        {
+            // tu : Useful thichness (mm)
+            // p : Pressure of gas (Mpa)
+            // sigma_y : Yield strenght (Mpa)
+            double R;
+            if (p != 0)
+                R = (tu * sigma_y) / p;
+            else
+                R
+                    = -1;
+            return R;
+        }
+
+        // calcul of Yield strenght (Mpa)
+        static double equation32(double tu, double p, double R)
+        {
+            // tu : Useful thichness (mm)
+            // p : Pressure of gas (Mpa)
+            // R : Radius (mm)
+            double sigma_y;
+            if (tu != 0)
+                sigma_y = (p * R) / tu;
+            else
+                sigma_y
+                    = -1;
+            return sigma_y;
         }
 
         // calcul of Excess thickness
