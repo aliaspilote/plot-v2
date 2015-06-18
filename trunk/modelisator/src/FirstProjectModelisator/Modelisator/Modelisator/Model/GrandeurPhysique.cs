@@ -49,7 +49,7 @@ namespace Modelisator.Model {
 			}
 		}
 
-		public bool EstPremier{
+		public bool     EstPremier{
 			get{
                 return m_EstPremier;
 			}
@@ -58,7 +58,7 @@ namespace Modelisator.Model {
 			}
 		}
 
-		public string Nom{
+		public string   Nom{
 			get{
                 return m_Nom;
 			}
@@ -67,7 +67,7 @@ namespace Modelisator.Model {
 			}
 		}
 
-		public bool Selectionne{
+		public bool     Selectionne{
 			get{
 				return m_Selectionne;
 			}
@@ -76,7 +76,7 @@ namespace Modelisator.Model {
 			}
 		}
 
-		public string Unite{
+		public string   Unite{
 			get{
 				return m_Unite;
 			}
@@ -85,7 +85,7 @@ namespace Modelisator.Model {
 			}
 		}
 
-		public double Valeur{
+		public double   Valeur{
 			get{
 				return m_Valeur;
 			}
@@ -93,6 +93,7 @@ namespace Modelisator.Model {
 				m_Valeur = value;
 			}
 		}
+
 
 	}//end GrandeurPhysique
 

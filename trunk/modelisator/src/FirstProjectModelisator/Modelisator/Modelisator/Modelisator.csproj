@@ -167,9 +167,12 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <SplashScreen Include="splashScreen.PNG">
+    <None Include="splashScreen.PNG">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </SplashScreen>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="splashScreen2.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

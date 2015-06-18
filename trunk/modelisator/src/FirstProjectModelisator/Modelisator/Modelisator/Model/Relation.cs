@@ -12,9 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Modelisator.Model;
 
-
-
-using Modelisator.Model;
 namespace Modelisator.Model {
 	public class Relation {
 
