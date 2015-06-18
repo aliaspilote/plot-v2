@@ -44,7 +44,21 @@ namespace Modelisator.Model {
 			}
 		}
 
-		public void export(){
+		public void export()
+        {
+            string text;
+
+
+            StreamWriter sw = new StreamWriter(m_Chemin);//création du fichier 
+            foreach (GrandeurPhysique gp in m_Produit.GrandeurPhysiques)
+            {
+
+                text = gp.Nom + ";" + gp.Unite + ";" + gp.Valeur + ";" + gp.Description + ";" + gp.Calcule + ";" + gp.Selectionne + ";" + gp.EstPremier;
+                sw.WriteLine("{0}", text);//enregistrement de la liste GP dans le fichier 
+            }
+
+            sw.Close();
+
 
 		}
 
