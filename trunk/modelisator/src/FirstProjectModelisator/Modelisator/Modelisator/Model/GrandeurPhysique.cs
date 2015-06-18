@@ -28,7 +28,8 @@ namespace Modelisator.Model {
 
         public  List<Equation> Equations;
 
-		public GrandeurPhysique(){		}
+        public GrandeurPhysique() { }
+        public GrandeurPhysique(string nom) { Nom = nom; }
 
 
 		public bool Calcule{
