@@ -16,7 +16,9 @@ using System.Threading.Tasks;
 namespace Modelisator.Model {
 	public class Equation {
 
-		public Equation(){		}
+		public Equation()
+        {
+        }
 
         private int m_NbrGP;
 
@@ -45,34 +47,45 @@ namespace Modelisator.Model {
 			}
 		}
 
-        // calcul of Pressure of gas : p(MPa)
+        /// <summary>
+        /// calcul of Pressure of gas : p(MPa)
+        /// </summary>
+        /// <param name="X1">X1 : Coefficient of variation of the pressure (dimensionless)</param>
+        /// <param name="Tmax">Tmax : Maximum temperature (°C)</param>
+        /// <param name="p0">p0 : Pressure of a liquid gas at 15°C (MPa)</param>
+        /// <returns></returns>
+ 
         static double equation1(double X1, double Tmax, double p0)
         {
-            // X1 : Coefficient of variation of the pressure (dimensionless)
-            // Tmax : Maximum temperature (°C)
-            // p0 : Pressure of a liquid gas at 15°C (MPa)
             double p;
             p = X1 * (Math.Pow(Tmax - 15, 2)) + p0;
             return p;
         }
 
-        // calcul ofPressure of a liquid gas at 15°C (MPa)
+        /// <summary>
+        /// calcul ofPressure of a liquid gas at 15°C (MPa)
+        /// </summary>
+        /// <param name="X1">X1 : Coefficient of variation of the pressure (dimensionless)</param>
+        /// <param name="Tmax">Tmax : Maximum temperature (°C)</param>
+        /// <param name="p">p :  Pressure of gas (MPa)</param>
+        /// <returns></returns>
         static double equation23(double X1, double Tmax, double p)
         {
-            // X1 : Coefficient of variation of the pressure (dimensionless)
-            // Tmax : Maximum temperature (°C)
-            // p :  Pressure of gas (MPa)
             double p0;
             p0 = p - (X1 * (Math.Pow(Tmax - 15, 2))) ;
             return p0;
         }
 
-        // calcul of (MPa)Coefficient of variation of the pressure (dimensionless)
+        /// <summary>
+        /// calcul of (MPa)Coefficient of variation of the pressure (dimensionless)
+        /// </summary>
+        /// <param name="p">p : Pressure of gas (Mpa)</param>
+        /// <param name="Tmax">Tmax : Maximum temperature (°C)</param>
+        /// <param name="p0">p0 : Pressure of a liquid gas at 15°C (MPa)</param>
+        /// <returns></returns>
+ 
         static double equation24(double p, double Tmax, double p0)
         {
-            // p : Pressure of gas (Mpa)
-            // Tmax : Maximum temperature (°C)
-            // p0 : Pressure of a liquid gas at 15°C (MPa)
             double X1;
             if (Tmax != 15)
                 X1 = (p - p0) / (Math.Pow(Tmax - 15, 2));
@@ -81,12 +94,16 @@ namespace Modelisator.Model {
             return X1;
         }
 
-        // calcul of Maximum temperature (°C)
+        /// <summary>
+        /// calcul of Maximum temperature (°C)
+        /// </summary>
+        /// <param name="X1">X1 : Coefficient of variation of the pressure (dimensionless)</param>
+        /// <param name="p">p : Pressure of gas (MPa)</param>
+        /// <param name="p0">p0 : Pressure of a liquid gas at 15°C (MPa)</param>
+        /// <returns></returns>
+ 
         static double equation25(double X1, double p, double p0)
         {
-            // X1 : Coefficient of variation of the pressure (dimensionless)
-            // p : Pressure of gas (MPa)
-            // p0 : Pressure of a liquid gas at 15°C (MPa)
             double Tmax;
             if (X1 != 0)
                 Tmax = Math.Sqrt((p - p0) / X1) + 15;
@@ -96,22 +113,30 @@ namespace Modelisator.Model {
         }
 
 
-        // calcul of Expansion of gas 
+        /// <summary>
+        ///  calcul of Expansion of gas 
+        /// </summary>
+        /// <param name="alpha_gas">alpha_gas : Volumetric gaz expansion coefficient (% / °C)</param>
+        /// <param name="Tmax">Tmax : Maximum temperature (°C)</param>
+        /// <returns></returns>
+
         static double equation2(double alpha_gas, double Tmax)
         {
-            // Tmax : Maximum temperature (°C)
-            // alpha_gas : Volumetric gaz expansion coefficient (% / °C)
             double dV;
             dV = alpha_gas * (Tmax - 15);
             return dV;
         }
 
 
-        // calcul of Maximum temperature (°C) 
+        /// <summary>
+        /// calcul of Maximum temperature (°C)
+        /// </summary>
+        /// <param name="alpha_gas">alpha_gas : Volumetric gaz expansion coefficient (% / °C)</param>
+        /// <param name="dV">dV : Expansion of gas</param>
+        /// <returns></returns>
+  
         static double equation26(double alpha_gas, double dV)
         {
-            // dV : Expansion of gas
-            // alpha_gas : Volumetric gaz expansion coefficient (% / °C)
             double Tmax;
             if (alpha_gas != 0)
                 Tmax = (dV / alpha_gas) + 15;
@@ -120,11 +145,15 @@ namespace Modelisator.Model {
             return Tmax;
         }
 
-        // calcul of  Volumetric gaz expansion coefficient (% / °C)
+        /// <summary>
+        ///  calcul of  Volumetric gaz expansion coefficient (% / °C)
+        /// </summary>
+        /// <param name="Tmax">Tmax : Maximum temperature (°C)</param>
+        /// <param name="dV">dV : Expansion of gas</param>
+        /// <returns></returns>
+
         static double equation26(double Tmax, double dV)
         {
-            // dV : Expansion of gas
-            // Tmax : Maximum temperature (°C)
             double alpha_gas;
             if (Tmax != 15)
                 alpha_gas = (dV / (Tmax-15));
@@ -134,12 +163,16 @@ namespace Modelisator.Model {
         }
 
 
-        // calcul of Applied strass (Mpa)
+        /// <summary>
+        /// calcul of Applied strass (Mpa)
+        /// </summary>
+        /// <param name="p">p : Pressure of gas (Mpa)</param>
+        /// <param name="R">R : Radius (mm)</param>
+        /// <param name="t">t : Thickness (mm)</param>
+        /// <returns></returns>
+ 
         static double equation3(double p, double R, double t)
         {
-            // p : Pressure of gas (Mpa)
-            // R : Radius (mm)
-            // t : Thickness (mm)
             double sigma;
             if (t != 0)
                 sigma = (p * R) / t;
@@ -149,12 +182,16 @@ namespace Modelisator.Model {
 
         }
 
-        // calcul of Pressure of gas (Mpa)
+        /// <summary>
+        /// calcul of Pressure of gas (Mpa)
+        /// </summary>
+        /// <param name="sigma">sigma : Applied strass (Mpa)</param>
+        /// <param name="R">R : Radius (mm)</param>
+        /// <param name="t">t : Thickness (mm)</param>
+        /// <returns></returns>
+ 
         static double equation27(double sigma, double R, double t)
         {
-            // sigma : Applied strass (Mpa)
-            // R : Radius (mm)
-            // t : Thickness (mm)
             double p;
             if (R != 0)
                 p = (sigma * t) / R;
@@ -164,12 +201,16 @@ namespace Modelisator.Model {
 
         }
 
-        // calcul of Radius (mm)
+        /// <summary>
+        /// calcul of Radius (mm)
+        /// </summary>
+        /// <param name="sigma">sigma : Applied strass (Mpa)</param>
+        /// <param name="p">p : Pressure of gas (Mpa)</param>
+        /// <param name="t">t : Thickness (mm)</param>
+        /// <returns></returns>
+ 
         static double equation28(double sigma, double p, double t)
         {
-            // sigma : Applied strass (Mpa)
-            // p : Pressure of gas (Mpa)
-            // t : Thickness (mm)
             double R;
             if (p != 0)
                 R = (sigma * t) / p;
@@ -179,27 +220,34 @@ namespace Modelisator.Model {
         }
 
 
-        // calcul of Thickness (mm)
+        /// <summary>
+        /// calcul of Thickness (mm)
+        /// </summary>
+        /// <param name="sigma">sigma : Applied strass (Mpa)</param>
+        /// <param name="p">p : Pressure of gas (Mpa)</param>
+        /// <param name="R">R : Radius (mm)</param>
+        /// <returns></returns>
+ 
         static double equation29(double sigma, double p, double R)
         {
-            // sigma : Applied strass (Mpa)
-            // p : Pressure of gas (Mpa)
-            // R : Radius (mm)
             double t;
             if (sigma != 0)
                 t = (p * R) / sigma;
             else
                 t = -1;
             return t;
-
         }
 
-        // calcul of Useful thichness (mm)
+        /// <summary>
+        /// calcul of Useful thichness (mm)
+        /// </summary>
+        /// <param name="p">p : Pressure of gas (Mpa)</param>
+        /// <param name="R">R : Radius (mm)</param>
+        /// <param name="sigma_y">sigma_y : Yield strenght (Mpa)</param>
+        /// <returns></returns>
+ 
         static double equation4(double p, double R, double sigma_y)
         {
-            // p : Pressure of gas (Mpa)
-            // R : Radius (mm)
-            // sigma_y : Yield strenght (Mpa)
             double tu;
             if (sigma_y != 0)
                 tu = (p * R) / sigma_y;
@@ -210,12 +258,16 @@ namespace Modelisator.Model {
 
 
 
-        // calcul of Pressure of gas (Mpa)
+        /// <summary>
+        /// calcul of Pressure of gas (Mpa)
+        /// </summary>
+        /// <param name="tu">tu : Useful thichness (mm)</param>
+        /// <param name="R">R : Radius (mm)</param>
+        /// <param name="sigma_y">sigma_y : Yield strenght (Mpa)</param>
+        /// <returns></returns>
+ 
         static double equation30(double tu, double R, double sigma_y)
         {
-            // tu : Useful thichness (mm)
-            // R : Radius (mm)
-            // sigma_y : Yield strenght (Mpa)
             double p;
             if (R != 0)
                 p = (tu * sigma_y) / R;
@@ -224,12 +276,15 @@ namespace Modelisator.Model {
             return p;
         }
 
-        // calcul of Radius (mm)
+        /// <summary>
+        /// calcul of Radius (mm)
+        /// </summary>
+        /// <param name="tu">tu : Useful thichness (mm)</param>
+        /// <param name="p">p : Pressure of gas (Mpa)</param>
+        /// <param name="sigma_y">sigma_y : Yield strenght (Mpa)</param>
+        /// <returns></returns>
         static double equation31(double tu, double p, double sigma_y)
         {
-            // tu : Useful thichness (mm)
-            // p : Pressure of gas (Mpa)
-            // sigma_y : Yield strenght (Mpa)
             double R;
             if (p != 0)
                 R = (tu * sigma_y) / p;
@@ -239,12 +294,16 @@ namespace Modelisator.Model {
             return R;
         }
 
-        // calcul of Yield strenght (Mpa)
+        /// <summary>
+        /// calcul of Yield strenght (Mpa)
+        /// </summary>
+        /// <param name="tu">tu : Useful thichness (mm)</param>
+        /// <param name="p">p : Pressure of gas (Mpa)</param>
+        /// <param name="R">R : Radius (mm)</param>
+        /// <returns></returns>
+ 
         static double equation32(double tu, double p, double R)
         {
-            // tu : Useful thichness (mm)
-            // p : Pressure of gas (Mpa)
-            // R : Radius (mm)
             double sigma_y;
             if (tu != 0)
                 sigma_y = (p * R) / tu;
@@ -254,21 +313,29 @@ namespace Modelisator.Model {
             return sigma_y;
         }
 
-        // calcul of Excess thickness
+        /// <summary>
+        /// calcul of Excess thickness
+        /// </summary>
+        /// <param name="t">t : Thickness (mm)</param>
+        /// <param name="tu">tu : Useful thichness (mm)</param>
+        /// <returns></returns>
+ 
         static double equation5(double t, double tu)
         {
-            // t : Thickness (mm)
-            // tu : Useful thichness (mm)
             double delta_t = t - tu;
             return delta_t;
         }
 
-        // calcul of Lifespan (year)
+        /// <summary>
+        /// calcul of Lifespan (year)
+        /// </summary>
+        /// <param name="t">t : Thickness (mm)</param>
+        /// <param name="tu">tu : Useful thichness (mm)</param>
+        /// <param name="C">C : Thickness loss (mm/year)</param>
+        /// <returns></returns>
+ 
         static double equation6(double t, double tu, double C)
         {
-            // t : Thickness (mm)
-            // tu : Useful thichness (mm)
-            // C : Thickness loss (mm/year)
             double lifespan;
             if (C != 0)
                 lifespan = (t - tu) / C;
@@ -277,143 +344,203 @@ namespace Modelisator.Model {
             return lifespan;
         }
 
-        // calcul of Stress intensity factor for flaw size to useful thickness (Mpa racine(m))
+        /// <summary>
+        /// calcul of Stress intensity factor for flaw size to useful thickness (Mpa racine(m))
+        /// </summary>
+        /// <param name="alpha">alpha : Correction factor (dimensionless)</param>
+        /// <param name="sigma_y">sigma_y : Yield strenght (Mpa)</param>
+        /// <param name="tu">tu : Useful thichness (mm)</param>
+        /// <returns></returns>
+ 
         static double equation7(double alpha, double sigma_y, double tu)
         {
-            // alpha : Correction factor (dimensionless)
-            // sigma_y : Yield strenght (Mpa)
-            // tu : Useful thichness (mm)
             double KI = alpha * sigma_y * Math.Sqrt(tu);
             return KI;
         }
 
-        // calcul of Force of punching (N)
+        /// <summary>
+        /// calcul of Force of punching (N)
+        /// </summary>
+        /// <param name="nu">nu : Radius of punching hole (m)</param>
+        /// <param name="t">t : Thickness (mm)</param>
+        /// <param name="sigma_y">sigma_y : Yield strenght (Mpa)</param>
+        /// <returns></returns>
+ 
         static double equation8(double nu, double t, double sigma_y)
         {
-            // t : Thickness (mm)
-            // sigma_y : Yield strenght (Mpa)
-            // nu : Radius of punching hole (m)
             double Fp = 2 * Math.PI * t * sigma_y;
             return Fp;
         }
 
-        // calcul of Volume (mm3)
+        /// <summary>
+        /// calcul of Volume (mm3)
+        /// </summary>
+        /// <param name="R">R : Radius (mm)</param>
+        /// <param name="h">h : Height (mm)</param>
+        /// <returns></returns>
+ 
         static double equation9(double R, double h)
         {
-            // R : Radius (mm)
-            // h : Height (mm)
             double V = (Math.PI * Math.Pow(R, 2) * h);
             return V;
         }
 
-        // calcul of Usuful mass (Kg)
+        /// <summary>
+        /// calcul of Usuful mass (Kg)
+        /// </summary>
+        /// <param name="V">V : Volume (mm3)</param>
+        /// <param name="dV">dV : Expansion of gas </param>
+        /// <param name="pg">pg : density of gaz (kg/m3)</param>
+        /// <returns></returns>
+ 
         static double equation10(double V, double dV, double pg)
         {
-            // V : Volume (mm3)
-            // dV : Expansion of gas 
-            // pg : density of gaz (kg/m3)
             double Mu = V * (1 - dV) * pg;
             return Mu;
         }
 
-        // calcul of Surface (mm2)
+        /// <summary>
+        /// calcul of Surface (mm2)
+        /// </summary>
+        /// <param name="R">R : Radius (mm)</param>
+        /// <param name="h">h : Height (mm)</param>
+        /// <returns></returns>
+ 
         static double equation11(double R, double h)
         {
-            // R : Radius (mm)
-            // h : Height (mm)
             double S = (Math.PI * R * h) + (2 * Math.PI * Math.Pow(R, 2));
             return S;
         }
 
-        // calcul of Empty mass (Kg)
+        /// <summary>
+        /// calcul of Empty mass (Kg)
+        /// </summary>
+        /// <param name="S">S : Surface (mm2)</param>
+        /// <param name="t">t : Thickness (mm)</param>
+        /// <param name="ro">ro : Density of material (kg/m3)</param>
+        /// <returns></returns>
+ 
         static double equation12(double S, double t, double ro)
         {
-            // S : Surface (mm2)
-            // t : Thickness (mm)
-            // ro : Density of material (kg/m3)
             double Mv = S * t * ro;
             return Mv;
         }
 
-        // calcul of Total mass (Kg)
+        /// <summary>
+        /// calcul of Total mass (Kg)
+        /// </summary>
+        /// <param name="Mv">Mv : Empty mass (Kg)</param>
+        /// <param name="Mg">Mg : ...</param>
+        /// <returns></returns>
+ 
         static double equation13(double Mv, double Mg)
         {
-            // Mv : Empty mass (Kg)
-            // Mg : ...
             double Mt = Mv + Mg;
             return Mt;
         }
 
-        // calcul of Perimeter (mm)
+        /// <summary>
+        /// calcul of Perimeter (mm)
+        /// </summary>
+        /// <param name="R">// R : Radius (mm)</param>
+        /// <returns></returns>
+ 
         static double equation14(double R)
         {
-            // R : Radius (mm)
             double P = 2 * Math.PI * R;
             return P;
         }
 
-        // calcul of cost crimping (€)
+        /// <summary>
+        /// calcul of cost crimping (€)
+        /// </summary>
+        /// <param name="P">P : Perimeter (mm)</param>
+        /// <param name="cs">cs : cost/m (€/m)</param>
+        /// <returns></returns>
+ 
         static double esuation15(double P, double cs)
         {
-            // P : Perimeter (mm)
-            // cs : cost/m (€/m)
             double Cs = P * cs;
             return Cs;
         }
 
-        // calcul of cost of material (€)
+        /// <summary>
+        /// calcul of cost of material (€)
+        /// </summary>
+        /// <param name="Mv">Mv : Empty mass (Kg)</param>
+        /// <param name="cm">cm : cost/m (€/kg)</param>
+        /// <returns></returns>
+ 
         static double equation16(double Mv, double cm)
         {
-            // Mv : Empty mass (Kg)
-            // cm : cost/m (€/kg)
             double Cm = Mv * cm;
             return Cm;
         }
 
-        // calcul of Coast of coating (€)
+        /// <summary>
+        /// calcul of Coast of coating (€)
+        /// </summary>
+        /// <param name="S">S : Surface (mm2)</param>
+        /// <param name="cr">cr : cost/m2 (€/m2)</param>
+        /// <returns></returns>
+ 
         static double equation17(double S, double cr)
         {
-            // S : Surface (mm2)
-            // cr : cost/m2 (€/m2)
             double Cr = S * cr;
             return Cr;
         }
 
-        // calcul of Cost of deep drawing
+        /// <summary>
+        /// calcul of Cost of deep drawing
+        /// </summary>
+        /// <returns></returns>
+ 
         static double equation18()
         {
             return 0;
         }
 
-        // calcul of total coast (€)
+        /// <summary>
+        /// calcul of total coast (€)
+        /// </summary>
+        /// <param name="Cm">Cm : cost of material (€)</param>
+        /// <param name="Cs">Cs : cost crimping (€)</param>
+        /// <param name="Cr">Cr : Coast of coating (€)</param>
+        /// <param name="Ce">Ce : Cost of deep drawing</param>
+        /// <returns></returns>
+ 
         static double equation19(double Cm, double Cs, double Cr, double Ce)
         {
-            // Cm : cost of material (€)
-            // Cs : cost crimping (€)
-            // Cr : Coast of coating (€)
-            // Ce : Cost of deep drawing
             Ce = 0;
             double Ct = Cm + Cs + Cr + Ce;
             return Ct;
         }
 
-        // calcul of Rate of heat flow (W)
+        /// <summary>
+        /// calcul of Rate of heat flow (W)
+        /// </summary>
+        /// <param name="Tmin">Tmin : Minimum temperature (°C)</param>
+        /// <param name="T0">T0 : Boiling point : (°C)</param>
+        /// <param name="lambda">Lambda : Coefficient of thermal conductivity ( W.m-1.K-1)</param>
+        /// <param name="t">t : Thickness (mm)</param>
+        /// <param name="S">S : Surface (mm2)</param>
+        /// <returns></returns>
+ 
         static double equation20(double Tmin, double T0, double lambda, double t, double S)
         {
-            // Lambda : Coefficient of thermal conductivity ( W.m-1.K-1)
-            // Tmin : Minimum temperature (°C)
-            // T0 : Boiling point : (°C)
-            // S : Surface (mm2)
-            // t : Thickness (mm)
             double Q = lambda * ((Tmin - T0) / t) * S;
             return Q;
         }
 
-        // calcul of Volumetric flow rate of gaz (Kg/s)
+        /// <summary>
+        /// calcul of Volumetric flow rate of gaz (Kg/s)
+        /// </summary>
+        /// <param name="Q">Q : Rate of heat flow (W)</param>
+        /// <param name="Cl">Cl : Latent heat of vaporization of gaz (J/Kg)</param>
+        /// <returns></returns>
+ 
         static double equation21(double Q, double Cl)
         {
-            // Q : Rate of heat flow (W)
-            //Cl : Latent heat of vaporization of gaz (J/Kg)
             double D;
             if (Cl != 0)
                 D = Q / Cl;
@@ -422,11 +549,15 @@ namespace Modelisator.Model {
             return D;
         }
 
-        // calcul of Power (W)
+        /// <summary>
+        /// calcul of Power (W)
+        /// </summary>
+        /// <param name="D">D : Volumetric flow rate of gaz (Kg/s)</param>
+        /// <param name="PCI">PCI : Lower heating value (J/Kg)</param>
+        /// <returns></returns>
+ 
         static double equation22(double D, double PCI)
         {
-            // D : Volumetric flow rate of gaz (Kg/s)
-            // PCI : Lower heating value (J/Kg)
             double P = D * PCI;
             return P;
         }
