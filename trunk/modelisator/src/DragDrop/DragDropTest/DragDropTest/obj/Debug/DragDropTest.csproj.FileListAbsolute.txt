@@ -15,3 +15,6 @@ C:\Users\Quentin\Documents\Visual Studio 2013\Projects\DragDropTest\DragDropTest
 C:\Users\Quentin\Documents\Visual Studio 2013\Projects\DragDropTest\DragDropTest\obj\Debug\DragDropTest.csproj.GenerateResource.Cache
 C:\Users\Quentin\Documents\Visual Studio 2013\Projects\DragDropTest\DragDropTest\obj\Debug\DragDropTest.exe
 C:\Users\Quentin\Documents\Visual Studio 2013\Projects\DragDropTest\DragDropTest\obj\Debug\DragDropTest.pdb
+C:\Users\Quentin\Documents\Modelisator\src\DragDrop\DragDropTest\DragDropTest\bin\Debug\DragDropTest.exe.config
+C:\Users\Quentin\Documents\Modelisator\src\DragDrop\DragDropTest\DragDropTest\obj\Debug\DragDropTest.exe
+C:\Users\Quentin\Documents\Modelisator\src\DragDrop\DragDropTest\DragDropTest\obj\Debug\DragDropTest.pdb

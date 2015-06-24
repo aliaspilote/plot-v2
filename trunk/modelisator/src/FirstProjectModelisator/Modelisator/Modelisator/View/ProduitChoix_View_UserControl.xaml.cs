@@ -24,5 +24,10 @@ namespace Modelisator.View
         {
             InitializeComponent();
         }
+        public ItemsControl ProduitChoix_ItemsControl
+        {
+            get { return m_ProduitChoix_ItemsControl; }
+            set { m_ProduitChoix_ItemsControl = value; }
+        }
     }
 }

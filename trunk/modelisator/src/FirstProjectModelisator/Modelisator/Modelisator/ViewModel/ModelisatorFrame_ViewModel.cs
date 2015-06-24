@@ -18,6 +18,7 @@ namespace Modelisator.ViewModel
 
         public ModelisatorFrame_ViewModel(Contexte ctx)
         {
+            Ctx = ctx;
             View = new ModelisatorFram_View_UserControl();
             Model = new ModelisatorFrame_Model(ctx);
             SetupModelisatorFrame();
