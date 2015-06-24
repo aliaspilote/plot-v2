@@ -13,39 +13,114 @@ using System.Threading.Tasks;
 
 
 
-namespace Modelisator.Model {
-	public class Equation {
+namespace Modelisator.Model
+{
+    public class Equation
+    {
 
-		public Equation(){		}
+        public Equation() { }
 
         private int m_NbrGP;
 
         private int m_NbrGPConnus;
-        
-		public double Calculer(){
 
-			return 0;
-		}
+        public void Calculer(int indiceEqu)
+        {
+            switch (indiceEqu)
+            {
+                case 1:
+                    Produit.GrandeurPhysiques["p"].Valeur = equation1(Produit.GrandeurPhysiques["X1"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["p0"].Valeur);
+                    break;
 
-		public int NbrGP{
-			get{
+                case 2:
+                    Produit.GrandeurPhysiques["X1"].Valeur = equation2(Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["p0"].Valeur);
+                    break;
+
+                case 3:
+                    Produit.GrandeurPhysiques["Tmax"].Valeur = equation3(Produit.GrandeurPhysiques["X1"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["p0"].Valeur);
+                    break;
+
+                case 4:
+                    Produit.GrandeurPhysiques["p0"].Valeur = equation4(Produit.GrandeurPhysiques["X1"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["p"].Valeur);
+                    break;
+
+                case 5:
+                    Produit.GrandeurPhysiques["dV"].Valeur = equation5(Produit.GrandeurPhysiques["alpha_gas"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur);
+                    break;
+
+                case 6:
+                    Produit.GrandeurPhysiques["Tmax"].Valeur = equation6(Produit.GrandeurPhysiques["alpha_gas"].Valeur, Produit.GrandeurPhysiques["dV"].Valeur);
+                    break;
+
+                case 7:
+                    Produit.GrandeurPhysiques["alpha_gas"].Valeur = equation7(Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["dV"].Valeur);
+                    break;
+
+                case 8:
+                    Produit.GrandeurPhysiques["sigma"].Valeur = equation8(Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                    break;
+
+                case 9:
+                    Produit.GrandeurPhysiques["p"].Valeur = equation9(Produit.GrandeurPhysiques["sigma"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                    break;
+
+                case 10:
+                    Produit.GrandeurPhysiques["R"].Valeur = equation10(Produit.GrandeurPhysiques["sigma"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                    break;
+
+                case 11:
+                    Produit.GrandeurPhysiques["t"].Valeur = equation11(Produit.GrandeurPhysiques["sigma"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur);
+                    break;
+
+                case 12:
+                    Produit.GrandeurPhysiques["tu"].Valeur = equation12(Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["sigma_y"].Valeur);
+                    break;
+
+                case 13:
+                    Produit.GrandeurPhysiques["p"].Valeur = equation13(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["sigma_y"].Valeur);
+                    break;
+
+                case 14:
+                    Produit.GrandeurPhysiques["R"].Valeur = equation14(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["sigma_y"].Valeur);
+                    break;
+
+                case 15:
+                    Produit.GrandeurPhysiques["sigma_y"].Valeur = equation15(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur);
+                    break;
+
+                default:
+
+
+                    break;
+
+            }
+        }
+
+        public int NbrGP
+        {
+            get
+            {
                 return m_NbrGP;
-			}
-			set{
+            }
+            set
+            {
                 m_NbrGP = value;
-			}
-		}
+            }
+        }
 
-		public int NbrGPConnus{
-			get{
+        public int NbrGPConnus
+        {
+            get
+            {
                 return m_NbrGPConnus;
-			}
-			set{
+            }
+            set
+            {
                 m_NbrGPConnus = value;
-			}
-		}
+            }
+        }
 
- 
+
         /// <summary>
         /// calcul of Pressure of gas : p(MPa)
         /// </summary>
@@ -55,7 +130,7 @@ namespace Modelisator.Model {
         /// <returns></returns>
         static double equation1(double X1, double Tmax, double p0)
         {
-            
+
             double p;
             p = X1 * (Math.Pow(Tmax - 15, 2)) + p0;
             return p;
@@ -68,11 +143,11 @@ namespace Modelisator.Model {
         /// <param name="Tmax">Maximum temperature (°C)</param>
         /// <param name="p">Pressure of gas (MPa)</param>
         /// <returns></returns>
- 
-        static double equation23(double X1, double Tmax, double p)
-        { 
+
+        static double equation2(double X1, double Tmax, double p)
+        {
             double p0;
-            p0 = p - (X1 * (Math.Pow(Tmax - 15, 2))) ;
+            p0 = p - (X1 * (Math.Pow(Tmax - 15, 2)));
             return p0;
         }
 
@@ -83,8 +158,8 @@ namespace Modelisator.Model {
         /// <param name="Tmax">Maximum temperature (°C)</param>
         /// <param name="p0">Pressure of a liquid gas at 15°C (MPa)</param>
         /// <returns></returns>
- 
-        static double equation24(double p, double Tmax, double p0)
+
+        static double equation3(double p, double Tmax, double p0)
         {
             double X1;
             if (Tmax != 15)
@@ -101,13 +176,13 @@ namespace Modelisator.Model {
         /// <param name="p">  Pressure of gas (MPa)</param>
         /// <param name="p0"> Pressure of a liquid gas at 15°C (MPa)</param>
         /// <returns></returns>
- 
-        static double equation25(double X1, double p, double p0)
+
+        static double equation4(double X1, double p, double p0)
         {
             double Tmax;
             if (X1 != 0)
                 Tmax = Math.Sqrt((p - p0) / X1) + 15;
-            else 
+            else
                 Tmax = -1;
             return Tmax;
         }
@@ -119,10 +194,10 @@ namespace Modelisator.Model {
         /// <param name="alpha_gas">  Volumetric gaz expansion coefficient (% / °C)</param>
         /// <param name="Tmax">       Maximum temperature (°C)</param>
         /// <returns></returns>
- 
-        static double equation2(double alpha_gas, double Tmax)
+
+        static double equation5(double alpha_gas, double Tmax)
         {
-             
+
             double dV;
             dV = alpha_gas * (Tmax - 15);
             return dV;
@@ -135,10 +210,10 @@ namespace Modelisator.Model {
         /// <param name="alpha_gas"> Volumetric gaz expansion coefficient (% / °C)</param>
         /// <param name="dV">        Expansion of gas</param>
         /// <returns></returns>
- 
-        static double equation26(double alpha_gas, double dV)
+
+        static double equation6(double alpha_gas, double dV)
         {
-           
+
             double Tmax;
             if (alpha_gas != 0)
                 Tmax = (dV / alpha_gas) + 15;
@@ -153,13 +228,13 @@ namespace Modelisator.Model {
         /// <param name="Tmax"> Maximum temperature (°C)</param>
         /// <param name="dV">   Expansion of gas</param>
         /// <returns></returns>
- 
-        static double equation27(double Tmax, double dV)
+
+        static double equation7(double Tmax, double dV)
         {
-            
+
             double alpha_gas;
             if (Tmax != 15)
-                alpha_gas = (dV / (Tmax-15));
+                alpha_gas = (dV / (Tmax - 15));
             else
                 alpha_gas = -1;
             return alpha_gas;
@@ -174,9 +249,9 @@ namespace Modelisator.Model {
         /// <param name="t"> Thickness (mm)</param>
         /// <returns></returns>
 
-        static double equation3(double p, double R, double t)
+        static double equation8(double p, double R, double t)
         {
-            
+
             double sigma;
             if (t != 0)
                 sigma = (p * R) / t;
@@ -194,9 +269,9 @@ namespace Modelisator.Model {
         /// <param name="t"> Thickness (mm)</param>
         /// <returns></returns>
 
-        static double equation28(double sigma, double R, double t)
+        static double equation9(double sigma, double R, double t)
         {
-             
+
             double p;
             if (R != 0)
                 p = (sigma * t) / R;
@@ -213,10 +288,10 @@ namespace Modelisator.Model {
         /// <param name="p"> Pressure of gas (Mpa)</param>
         /// <param name="t"> Thickness (mm)</param>
         /// <returns></returns>
- 
-        static double equation29(double sigma, double p, double t)
+
+        static double equation10(double sigma, double p, double t)
         {
-            
+
             double R;
             if (p != 0)
                 R = (sigma * t) / p;
@@ -233,10 +308,10 @@ namespace Modelisator.Model {
         /// <param name="p"> Pressure of gas (Mpa)</param>
         /// <param name="R"> Radius (mm)</param>
         /// <returns></returns>
- 
-        static double equation30(double sigma, double p, double R)
+
+        static double equation11(double sigma, double p, double R)
         {
-           
+
             double t;
             if (sigma != 0)
                 t = (p * R) / sigma;
@@ -254,9 +329,9 @@ namespace Modelisator.Model {
         /// <param name="sigma_y"> Yield strenght (Mpa)</param>
         /// <returns></returns>
 
-        static double equation4(double p, double R, double sigma_y)
+        static double equation12(double p, double R, double sigma_y)
         {
-            
+
             double tu;
             if (sigma_y != 0)
                 tu = (p * R) / sigma_y;
@@ -274,10 +349,10 @@ namespace Modelisator.Model {
         /// <param name="R"> Radius (mm)</param>
         /// <param name="sigma_y"> Yield strenght (Mpa)</param>
         /// <returns></returns>
- 
-        static double equation31(double tu, double R, double sigma_y)
+
+        static double equation13(double tu, double R, double sigma_y)
         {
-            
+
             double p;
             if (R != 0)
                 p = (tu * sigma_y) / R;
@@ -294,9 +369,9 @@ namespace Modelisator.Model {
         /// <param name="sigma_y">Yield strenght (Mpa)</param>
         /// <returns></returns>
 
-        static double equation32(double tu, double p, double sigma_y)
+        static double equation14(double tu, double p, double sigma_y)
         {
-            
+
             double R;
             if (p != 0)
                 R = (tu * sigma_y) / p;
@@ -313,10 +388,10 @@ namespace Modelisator.Model {
         /// <param name="p">Pressure of gas (Mpa)</param>
         /// <param name="R">Radius (mm)</param>
         /// <returns></returns>
- 
-        static double equation33(double tu, double p, double R)
+
+        static double equation15(double tu, double p, double R)
         {
-            
+
             double sigma_y;
             if (tu != 0)
                 sigma_y = (p * R) / tu;
@@ -333,9 +408,9 @@ namespace Modelisator.Model {
         /// <param name="tu">Useful thichness (mm)</param>
         /// <returns></returns>
 
-        static double equation5(double t, double tu)
+        static double equation5o(double t, double tu)
         {
-            
+
             double delta_t = t - tu;
             return delta_t;
         }
@@ -349,7 +424,7 @@ namespace Modelisator.Model {
 
         static double equation34(double delta_t, double tu)
         {
-           
+
             double t = delta_t + tu;
             return t;
         }
@@ -360,10 +435,10 @@ namespace Modelisator.Model {
         /// <param name="delta_t"> Excess thickness</param>
         /// <param name="t"> Thickness (mm)</param>
         /// <returns></returns>
- 
+
         static double equation35(double delta_t, double t)
         {
-           
+
             double tu = t - delta_t;
             return tu;
         }
@@ -377,9 +452,9 @@ namespace Modelisator.Model {
         /// <param name="C">Thickness loss (mm/year)</param>
         /// <returns></returns>
 
-        static double equation6(double t, double tu, double C)
+        static double equation6o(double t, double tu, double C)
         {
-          
+
             double lifespan;
             if (C != 0)
                 lifespan = (t - tu) / C;
@@ -399,7 +474,7 @@ namespace Modelisator.Model {
 
         static double equation36(double lifespan, double tu, double C)
         {
-            
+
             double t;
             t = (lifespan * C) + tu;
             return t;
@@ -412,10 +487,10 @@ namespace Modelisator.Model {
         /// <param name="t">Thickness (mm)</param>
         /// <param name="C"> Thickness loss (mm/year)</param>
         /// <returns></returns>
- 
+
         static double equation37(double lifespan, double t, double C)
         {
-           
+
             double tu;
             tu = t - (lifespan * C);
             return t;
@@ -428,10 +503,10 @@ namespace Modelisator.Model {
         /// <param name="tu">Useful thichness (mm)</param>
         /// <param name="lifespan">Lifespan (year)</param>
         /// <returns></returns>
- 
+
         static double equation38(double t, double tu, double lifespan)
         {
-            
+
             double C;
             if (lifespan != 0)
                 C = (t - tu) / lifespan;
@@ -448,9 +523,9 @@ namespace Modelisator.Model {
         /// <param name="tu">Useful thichness (mm)</param>
         /// <returns></returns>
 
-        static double equation7(double alpha, double sigma_y, double tu)
+        static double equation7o(double alpha, double sigma_y, double tu)
         {
-            
+
             double KI = alpha * sigma_y * Math.Sqrt(tu);
             return KI;
         }
@@ -463,10 +538,10 @@ namespace Modelisator.Model {
         /// <param name="sigma_y"> Yield strenght (Mpa)</param>
         /// <param name="tu">Useful thichness (mm)</param>
         /// <returns></returns>
- 
+
         static double equation39(double KI, double sigma_y, double tu)
         {
-           
+
             double alpha;
             if (sigma_y != 0 && tu != 0)
                 alpha = KI / (sigma_y * Math.Sqrt(tu));
@@ -482,10 +557,10 @@ namespace Modelisator.Model {
         /// <param name="alpha">alpha : Correction factor (dimensionless)</param>
         /// <param name="tu">tu : Useful thichness (mm)</param>
         /// <returns></returns>
- 
+
         static double equation40(double KI, double alpha, double tu)
         {
-            
+
             double sigma_y;
             if (alpha != 0 && tu != 0)
                 sigma_y = KI / (alpha * Math.Sqrt(tu));
@@ -501,15 +576,15 @@ namespace Modelisator.Model {
             // alpha : Correction factor (dimensionless)
             // sigma_y : Yield strenght (Mpa)
             double tu;
-            if (alpha != 0 && sigma_y!= 0)
-                tu = Math.Pow(KI / (alpha * sigma_y),2);
+            if (alpha != 0 && sigma_y != 0)
+                tu = Math.Pow(KI / (alpha * sigma_y), 2);
             else
                 tu = -1;
             return tu;
         }
 
         // calcul of Force of punching (N)
-        static double equation8(double nu, double t, double sigma_y)
+        static double equation8o(double nu, double t, double sigma_y)
         {
             // t : Thickness (mm)
             // sigma_y : Yield strenght (Mpa)
@@ -563,7 +638,7 @@ namespace Modelisator.Model {
 
 
         // calcul of Volume (mm3)
-        static double equation9(double R, double h)
+        static double equation9o(double R, double h)
         {
             // R : Radius (mm)
             // h : Height (mm)
@@ -592,7 +667,7 @@ namespace Modelisator.Model {
             // V : Volume (mm3)
             double R;
             if (h != 0)
-                R = Math.Sqrt( V / (Math.PI * h));
+                R = Math.Sqrt(V / (Math.PI * h));
             else
                 R = -1;
             return R;
@@ -601,7 +676,7 @@ namespace Modelisator.Model {
 
 
         // calcul of Usuful mass (Kg)
-        static double equation10(double V, double dV, double pg)
+        static double equation10o(double V, double dV, double pg)
         {
             // V : Volume (mm3)
             // dV : Expansion of gas 
@@ -631,7 +706,7 @@ namespace Modelisator.Model {
             // dV : Expansion of gas 
             // V : Volume (mm3)
             double pg;
-            if (V!= 0 && dV != 1)
+            if (V != 0 && dV != 1)
                 pg = Mu / ((1 - dV) * V);
             else
                 pg = -1;
@@ -653,7 +728,7 @@ namespace Modelisator.Model {
         }
 
         // calcul of Surface (mm2)
-        static double equation11(double R, double h)
+        static double equation11o(double R, double h)
         {
             // R : Radius (mm)
             // h : Height (mm)
@@ -666,12 +741,12 @@ namespace Modelisator.Model {
         {
             // R : Radius (mm)
             // S : Surface (mm2)
-            double h ;
+            double h;
             if (R != 0)
                 h = (S - (2 * Math.PI * Math.Pow(R, 2))) / (2 * Math.PI * R);
             else
                 h = -1;
-            return h; 
+            return h;
         }
 
         // calcul of Radius (mm)
@@ -679,14 +754,14 @@ namespace Modelisator.Model {
         {
             // h : Height (mm)
             // S : Surface (mm2)
-            double R=-1;
-            
+            double R = -1;
+
             return R;
         }
 
-        
+
         // calcul of Empty mass (Kg)
-        static double equation12(double S, double t, double ro)
+        static double equation12o(double S, double t, double ro)
         {
             // S : Surface (mm2)
             // t : Thickness (mm)
@@ -703,10 +778,10 @@ namespace Modelisator.Model {
             // t : Thickness (mm)
             // ro : Density of material (kg/m3)
             double S;
-            if(t!=0 && ro!=0)
-                S=Mv / (t * ro);
+            if (t != 0 && ro != 0)
+                S = Mv / (t * ro);
             else
-                S=-1;
+                S = -1;
             return S;
         }
 
@@ -739,7 +814,7 @@ namespace Modelisator.Model {
         }
 
         // calcul of Total mass (Kg)
-        static double equation13(double Mv, double Mg)
+        static double equation13o(double Mv, double Mg)
         {
             // Mv : Empty mass (Kg)
             // Mg : ...
@@ -766,7 +841,7 @@ namespace Modelisator.Model {
         }
 
         // calcul of Perimeter (mm)
-        static double equation14(double R)
+        static double equation14o(double R)
         {
             // R : Radius (mm)
             double P = 2 * Math.PI * R;
@@ -777,12 +852,12 @@ namespace Modelisator.Model {
         static double equation57(double P)
         {
             // P : Perimeter (mm)
-            double R = P /(2 * Math.PI);
+            double R = P / (2 * Math.PI);
             return R;
         }
 
         // calcul of cost crimping (€)
-        static double esuation15(double P, double cs)
+        static double esuation15o(double P, double cs)
         {
             // P : Perimeter (mm)
             // cs : cost/m (€/m)
@@ -796,10 +871,10 @@ namespace Modelisator.Model {
             // Cs : cost crimping (€)
             // cs : cost/m (€/m)
             double P;
-            if(cs!=0)
-                P=Cs/cs;
+            if (cs != 0)
+                P = Cs / cs;
             else
-                P=-1;  
+                P = -1;
             return P;
         }
 
@@ -832,10 +907,10 @@ namespace Modelisator.Model {
             // Cm : cost of material (€)
             // cm : cost/m (€/kg)
             double Mv;
-            if(cm!=0)
-                Mv=Cm/cm;
+            if (cm != 0)
+                Mv = Cm / cm;
             else
-                Mv=-1;
+                Mv = -1;
             return Mv;
         }
 
@@ -867,10 +942,10 @@ namespace Modelisator.Model {
             // Cr : Coast of coating (€)
             // cr : cost/m2 (€/m2)
             double S;
-            if(cr!=0)
-                S=Cr/cr;
+            if (cr != 0)
+                S = Cr / cr;
             else
-                S=-1;
+                S = -1;
             return S;
         }
 
@@ -911,7 +986,7 @@ namespace Modelisator.Model {
             return 0;
         }
 
-         // calcul of Series
+        // calcul of Series
         static double equation67()
         {
             return 0;
@@ -973,7 +1048,7 @@ namespace Modelisator.Model {
             // Cs : cost crimping (€)
             // Cr : Coast of coating (€)
             // Cm : cost of material (€)
-            
+
             double Ce = Ct - Cs - Cr - Cm;
             Ce = 0;
             return Ce;
@@ -989,8 +1064,8 @@ namespace Modelisator.Model {
             // S : Surface (mm2)
             // t : Thickness (mm)
             double Q;
-            if(t!=0)
-             Q= lambda * ((Tmin - T0) / t) * S;
+            if (t != 0)
+                Q = lambda * ((Tmin - T0) / t) * S;
             else
                 Q = -1;
             return Q;
@@ -1055,10 +1130,10 @@ namespace Modelisator.Model {
             // S : Surface (mm2)
             // Q : Rate of heat flow (W)
             double Tmin;
-            if (lambda != 0 && S!=0)
-                Tmin = (Q * t) / ( lambda * S) + T0;
+            if (lambda != 0 && S != 0)
+                Tmin = (Q * t) / (lambda * S) + T0;
             else
-                Tmin=-1;
+                Tmin = -1;
             return Tmin;
         }
 
@@ -1101,7 +1176,7 @@ namespace Modelisator.Model {
             // D : Volumetric flow rate of gaz (Kg/s)
             //Cl : Latent heat of vaporization of gaz (J/Kg)
             double Q;
-                Q = D * Cl;
+            Q = D * Cl;
             return Q;
         }
 
@@ -1117,7 +1192,7 @@ namespace Modelisator.Model {
                 Cl = -1;
             return Cl;
         }
-        
+
 
         // calcul of Power (W)
         static double equation22(double D, double PCI)
@@ -1158,6 +1233,6 @@ namespace Modelisator.Model {
 
 
 
-	}//end Equation
+    }//end Equation
 
 }//end namespace Modelisator.Model
