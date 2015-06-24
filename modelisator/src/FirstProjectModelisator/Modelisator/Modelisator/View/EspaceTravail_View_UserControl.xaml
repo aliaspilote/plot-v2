@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <Grid Background="LightBlue" MinHeight="730"  MinWidth="995" HorizontalAlignment="Left"  VerticalAlignment="Bottom">
+    <Grid Name="m_GridEspaceTravail" Background="LightBlue" MinHeight="730"  MinWidth="995" HorizontalAlignment="Left"  VerticalAlignment="Bottom">
         <Label Content="Espace de travail" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
     </Grid>
 </UserControl>
