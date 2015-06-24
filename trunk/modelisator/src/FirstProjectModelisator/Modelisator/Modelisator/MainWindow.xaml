@@ -4,8 +4,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         x:Class="Modelisator.MainWindow"
-        Title="Modelisator Application" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        Title="Modelisator Application" 
+        SizeToContent="WidthAndHeight"
+        HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
 
-    <StackPanel x:Name="m_ContentPanel" HorizontalAlignment="center" VerticalAlignment="Center" Visibility="Visible"/>
+    <StackPanel x:Name="m_ContentPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"  />
 
 </Controls:MetroWindow>

@@ -25,7 +25,6 @@ namespace Modelisator
         public MainWindow()
         {
             InitializeComponent();
-            //MainContentPage.Content = new Auth_View_UserControl();
         }
 
         public StackPanel ContentPanel
