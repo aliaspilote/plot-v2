@@ -21,7 +21,7 @@ namespace Modelisator.Model {
 
 		public List<Equation> Equations;
 
-        public List<GrandeurPhysique> GrandeurPhysiques;
+        static public int[][] MatriceRelations;
 
 		public Relation(){		}
 
@@ -44,46 +44,85 @@ namespace Modelisator.Model {
 		}
 
 
-        void EnnumRelation()
+        static public void EnnumRelation()
         {
-            GrandeurPhysique gp1 = new GrandeurPhysique("GRP1");
-            GrandeurPhysique gp2 = new GrandeurPhysique("GRP2");
-            GrandeurPhysique gp3 = new GrandeurPhysique("GRP3");
-            GrandeurPhysique gp4 = new GrandeurPhysique("GRP4");
-            GrandeurPhysique gp5 = new GrandeurPhysique("GRP5");
-            GrandeurPhysique gp6 = new GrandeurPhysique("GRP6");
-            GrandeurPhysique gp7 = new GrandeurPhysique("GRP7");
-            GrandeurPhysique gp0 = new GrandeurPhysique("GRP0");
-
-            Dictionary<GrandeurPhysique, int> GP_Ennum = new Dictionary<GrandeurPhysique, int>();
-
-            GP_Ennum.Add(gp0, 0);
-            GP_Ennum.Add(gp1, 1);
-            GP_Ennum.Add(gp2, 2);
-            GP_Ennum.Add(gp3, 3);
-            GP_Ennum.Add(gp4, 4);
-            GP_Ennum.Add(gp5, 5);
-            GP_Ennum.Add(gp6, 6);
-
-            int[][] Matricerelations = new int[GP_Ennum.Count()][];
-            for ( int i = 0; i < GP_Ennum.Count(); i++ )
+            int tailleTab = Produit.GrandeurPhysiques.Count;
+            MatriceRelations = new int[tailleTab][];
+            for (int i = 0; i < tailleTab; i++)
             {
-                    Matricerelations[i] = new int[GP_Ennum.Count()];
+                MatriceRelations[i] = new int[tailleTab];
             }
 
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][1] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
-            Matricerelations[0][0] = 0;
+            for (int i = 0; i < tailleTab; i++)
+            {
+                for (int j = 0; j < tailleTab; j++)
+                {
+                    MatriceRelations[i][j] = 0;
+                }
+            }
+
+            //Pression
+            MatriceRelations[Produit.GrandeurPhysiques["p"].iM][Produit.GrandeurPhysiques["X1"].iM] = 1; //[0][1]
+            MatriceRelations[Produit.GrandeurPhysiques["p"].iM][Produit.GrandeurPhysiques["Tmax"].iM] = 1; //[0][2]
+            MatriceRelations[Produit.GrandeurPhysiques["p"].iM][Produit.GrandeurPhysiques["p0"].iM] = 1; //[0][3]
+            MatriceRelations[Produit.GrandeurPhysiques["p"].iM][Produit.GrandeurPhysiques["sigma"].iM] = 9; //[0][6]
+            MatriceRelations[Produit.GrandeurPhysiques["p"].iM][Produit.GrandeurPhysiques["R"].iM] = 9; //[0][7]
+            MatriceRelations[Produit.GrandeurPhysiques["p"].iM][Produit.GrandeurPhysiques["t"].iM] = 9; //[0][8]
+            MatriceRelations[Produit.GrandeurPhysiques["p"].iM][Produit.GrandeurPhysiques["tu"].iM] = 13; //[0][9]
+            MatriceRelations[Produit.GrandeurPhysiques["p"].iM][Produit.GrandeurPhysiques["sigma_y"].iM] = 13; //[0][10]
+
+            //X1
+            MatriceRelations[Produit.GrandeurPhysiques["X1"].iM][Produit.GrandeurPhysiques["p"].iM] = 2; //[1][0]
+            MatriceRelations[Produit.GrandeurPhysiques["X1"].iM][Produit.GrandeurPhysiques["Tmax"].iM] = 2; //[1][2]
+            MatriceRelations[Produit.GrandeurPhysiques["X1"].iM][Produit.GrandeurPhysiques["p0"].iM] = 2; //[1][3]
+
+            //Tmax
+            MatriceRelations[Produit.GrandeurPhysiques["Tmax"].iM][Produit.GrandeurPhysiques["p"].iM] = 3; //[2][0]
+            MatriceRelations[Produit.GrandeurPhysiques["Tmax"].iM][Produit.GrandeurPhysiques["X1"].iM] = 3; //[2][1]
+            MatriceRelations[Produit.GrandeurPhysiques["Tmax"].iM][Produit.GrandeurPhysiques["p0"].iM] = 3; //[2][3]
+            MatriceRelations[Produit.GrandeurPhysiques["Tmax"].iM][Produit.GrandeurPhysiques["dV"].iM] = 6; //[2][4]
+            MatriceRelations[Produit.GrandeurPhysiques["Tmax"].iM][Produit.GrandeurPhysiques["alpha_gas"].iM] = 6; //[2][5]
+
+            //p0
+            MatriceRelations[Produit.GrandeurPhysiques["p0"].iM][Produit.GrandeurPhysiques["p"].iM] = 4; //[3][0]
+            MatriceRelations[Produit.GrandeurPhysiques["p0"].iM][Produit.GrandeurPhysiques["X1"].iM] = 4; //[3][1]
+            MatriceRelations[Produit.GrandeurPhysiques["p0"].iM][Produit.GrandeurPhysiques["Tmax"].iM] = 4; //[3][2]
+
+            //dV
+            MatriceRelations[Produit.GrandeurPhysiques["dV"].iM][Produit.GrandeurPhysiques["alpha_gas"].iM] = 5; //[4][5]
+            MatriceRelations[Produit.GrandeurPhysiques["dV"].iM][Produit.GrandeurPhysiques["Tmax"].iM] = 5; //[4][2]
+
+            //alpha_gas
+            MatriceRelations[Produit.GrandeurPhysiques["alpha_gas"].iM][Produit.GrandeurPhysiques["dV"].iM] = 7; //[5][4]
+            MatriceRelations[Produit.GrandeurPhysiques["alpha_gas"].iM][Produit.GrandeurPhysiques["Tmax"].iM] = 7; //[5][2]
+
+            //sigma
+            MatriceRelations[Produit.GrandeurPhysiques["sigma"].iM][Produit.GrandeurPhysiques["p"].iM] = 8; //[6][0]
+            MatriceRelations[Produit.GrandeurPhysiques["sigma"].iM][Produit.GrandeurPhysiques["R"].iM] = 8; //[6][7]
+            MatriceRelations[Produit.GrandeurPhysiques["sigma"].iM][Produit.GrandeurPhysiques["t"].iM] = 8; //[6][8]
+
+            //R
+            MatriceRelations[Produit.GrandeurPhysiques["R"].iM][Produit.GrandeurPhysiques["p"].iM] = 10; //[7][0]
+            MatriceRelations[Produit.GrandeurPhysiques["R"].iM][Produit.GrandeurPhysiques["sigma"].iM] = 10; //[7][6]
+            MatriceRelations[Produit.GrandeurPhysiques["R"].iM][Produit.GrandeurPhysiques["t"].iM] = 10; //[7][8]
+            MatriceRelations[Produit.GrandeurPhysiques["R"].iM][Produit.GrandeurPhysiques["tu"].iM] = 14; //[7][9]
+            MatriceRelations[Produit.GrandeurPhysiques["R"].iM][Produit.GrandeurPhysiques["sigma_y"].iM] = 14; //[7][10]
+
+            //t
+            MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["p"].iM] = 11; //[8][0]
+            MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["R"].iM] = 11; //[8][7]
+            MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["sigma"].iM] = 11; //[8][6]
+
+            //tu
+            MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["p"].iM] = 12; //[9][0]
+            MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["R"].iM] = 12; //[9][7]
+            MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["sigma_y"].iM] = 12; //[9][10]
+
+            //sigma_y
+            MatriceRelations[Produit.GrandeurPhysiques["sigma_y"].iM][Produit.GrandeurPhysiques["p"].iM] = 15; //[10][0]
+            MatriceRelations[Produit.GrandeurPhysiques["sigma_y"].iM][Produit.GrandeurPhysiques["R"].iM] = 15; //[10][7]
+            MatriceRelations[Produit.GrandeurPhysiques["sigma_y"].iM][Produit.GrandeurPhysiques["tu"].iM] = 15; //[10][9]
+
         }
 
 	}//end Relation

@@ -17,7 +17,8 @@ using Modelisator.Model;
 namespace Modelisator.Model {
 	public class GrandeurPhysique {
 
-		private bool    m_Calcule;
+        private int  m_iM;
+        private bool    m_Calcule;
 		private string  m_Description;
 		private bool    m_EstPremier;
 		private string  m_Nom;
@@ -95,6 +96,11 @@ namespace Modelisator.Model {
 			}
 		}
 
+        public int iM
+        {
+            get { return m_iM; }
+            set { m_iM = value; }
+        }
 
 	}//end GrandeurPhysique
 

@@ -44,43 +44,45 @@ namespace Modelisator.Model {
 			}
 		}
 
-		public void export()
+        public void export()
         {
             string text;
 
 
-            StreamWriter sw = new StreamWriter(m_Chemin);//création du fichier 
-            foreach (GrandeurPhysique gp in m_Produit.GrandeurPhysiques)
+            StreamWriter sw = new StreamWriter(m_Chemin);//création du fichier
+            sw.WriteLine("Indice de matrice;Grandeur Physique;Unité;Valeur;Description;Calcule;Selectionnne;EstPremier");
+            foreach (KeyValuePair<string, GrandeurPhysique> gp in Produit.GrandeurPhysiques)
             {
 
-                text = gp.Nom + ";" + gp.Unite + ";" + gp.Valeur + ";" + gp.Description + ";" + gp.Calcule + ";" + gp.Selectionne + ";" + gp.EstPremier;
-                sw.WriteLine("{0}", text);//enregistrement de la liste GP dans le fichier 
+                text = gp.Value.iM + ";" + gp.Value.Nom + ";" + gp.Value.Unite + ";" + gp.Value.Valeur + ";" + gp.Value.Description + ";" + gp.Value.Calcule + ";" + gp.Value.Selectionne + ";" + gp.Value.EstPremier;
+                sw.WriteLine("{0}", text);//enregistrement de la liste gp.Value.Value dans le fichier 
             }
 
             sw.Close();
 
 
-		}
+        }
 
         public void import()
         {
-            List<GrandeurPhysique> liste = new List<GrandeurPhysique>();
             var reader = new StreamReader(File.OpenRead(m_Chemin));
+            reader.ReadLine(); //On passe les headers du csv.
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
                 var values = line.Split(';');
                 GrandeurPhysique gp = new GrandeurPhysique();
-                gp.Nom=values[0];
-                gp.Unite = values[1];
-                gp.Valeur=Convert.ToDouble(values[2]);
-                gp.Description=values[3];
-                gp.Calcule=Convert.ToBoolean(values[4]);
-                gp.Selectionne=Convert.ToBoolean(values[5]);
-                gp.EstPremier=Convert.ToBoolean(values[6]);
-                liste.Add(gp);
+                gp.iM = Convert.ToInt16(values[0]);
+                gp.Nom = values[1];
+                gp.Unite = values[2];
+                gp.Valeur = Convert.ToDouble(values[3]);
+                gp.Description = values[4];
+                gp.Calcule = Convert.ToBoolean(values[5]);
+                gp.Selectionne = Convert.ToBoolean(values[6]);
+                gp.EstPremier = Convert.ToBoolean(values[7]);
+                Produit.GrandeurPhysiques.Add(gp.Nom, gp);
             }
-            m_Produit.GrandeurPhysiques = liste;
+
 
         }
 
