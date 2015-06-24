@@ -4,15 +4,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
     <Grid Background="Aquamarine" HorizontalAlignment="Left"  MinWidth="150"  >
-        <!--<ContentControl>
-            <ItemsControl ItemsSource="{Binding}" BorderBrush="Black" BorderThickness="2">
+       <Label Content="Choix Produit" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        <ContentControl>
+            <ItemsControl Name="m_ProduitChoix_ItemsControl" BorderBrush="Black" BorderThickness="2">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <UniformGrid Columns="3" />
+                        <UniformGrid Columns="2" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
-        </ContentControl>-->
-        <Label Content="Choix Produit" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+        </ContentControl>
     </Grid>
 </UserControl>

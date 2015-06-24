@@ -61,6 +61,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\Model\ProduitForm_Model.cs" />
+    <Compile Include="Forms\ViewModel\ProduitForm_ViewModel.cs" />
+    <Compile Include="Forms\View\ProduitForm_View.xaml.cs">
+      <DependentUpon>ProduitForm_View.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\Auth_Model.cs" />
     <Compile Include="Model\Contexte.cs" />
     <Compile Include="Model\Equation.cs" />
@@ -101,6 +106,10 @@
     <Compile Include="View\ProduitChoix_View_UserControl.xaml.cs">
       <DependentUpon>ProduitChoix_View_UserControl.xaml</DependentUpon>
     </Compile>
+    <Page Include="Forms\View\ProduitForm_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -171,9 +180,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <SplashScreen Include="splashScreen2.PNG" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Modelisator.Forms.View.ProduitForm_View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid Background="#FF3442CF" Name="m_GridProduitForm">
+        <Rectangle Name="m_RectangleProduitForm" Width="50" Height="25" Margin="2" RadiusX="5" RadiusY="5" />
+        <Label Name="m_LabelProduitForm" Content="Pouet" HorizontalAlignment="Center" 
+               VerticalAlignment="Center" HorizontalContentAlignment="Center"  
+               Width="54"  FontStyle="Italic"/>
+    </Grid>
+</UserControl>
