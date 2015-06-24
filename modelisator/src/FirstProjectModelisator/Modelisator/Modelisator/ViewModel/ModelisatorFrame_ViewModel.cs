@@ -40,7 +40,7 @@ namespace Modelisator.ViewModel
             Info_ViewModel = new Info_ViewModel(Ctx);
             MenuTop_ViewModel = new MenuTop_ViewModel(Ctx);
             ProduitChoix_ViewModel = new ProduitChoix_ViewModel(Ctx);
-
+            
             View.ProduitChoix_ContentPanel.Children.Add(ProduitChoix_ViewModel.View);
             View.EspaceTravail_ContentPanel.Children.Add(EspaceTravail_ViewModel.View);
             View.Info_ContentPanel.Children.Add(Info_ViewModel.View);

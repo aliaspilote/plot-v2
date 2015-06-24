@@ -152,7 +152,7 @@ namespace Modelisator.Model {
         /// <param name="dV">dV : Expansion of gas</param>
         /// <returns></returns>
 
-        static double equation26(double Tmax, double dV)
+        static double equation26bis(double Tmax, double dV)
         {
             double alpha_gas;
             if (Tmax != 15)

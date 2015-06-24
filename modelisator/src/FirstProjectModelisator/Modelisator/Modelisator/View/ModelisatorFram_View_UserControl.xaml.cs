@@ -24,7 +24,7 @@ namespace Modelisator.View
         {
             InitializeComponent();
         }
-
+        
         public StackPanel MenuTop_ContentPanel
         {
             get { return m_MenuTop_ContentPanel; }
@@ -48,6 +48,6 @@ namespace Modelisator.View
             get { return m_EspaceTravail_ContentPanel; }
             set { m_EspaceTravail_ContentPanel = value; }
         }
-
+        
     }
 }
