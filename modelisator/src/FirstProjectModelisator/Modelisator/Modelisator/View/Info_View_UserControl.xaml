@@ -7,7 +7,7 @@
     <Grid Background="LightCyan"  VerticalAlignment="Bottom"   HorizontalAlignment="Left" >
         <StackPanel DockPanel.Dock="Top" MinWidth="150" MinHeight="150" HorizontalAlignment="Left" VerticalAlignment="Top">
         <Label Content="Informations :" HorizontalAlignment="Left"  VerticalAlignment="Top" />
-            <TextBox TextWrapping="Wrap" Name="m_InfoText" Height="123"/>
+            <TextBox TextWrapping="Wrap" Name="m_InfoText" MinHeight="123"/>
         </StackPanel>
     </Grid>
 </UserControl>
