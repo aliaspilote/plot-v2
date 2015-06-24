@@ -24,20 +24,15 @@ namespace Modelisator.Forms.View
         {
             InitializeComponent();
         }
-        public Label LabelProduitForm
+        public Label Label_ProduitForm
         {
-            get { return m_LabelProduitForm; }
-            set { m_LabelProduitForm = value; }
+            get { return m_Label_ProduitForm; }
+            set { m_Label_ProduitForm = value; }
         }
-        public Rectangle RectangleProduitForm
+        public Grid Grid_ProduitForm
         {
-            get { return m_RectangleProduitForm; }
-            set { m_RectangleProduitForm = value; }
-        }
-        public Grid GridProduitForm
-        {
-            get { return m_GridProduitForm; }
-            set { m_GridProduitForm = value; }
+            get { return m_Grid_ProduitForm; }
+            set { m_Grid_ProduitForm = value; }
         }
 
     }

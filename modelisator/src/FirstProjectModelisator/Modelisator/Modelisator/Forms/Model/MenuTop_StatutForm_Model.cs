@@ -9,11 +9,11 @@ using Modelisator.Model;
 
 namespace Modelisator.Forms.Model
 {
-    public class ProduitForm_Model
+    public class MenuTop_StatutForm_Model
     {
         public Contexte Ctx;
-        public ProduitForm_Model() { }
-        public ProduitForm_Model(Contexte ctx)
+        public MenuTop_StatutForm_Model() { }
+        public MenuTop_StatutForm_Model(Contexte ctx)
         {
             Ctx = ctx;
         }
