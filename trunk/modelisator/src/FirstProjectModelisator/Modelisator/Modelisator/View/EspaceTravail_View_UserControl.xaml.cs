@@ -24,5 +24,11 @@ namespace Modelisator.View
         {
             InitializeComponent();
         }
+        public Grid GridEspaceTravail
+        {
+            get { return m_GridEspaceTravail; }
+            set { m_GridEspaceTravail = value; }
+        }
+        
     }
 }
