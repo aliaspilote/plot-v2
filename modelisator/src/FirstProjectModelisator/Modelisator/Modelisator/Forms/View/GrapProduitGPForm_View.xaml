@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="Modelisator.Forms.View.GrapProduitGPForm_View"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:gv="clr-namespace:Microsoft.Msagl.GraphViewerGdi;assembly=Microsoft.Msagl.GraphViewerGDI"
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="300">
+    <WindowsFormsHost Name="windowsFormsHost1" Margin="0,34,0,0">
+        <gv:GViewer x:Name="gViewer"></gv:GViewer>
+    </WindowsFormsHost>
+
+</UserControl>
