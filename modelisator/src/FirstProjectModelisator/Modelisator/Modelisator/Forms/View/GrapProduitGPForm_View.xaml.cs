@@ -26,14 +26,7 @@ namespace Modelisator.Forms.View
         {
             InitializeComponent();
 
-            Graph graph = new Graph("graph");
-            graph.AddEdge("Pression", "Temperatue");
-            graph.AddEdge("Temperatue", "Masse");
-            graph.AddEdge("Pression", "Objet");
-            graph.AddEdge("Masse", "33");
-            graph.AddEdge("9", "42");
-            graph.Attr.Color = Microsoft.Msagl.Drawing.Color.AliceBlue;
-            this.gViewer.Graph = graph;
+ 
 
         }
     }
