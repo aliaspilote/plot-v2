@@ -4,10 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <Grid Background="#FF3442CF" Name="m_GridProduitForm">
-        <Rectangle Name="m_RectangleProduitForm" Width="50" Height="25" Margin="2" RadiusX="5" RadiusY="5" />
-        <Label Name="m_LabelProduitForm" Content="Pouet" HorizontalAlignment="Center" 
-               VerticalAlignment="Center" HorizontalContentAlignment="Center"  
-               Width="54"  FontStyle="Italic"/>
+    <Grid Name="m_Grid_ProduitForm">
+        <Label Name="m_Label_ProduitForm"
+               Background="WhiteSmoke" BorderBrush="Black" BorderThickness="1,1,2,2"
+               Content="Objet"
+               Padding="0"
+               Width="50" Height="25"
+               HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="9" VerticalContentAlignment="Center"/>
     </Grid>
 </UserControl>
