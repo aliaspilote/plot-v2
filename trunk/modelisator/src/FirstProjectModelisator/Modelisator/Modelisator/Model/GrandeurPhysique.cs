@@ -31,6 +31,11 @@ namespace Modelisator.Model {
 
         public GrandeurPhysique() { }
         public GrandeurPhysique(string nom) { Nom = nom; }
+        public GrandeurPhysique(string nom, int im)
+        {
+            Nom = nom;
+            iM = im;
+        }
 
 
 		public bool Calcule{

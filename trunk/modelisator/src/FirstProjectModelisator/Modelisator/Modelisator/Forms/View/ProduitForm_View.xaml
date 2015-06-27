@@ -7,7 +7,6 @@
     <Grid Name="m_Grid_ProduitForm">
         <Label Name="m_Label_ProduitForm"
                Background="WhiteSmoke" BorderBrush="Black" BorderThickness="1,1,2,2"
-               Content="Objet"
                Padding="0"
                Width="50" Height="25"
                HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" FontSize="9" VerticalContentAlignment="Center"/>

@@ -8,6 +8,6 @@
         SizeToContent="WidthAndHeight"
         HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
 
-    <StackPanel x:Name="m_ContentPanel" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="Auto"  />
+    <StackPanel x:Name="m_ContentPanel" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Width="Auto" Height="Auto"  />
 
 </Controls:MetroWindow>

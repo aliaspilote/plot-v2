@@ -4,52 +4,50 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <Grid>
+    <Grid Name="m_PapierpeintGrid" Background="{Binding}" Margin="5" Height="Auto"  Width="Auto">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-            </Grid.RowDefinitions>
-        
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            </Grid.RowDefinitions>       
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
         
-            <Grid Grid.Row="0" Grid.Column="0" Background="LightGray">
-                <StackPanel Name="m_MenuTop_ContentPanel"   VerticalAlignment="Top"></StackPanel>
+            <Grid Grid.Row="0" Grid.Column="0" >
+                <Grid Name="m_MenuTop_ContentPanel"   VerticalAlignment="Top"></Grid>
             </Grid>
 
-        <Grid Grid.Row="1" Grid.Column="0" Background="LightGray" >
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                <Grid>
+                    <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                <Grid Grid.Row="0" Grid.Column="0" Background="LightGray" >
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Grid Grid.Row="0" Grid.Column="0" Background="LightGray">
-                            <StackPanel Name="m_ProduitChoix_ContentPanel" HorizontalAlignment="Left"  />
-
-                        </Grid>
-                        <Grid Grid.Row="1" Grid.Column="0" Background="LightGray" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                            <StackPanel Name="m_Info_ContentPanel" ></StackPanel>
+                <Grid Grid.Row="0" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <Grid Grid.Row="0" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <Grid Name="m_ProduitChoix_ContentPanel" HorizontalAlignment="Left" Width="Auto" Height="Auto"></Grid>
+                            </Grid>
+                            <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                            <Grid Name="m_Info_ContentPanel" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" ></Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
-                </Grid>
-                <Grid Grid.Row="0" Grid.Column="1" Background="LightGray">
-                    <StackPanel Name="m_EspaceTravail_ContentPanel" ></StackPanel>
+                <Grid Grid.Row="0" Grid.Column="1" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                    <Grid Name="m_EspaceTravail_ContentPanel" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto"></Grid>
+                    </Grid>
                 </Grid>
             </Grid>
-        </Grid>
     </Grid>
 </UserControl>

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using Modelisator.Model;
 using Modelisator.View;
 using Modelisator.Forms.ViewModel;
@@ -13,8 +15,8 @@ namespace Modelisator.ViewModel
 {
     public class ProduitChoix_ViewModel
     {
+        public event EventHandler<EventArgs> ClickBTNProduit;
         public Contexte Ctx;
-        public ProduitForm_ViewModel ProduitForm_ViewModel;
         public ProduitChoix_ViewModel()
         { }
         public ProduitChoix_ViewModel(Contexte ctx)
@@ -23,6 +25,7 @@ namespace Modelisator.ViewModel
             View = new ProduitChoix_View_UserControl();
             Model = new ProduitChoix_Model(ctx);
             SetupProduitChoix();
+            ConnectView();
         }
 
         public ProduitChoix_View_UserControl View
@@ -35,16 +38,23 @@ namespace Modelisator.ViewModel
             get;
             private set;
         }
+        
 
         protected void SetupProduitChoix()
         {
+            View.ProduitChoix_ItemsControl.ItemsSource = Ctx.ListeProduits;
 
-            ProduitForm_ViewModel = new ProduitForm_ViewModel(Ctx);
+        }
 
-            //View.MenuTop_ContentPanel.Children.Add(MenuTop_ViewModel.View);
-            //View.ProduitChoix_ItemsControl.DataContext = ProduitForm_ViewModel.View;
-            //View.ProduitChoix_ItemsControl.DataContext 
-
+        protected void ConnectView()
+        {
+            View.CatchClickBTNProduit +=CatchSelectedProduit;
+        }
+        private void CatchSelectedProduit(object sender, EventArgs args)
+        {
+            Model.selectionnerProduit((((Button)sender).Content.ToString()));
+            if (ClickBTNProduit != null)
+                ClickBTNProduit(sender, args);
         }
     }
 }

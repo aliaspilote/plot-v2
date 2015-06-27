@@ -16,5 +16,14 @@ namespace Modelisator.Model
         {
             Ctx = ctx;
         }
+
+        public void BuildeGraph(Produit pdt)
+        {
+            foreach (var GP in Produit.GrandeurPhysiques)
+            {
+                
+            }
+
+        }
     }
 }

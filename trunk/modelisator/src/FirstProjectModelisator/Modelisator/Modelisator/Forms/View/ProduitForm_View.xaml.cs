@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Modelisator.Model;
 
 namespace Modelisator.Forms.View
 {
@@ -23,6 +24,7 @@ namespace Modelisator.Forms.View
         public ProduitForm_View()
         {
             InitializeComponent();
+            Items = new List<Produit>();
         }
         public Label Label_ProduitForm
         {
@@ -34,6 +36,17 @@ namespace Modelisator.Forms.View
             get { return m_Grid_ProduitForm; }
             set { m_Grid_ProduitForm = value; }
         }
+
+        public static readonly DependencyProperty ItemsProperty =
+          DependencyProperty.Register("Items", typeof(IEnumerable<Produit>), 
+          typeof(ProduitForm_View), 
+          new PropertyMetadata(new List<Produit>()));
+
+        public IEnumerable<Produit> Items
+        {
+            get { return (IEnumerable<Produit>)GetValue(ItemsProperty); }
+            set { SetValue(ItemsProperty, value); }
+        } 
 
     }
 }

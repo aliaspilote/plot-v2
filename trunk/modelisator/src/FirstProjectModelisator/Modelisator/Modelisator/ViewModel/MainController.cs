@@ -13,6 +13,8 @@ namespace Modelisator.ViewModel
 
         public Contexte Ctx;
 
+        public ModelisatorFrame_ViewModel ModelisatorLauncher;
+
         public MainController(System.Windows.Application app, MainWindow mainWindow)
         {
 
@@ -32,9 +34,10 @@ namespace Modelisator.ViewModel
         }
         private void RunModelisator(object sender, EventArgs args)
         {
-            ModelisatorFrame_ViewModel ModelisatorLauncher = new ModelisatorFrame_ViewModel(Ctx);
+            ModelisatorLauncher = new ModelisatorFrame_ViewModel(Ctx);
             MainWindow.ContentPanel.Children.Remove(Auth_Controller.View);
             MainWindow.ContentPanel.Children.Add(ModelisatorLauncher.View);
+            ModelisatorLauncher.MenuTop_ViewModel.MenuTopForm_ViewModel.DeconnecterHandler += Logout;
         }
         private void ExitModelisator(object sender, EventArgs args)
         {

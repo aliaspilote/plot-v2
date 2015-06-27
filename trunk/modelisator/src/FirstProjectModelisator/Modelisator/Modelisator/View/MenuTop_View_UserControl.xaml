@@ -3,7 +3,25 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <Grid Background="LightCoral" VerticalAlignment="Top" MinHeight="50">
-        <Label Content="TopMenu" HorizontalAlignment="Center"  VerticalAlignment="Center"/>
+    <Grid Name="m_GridMenuTop" HorizontalAlignment="Stretch" VerticalAlignment="Top" MinHeight="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Row="0" Grid.Column="0" >
+            <Grid Name="m_MenuTopLeft_ContentPanel"  HorizontalAlignment="Left" VerticalAlignment="center"></Grid>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0" >
+            <Grid Name="m_MenuTopCenter_ContentPanel"  HorizontalAlignment="Right" VerticalAlignment="center"></Grid>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="2" >
+            <Grid Name="m_MenuTopRight_ContentPanel"  HorizontalAlignment="Right" VerticalAlignment="Center"></Grid>
+        </Grid>
     </Grid>
 </UserControl>

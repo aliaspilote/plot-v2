@@ -26,7 +26,20 @@ namespace Modelisator.Forms.View
         {
             InitializeComponent();
 
- 
+            Graph hiba = new Graph();
+            hiba.AddEdge("Gaz", "P");
+            hiba.AddEdge("Gaz", "n");
+            hiba.AddEdge("Gaz", "V");
+            hiba.AddEdge("Gaz", "n");
+            hiba.AddEdge("Gaz", "R");
+            hiba.AddEdge("Gaz", "T");
+            hiba.AddEdge("P", "V");
+            hiba.AddEdge("V", "p");
+            hiba.AddEdge("V", "T");
+            hiba.AddEdge("T", "V");
+            hiba.AddEdge("T", "n");
+            hiba.AddEdge("n", "T");
+            this.gViewer.Graph = hiba;
 
         }
     }

@@ -20,11 +20,24 @@ namespace Modelisator.Model {
 
         private string  m_Description;
         private string  m_Nom;
-        private bool    m_Selectionne;
+        private bool    m_Selectionner;
 
 		public Produit()
         {
-            GrandeurPhysiques = new Dictionary<string, GrandeurPhysique>();
+		    if (GrandeurPhysiques == null)
+		    {
+		        InitialiserGPs();
+                GrandeurPhysiques = new Dictionary<string, GrandeurPhysique>();
+		    }
+        }
+        public Produit(string nom)
+        {
+            Nom = nom;
+            if (GrandeurPhysiques == null)
+            {
+                //InitialiserGPs();
+                GrandeurPhysiques = new Dictionary<string, GrandeurPhysique>();
+            }
         }
 
 		public string Description{
@@ -45,14 +58,35 @@ namespace Modelisator.Model {
 			}
 		}
 
-		public bool Selectionne{
+		public bool Selectionner{
 			get{
-                return m_Selectionne;
+                return m_Selectionner;
 			}
 			set{
-                m_Selectionne = value;
+                m_Selectionner = value;
 			}
 		}
+
+	    public override string ToString()
+	    {
+            return Nom;
+	    }
+
+	    public void InitialiserGPs()
+	    {
+            GrandeurPhysiques.Add("p", new GrandeurPhysique("p",0));
+            GrandeurPhysiques.Add("X1", new GrandeurPhysique("X1",1));
+            GrandeurPhysiques.Add("Tmax", new GrandeurPhysique("Tmax",2));
+            GrandeurPhysiques.Add("p0", new GrandeurPhysique("p0",3));
+            GrandeurPhysiques.Add("dV", new GrandeurPhysique("dV",4));
+            GrandeurPhysiques.Add("alpha_gas", new GrandeurPhysique("alpha_gas",5));
+            GrandeurPhysiques.Add("sigma", new GrandeurPhysique("sigma",6));
+            GrandeurPhysiques.Add("R", new GrandeurPhysique("R",7));
+            GrandeurPhysiques.Add("t", new GrandeurPhysique("t",8));
+            GrandeurPhysiques.Add("tu", new GrandeurPhysique("tu",1));
+            GrandeurPhysiques.Add("p", new GrandeurPhysique("p",1));
+            GrandeurPhysiques.Add("p", new GrandeurPhysique("p",1));
+	    }
 
 	}//end Produit
 
