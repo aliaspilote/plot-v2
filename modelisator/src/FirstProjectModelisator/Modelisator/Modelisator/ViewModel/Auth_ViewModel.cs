@@ -33,13 +33,13 @@ namespace Modelisator.ViewModel
             Model = new Auth_Model(ctx);
             ConnectView();
         }
-        protected virtual void ConnectView()
+        protected void ConnectView()
         {
             View.OkBtn.Click += OkBtnClick;
             View.QuitBtn.Click += QuitBtnClick;
         }
 
-        /// <summary>
+        /// <summary>   
         /// Handler for the OK button Click.
         /// </summary>
         /// <param name="sender"></param>

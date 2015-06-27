@@ -4,9 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:gv="clr-namespace:Microsoft.Msagl.GraphViewerGdi;assembly=Microsoft.Msagl.GraphViewerGDI"
-             mc:Ignorable="d" 
-             d:DesignHeight="500" d:DesignWidth="300">
-    <WindowsFormsHost Name="windowsFormsHost1" Margin="0,34,0,0">
+             mc:Ignorable="d" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto">
+    <WindowsFormsHost Name="windowsFormsHost1" Margin="5,0,0,0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" >
         <gv:GViewer x:Name="gViewer"></gv:GViewer>
     </WindowsFormsHost>
 

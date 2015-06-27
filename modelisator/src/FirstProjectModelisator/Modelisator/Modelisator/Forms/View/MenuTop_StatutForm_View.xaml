@@ -4,31 +4,26 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <Grid Name="m_Grid_MenuTop_StatutForm">
+    <Grid Name="m_Grid_MenuTop_StatutForm" Margin="5">
         <StackPanel Name="m_StackPanel_StatutForm"
                     Orientation="Horizontal">
             <Label Name="m_LabelNomUtil_MenuTop_StatutForm"
-                   Content="Quentin"
+                   Content="{Binding Path=Nom}"
                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"
-                   Background="WhiteSmoke"
                    Height="Auto" Width="Auto"
                    Padding="0"/>
             <Label Name="m_LabelMid_MenuTop_StatutForm"
                    Content=", vous êtes connecté en tant que : "
                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"
-                   Background="WhiteSmoke"
                    Height="Auto" Width="Auto"
                    Padding="0"/>
             <Label Name="m_LabelRole_MenuTop_StatutForm"
-                   Content="Concepteur"
+                   Content="{Binding Path=Groupe}"
                    HorizontalContentAlignment="Stretch" VerticalContentAlignment="Center"
-                   Background="WhiteSmoke"
                    Height="Auto" Width="Auto"
                    Padding="0"/>
             <Button Name="m_BoutonDeconnexion_MenuTop_StatutForm"
                     Content="Déconnexion"
-                    Background="WhiteSmoke"
-                    BorderBrush="Black" BorderThickness="1,1,2,2"
                     Height="Auto" Width="Auto"
                     HorizontalAlignment="Right" VerticalAlignment="Center"
                     Margin="20,0,0,0"/>

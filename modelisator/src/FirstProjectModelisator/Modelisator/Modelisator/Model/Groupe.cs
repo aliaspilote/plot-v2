@@ -33,6 +33,10 @@ namespace Modelisator.Model {
 			}
 		}
 
+	    public override string ToString()
+	    {
+            return Nom;
+	    }
 	}//end Groupe
 
 }//end namespace Modelisator.Model

@@ -74,12 +74,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Forms\Model\MenuTop_CouleursForm_Model.cs" />
     <Compile Include="Forms\Model\MenuTop_StatutForm_Model.cs" />
     <Compile Include="Forms\Model\ProduitForm_Model.cs" />
+    <Compile Include="Forms\ViewModel\MenuTop_CouleursForm_ViewModel.cs" />
     <Compile Include="Forms\ViewModel\MenuTop_StatutForm_ViewModel.cs" />
     <Compile Include="Forms\ViewModel\ProduitForm_ViewModel.cs" />
     <Compile Include="Forms\View\GrapProduitGPForm_View.xaml.cs">
       <DependentUpon>GrapProduitGPForm_View.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\View\MenuTop_CouleursForm_View.xaml.cs">
+      <DependentUpon>MenuTop_CouleursForm_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\View\MenuTop_StatutForm_View.xaml.cs">
       <DependentUpon>MenuTop_StatutForm_View.xaml</DependentUpon>
@@ -128,6 +133,10 @@
       <DependentUpon>ProduitChoix_View_UserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="Forms\View\GrapProduitGPForm_View.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Forms\View\MenuTop_CouleursForm_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

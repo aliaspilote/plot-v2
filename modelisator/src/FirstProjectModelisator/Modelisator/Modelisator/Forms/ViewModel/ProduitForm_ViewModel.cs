@@ -12,6 +12,7 @@ namespace Modelisator.Forms.ViewModel
 {
     public class ProduitForm_ViewModel
     {
+
         public ProduitForm_ViewModel()
         { }
         public ProduitForm_ViewModel(Contexte ctx)

@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Modelisator.Forms.View;
+using Modelisator.Model;
 
 namespace Modelisator.View
 {
@@ -20,6 +22,8 @@ namespace Modelisator.View
     /// </summary>
     public partial class ProduitChoix_View_UserControl : UserControl
     {
+
+        public event EventHandler<EventArgs> CatchClickBTNProduit;
         public ProduitChoix_View_UserControl()
         {
             InitializeComponent();
@@ -28,6 +32,18 @@ namespace Modelisator.View
         {
             get { return m_ProduitChoix_ItemsControl; }
             set { m_ProduitChoix_ItemsControl = value; }
+        }
+
+        public Label labelListeProduit
+        {
+            get { return m_labelListeProduit; }
+            set { m_labelListeProduit = value; }
+        }
+
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (CatchClickBTNProduit != null)
+                CatchClickBTNProduit(sender, e);
         }
     }
 }

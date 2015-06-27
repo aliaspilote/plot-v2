@@ -16,5 +16,18 @@ namespace Modelisator.Model
         {
             Ctx = ctx;
         }
+
+        public void selectionnerProduit(string Nom)
+        {
+            foreach (Produit P in Ctx.ListeProduits)
+            {
+                if (P.Nom.ToUpper() == Nom.ToUpper())
+                    P.Selectionner = true;
+                else
+                {
+                    P.Selectionner = false;
+                }
+            }
+        }
     }
 }
