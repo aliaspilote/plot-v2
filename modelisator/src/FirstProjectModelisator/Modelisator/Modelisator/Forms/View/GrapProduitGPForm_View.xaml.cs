@@ -34,7 +34,7 @@ namespace Modelisator.Forms.View
             hiba.AddEdge("Gaz", "R");
             hiba.AddEdge("Gaz", "T");
             hiba.AddEdge("P", "V");
-            hiba.AddEdge("V", "p");
+            hiba.AddEdge("V", "P");
             hiba.AddEdge("V", "T");
             hiba.AddEdge("T", "V");
             hiba.AddEdge("T", "n");
