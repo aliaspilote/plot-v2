@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Modelisator.Forms.View;
 using Modelisator.Model;
 using Modelisator.View;
+using Modelisator.GraphSharpe;
 
 namespace Modelisator.ViewModel
 {
@@ -17,8 +18,14 @@ namespace Modelisator.ViewModel
         public EspaceTravail_ViewModel(Contexte ctx)
         {
             GrapProduitGPForm_View EssaiGrap = new GrapProduitGPForm_View();
+            MainWindowViewModel VM = new MainWindowViewModel();
+            MainWindowsGraphShaper V = new MainWindowsGraphShaper();
+            V.DataContext = VM;
+
+
             View = new EspaceTravail_View_UserControl();
-            View.GridEspaceTravail.Children.Add(EssaiGrap);
+           // View.GridEspaceTravail.Children.Add(EssaiGrap);
+            View.GridEspaceTravail.Children.Add(V);
             Model = new EspaceTravail_Model(ctx);
         }
 
