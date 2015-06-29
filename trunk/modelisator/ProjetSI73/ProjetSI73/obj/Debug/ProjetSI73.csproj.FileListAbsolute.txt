@@ -1,0 +1,6 @@
+c:\users\taha\documents\visual studio 2013\Projects\ProjetSI73\ProjetSI73\bin\Debug\ProjetSI73.exe.config
+c:\users\taha\documents\visual studio 2013\Projects\ProjetSI73\ProjetSI73\obj\Debug\ProjetSI73.csprojResolveAssemblyReference.cache
+c:\users\taha\documents\visual studio 2013\Projects\ProjetSI73\ProjetSI73\bin\Debug\ProjetSI73.exe
+c:\users\taha\documents\visual studio 2013\Projects\ProjetSI73\ProjetSI73\bin\Debug\ProjetSI73.pdb
+c:\users\taha\documents\visual studio 2013\Projects\ProjetSI73\ProjetSI73\obj\Debug\ProjetSI73.exe
+c:\users\taha\documents\visual studio 2013\Projects\ProjetSI73\ProjetSI73\obj\Debug\ProjetSI73.pdb
