@@ -6,7 +6,6 @@
 ///////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelisator.Model;
@@ -26,8 +25,8 @@ namespace Modelisator.Model {
         {
 		    if (GrandeurPhysiques == null)
 		    {
-		        InitialiserGPs();
                 GrandeurPhysiques = new Dictionary<string, GrandeurPhysique>();
+		        InitialiserGPs();
 		    }
         }
         public Produit(string nom)
@@ -35,8 +34,8 @@ namespace Modelisator.Model {
             Nom = nom;
             if (GrandeurPhysiques == null)
             {
-                //InitialiserGPs();
                 GrandeurPhysiques = new Dictionary<string, GrandeurPhysique>();
+                InitialiserGPs();
             }
         }
 
@@ -72,7 +71,7 @@ namespace Modelisator.Model {
             return Nom;
 	    }
 
-	    public void InitialiserGPs()
+	    public static void InitialiserGPs()
 	    {
             GrandeurPhysiques.Add("p", new GrandeurPhysique("p",0));
             GrandeurPhysiques.Add("X1", new GrandeurPhysique("X1",1));
@@ -83,9 +82,9 @@ namespace Modelisator.Model {
             GrandeurPhysiques.Add("sigma", new GrandeurPhysique("sigma",6));
             GrandeurPhysiques.Add("R", new GrandeurPhysique("R",7));
             GrandeurPhysiques.Add("t", new GrandeurPhysique("t",8));
-            GrandeurPhysiques.Add("tu", new GrandeurPhysique("tu",1));
-            GrandeurPhysiques.Add("p", new GrandeurPhysique("p",1));
-            GrandeurPhysiques.Add("p", new GrandeurPhysique("p",1));
+            GrandeurPhysiques.Add("tu", new GrandeurPhysique("tu",9));
+            GrandeurPhysiques.Add("sigma_y", new GrandeurPhysique("sigma_y", 10));
+            //GrandeurPhysiques.Add("p", new GrandeurPhysique("p",1));
 	    }
 
 	}//end Produit

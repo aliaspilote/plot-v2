@@ -34,45 +34,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GraphSharp">
-      <HintPath>..\packages\Graphsharp\GraphSharp.dll</HintPath>
+    <Reference Include="GraphX.Controls">
+      <HintPath>..\packages\GraphX.2.2.0.1\lib\net40-client\GraphX.Controls.dll</HintPath>
     </Reference>
-    <Reference Include="GraphSharp.Contracts">
-      <HintPath>..\packages\Graphsharp\GraphSharp.Contracts.dll</HintPath>
+    <Reference Include="GraphX.PCL.Common">
+      <HintPath>..\packages\GraphX.2.2.0.1\lib\portable-win+net4+sl5+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\GraphX.PCL.Common.dll</HintPath>
     </Reference>
-    <Reference Include="GraphSharp.Controls">
-      <HintPath>..\packages\Graphsharp\GraphSharp.Controls.dll</HintPath>
+    <Reference Include="GraphX.PCL.Logic">
+      <HintPath>..\packages\GraphX.2.2.0.1\lib\portable-win+net4+sl5+wp8+win8+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\GraphX.PCL.Logic.dll</HintPath>
     </Reference>
     <Reference Include="MahApps.Metro">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\MahApps.Metro.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Contracts">
-      <HintPath>..\packages\Graphsharp\Microsoft.Contracts.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Msagl">
-      <HintPath>..\packages\Microsoft.Research.DryadLINQ.MSAGL.3.0.0.1\lib\Microsoft.Msagl.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Msagl.Drawing">
-      <HintPath>..\packages\Microsoft.Research.DryadLINQ.MSAGL.3.0.0.1\lib\Microsoft.Msagl.Drawing.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Msagl.GraphViewerGdi">
-      <HintPath>..\packages\Microsoft.Research.DryadLINQ.MSAGL.3.0.0.1\lib\Microsoft.Msagl.GraphViewerGdi.dll</HintPath>
-    </Reference>
-    <Reference Include="QuickGraph">
-      <HintPath>..\packages\Graphsharp\QuickGraph.dll</HintPath>
+    <Reference Include="QuickGraph, Version=3.6.61114.0, Culture=neutral, PublicKeyToken=f3fb40175eec2af3, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\QuickGraphPCL.3.6.61114.2\lib\net40-client\QuickGraph.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MahApps.Metro.1.1.2.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -83,9 +69,6 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsFormsIntegration" />
-    <Reference Include="WPFExtensions">
-      <HintPath>..\packages\Graphsharp\WPFExtensions.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -98,26 +81,15 @@
     <Compile Include="Forms\ViewModel\MenuTop_CouleursForm_ViewModel.cs" />
     <Compile Include="Forms\ViewModel\MenuTop_StatutForm_ViewModel.cs" />
     <Compile Include="Forms\ViewModel\ProduitForm_ViewModel.cs" />
-    <Compile Include="Forms\View\GrapProduitGPForm_View.xaml.cs">
-      <DependentUpon>GrapProduitGPForm_View.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Forms\View\MenuTop_CouleursForm_View.xaml.cs">
       <DependentUpon>MenuTop_CouleursForm_View.xaml</DependentUpon>
     </Compile>
     <Compile Include="Forms\View\MenuTop_StatutForm_View.xaml.cs">
       <DependentUpon>MenuTop_StatutForm_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GraphSharpe\PocGraphLayout.cs" />
     <Compile Include="Forms\View\ProduitForm_View.xaml.cs">
       <DependentUpon>ProduitForm_View.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GraphSharpe\MainWindowViewModel.cs" />
-    <Compile Include="GraphSharpe\MainWindowsGraphShaper.xaml.cs">
-      <DependentUpon>MainWindowsGraphShaper.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="GraphSharpe\PocEdge .cs" />
-    <Compile Include="GraphSharpe\PocGraph .cs" />
-    <Compile Include="GraphSharpe\PocVertex.cs" />
     <Compile Include="Model\Auth_Model.cs" />
     <Compile Include="Model\Contexte.cs" />
     <Compile Include="Model\Equation.cs" />
@@ -133,6 +105,16 @@
     <Compile Include="Model\Relation.cs" />
     <Compile Include="Model\Sauvegarde.cs" />
     <Compile Include="Model\Utilisateur.cs" />
+    <Compile Include="MonGraphX\DataEdge.cs" />
+    <Compile Include="MonGraphX\DataVertex.cs" />
+    <Compile Include="MonGraphX\GraphAreaExample.cs" />
+    <Compile Include="MonGraphX\GraphExample.cs" />
+    <Compile Include="MonGraphX\GXLogicCoreExample.cs" />
+    <Compile Include="MonGraphX\MonGraph_Model.cs" />
+    <Compile Include="MonGraphX\MonGraph_UserControl.xaml.cs">
+      <DependentUpon>MonGraph_UserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MonGraphX\MonGraph_ViewModel.cs" />
     <Compile Include="ViewModel\Auth_ViewModel.cs" />
     <Compile Include="ViewModel\EspaceTravail_ViewModel.cs" />
     <Compile Include="ViewModel\Info_ViewModel.cs" />
@@ -158,10 +140,6 @@
     <Compile Include="View\ProduitChoix_View_UserControl.xaml.cs">
       <DependentUpon>ProduitChoix_View_UserControl.xaml</DependentUpon>
     </Compile>
-    <Page Include="Forms\View\GrapProduitGPForm_View.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Forms\View\MenuTop_CouleursForm_View.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -171,10 +149,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Forms\View\ProduitForm_View.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="GraphSharpe\MainWindowsGraphShaper.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -190,6 +164,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MonGraphX\MonGraph_UserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Auth_View_UserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -251,6 +229,10 @@
   <ItemGroup>
     <Resource Include="Images\boy.ico" />
     <Resource Include="Images\girl.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\dice.png" />
+    <Resource Include="Images\update.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

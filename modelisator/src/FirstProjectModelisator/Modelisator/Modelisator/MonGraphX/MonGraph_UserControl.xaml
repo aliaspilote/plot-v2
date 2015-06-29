@@ -1,0 +1,33 @@
+﻿<UserControl x:Class="Modelisator.MonGraphX.MonGraph_UserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:graphx="http://schemas.panthernet.ru/graphx/"
+             xmlns:simpleGraph="clr-namespace:Modelisator.MonGraphX"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Here we create our GraphArea layout container wrapped into the Zoombox for vast zooming capabilities.
+             This is the standard approach for GraphX.-->
+        <graphx:ZoomControl x:Name="zoomctrl" Grid.Row="1">
+            <simpleGraph:GraphAreaExample x:Name="Area"/>
+        </graphx:ZoomControl>
+
+        <DockPanel LastChildFill="False" Grid.Column="1" Margin="3" Grid.RowSpan="2">
+            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
+                <Button Height="50" Margin="3" Name="gg_but_randomgraph"  DockPanel.Dock="Top" UseLayoutRounding="True">
+                    <Image Source="Images/dice.png"/>
+                </Button>
+                <Button Height="50" Margin="3" Name="gg_but_relayout" DockPanel.Dock="Top" UseLayoutRounding="True">
+                    <Image Source="Images/update.png"/>
+                </Button>
+            </StackPanel>
+        </DockPanel>
+    </Grid>
+</UserControl>
