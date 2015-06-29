@@ -1,14 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
 using Modelisator.Model;
 
 namespace Modelisator.MonGraphX
 {
     public class MonGraph_ViewModel
     {
+
+        public event PropertyChangedEventHandler EventSaisie;
+
         public MonGraph_ViewModel(Contexte ctx)
         {
             View = new MonGraph_UserControl();
@@ -19,8 +25,18 @@ namespace Modelisator.MonGraphX
 
         protected void ConnectView()
         {
+            foreach (var GP in Produit.GrandeurPhysiques)
+            {
+                GP.Value.PropertyChanged += ValurGP_PropertyChanged;
+            }
         }
-        
+
+        private void ValurGP_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+
+            MessageBox.Show("Et voila, Noeud '"+ ((GrandeurPhysique)sender).Nom+"' saisi, reste plus qu'a calculer");
+        }
+
         protected void SetupView()
         {
 
@@ -35,6 +51,8 @@ namespace Modelisator.MonGraphX
             get;
             private set;
         }
+
+
     }
 
 }

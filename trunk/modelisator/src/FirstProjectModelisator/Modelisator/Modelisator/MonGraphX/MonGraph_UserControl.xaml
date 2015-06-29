@@ -7,27 +7,67 @@
              xmlns:simpleGraph="clr-namespace:Modelisator.MonGraphX"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
+<UserControl.Resources>
+        <DataTemplate x:Key="demoTemplate" DataType="{x:Type simpleGraph:DataVertex}">
+            <StackPanel Orientation="Horizontal" Margin="5">
+                <TextBlock Name="TextId"  Text="{Binding Path=Text, Mode=OneWay}" Foreground="DimGray" Margin="5" />
+                <TextBox Text="{Binding Path=GP.Valeur, Mode=TwoWay}" Foreground="Gray" Margin="3" />
+                <TextBlock Text="{Binding Path=Unit, Mode=OneWay}" Foreground="Black" Margin="5" />
+            </StackPanel>
+            <DataTemplate.Triggers>
+                <DataTrigger Binding="{Binding Path=GP.isCalculate}" Value="false">
+                    <Setter TargetName="TextId" Property="Foreground"  Value="Black" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=GP.isCalculate}" Value="true">
+                    <Setter TargetName="TextId" Property="Foreground"  Value="OrangeRed" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=GP.isGiven}" Value="false">
+                    <Setter TargetName="TextId" Property="Foreground"  Value="Black" />
+                </DataTrigger>
+                <DataTrigger Binding="{Binding Path=GP.isGiven}" Value="true">
+                    <Setter TargetName="TextId" Property="Foreground"  Value="Green" />
+                </DataTrigger>
+            </DataTemplate.Triggers>
+    </DataTemplate>
+    <Style TargetType="{x:Type graphx:VertexControl}">
+            <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type graphx:VertexControl}">
+                    <Border BorderBrush="Gray" 
+                                    Background="White"
+							        BorderThickness="2"
+							        CornerRadius="10,10,10,10"
+							        Padding="{TemplateBinding Padding}">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                                    <ContentPresenter Content="{TemplateBinding Vertex}" 
+                                                ContentTemplate="{StaticResource demoTemplate}"/>
+                            </StackPanel>
+                            <Border.Effect>
+                            <DropShadowEffect BlurRadius="3" Color="LightGray" 
+                                    Opacity="0.3" Direction="315"/>
+                        </Border.Effect>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
 
-        <!-- Here we create our GraphArea layout container wrapped into the Zoombox for vast zooming capabilities.
-             This is the standard approach for GraphX.-->
-        <graphx:ZoomControl x:Name="zoomctrl" Grid.Row="1">
+
+    <Style TargetType="{x:Type graphx:EdgeControl}">
+        <Style.Resources>
+            <ToolTip x:Key="ToolTipContent">
+                <StackPanel>
+                    <TextBlock FontWeight="Bold" Text="Edge Information"/>
+                    <TextBlock Text="{Binding ID}"/>
+                </StackPanel>
+            </ToolTip>
+        </Style.Resources>
+        <Setter Property="ToolTip" Value="{StaticResource ToolTipContent}"/>
+    </Style>
+
+    </UserControl.Resources>
+    <graphx:ZoomControl x:Name="zoomctrl" Grid.Row="1">
             <simpleGraph:GraphAreaExample x:Name="Area"/>
         </graphx:ZoomControl>
 
-        <DockPanel LastChildFill="False" Grid.Column="1" Margin="3" Grid.RowSpan="2">
-            <StackPanel Orientation="Horizontal" DockPanel.Dock="Top" HorizontalAlignment="Center">
-                <Button Height="50" Margin="3" Name="gg_but_randomgraph"  DockPanel.Dock="Top" UseLayoutRounding="True">
-                    <Image Source="Images/dice.png"/>
-                </Button>
-                <Button Height="50" Margin="3" Name="gg_but_relayout" DockPanel.Dock="Top" UseLayoutRounding="True">
-                    <Image Source="Images/update.png"/>
-                </Button>
-            </StackPanel>
-        </DockPanel>
-    </Grid>
 </UserControl>

@@ -70,6 +70,8 @@ namespace Modelisator.ViewModel
             string user_login = View.User.Text;
             if (View.Password.Password.Equals(user_login))
             {
+                if (user_login == "")
+                    user_login = "Utilisateur anonyme";
                 Model.Ctx.User = new Utilisateur(user_login, new Groupe("Concepteur"));
                 return true;
             }

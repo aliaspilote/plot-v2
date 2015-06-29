@@ -37,8 +37,8 @@ namespace Modelisator.MonGraphX
             //Lets setup GraphArea settings
             GraphArea_Setup();
 
-            gg_but_randomgraph.Click += gg_but_randomgraph_Click;
-            gg_but_relayout.Click += gg_but_relayout_Click;
+            //gg_but_randomgraph.Click += gg_but_randomgraph_Click;
+            //gg_but_relayout.Click += gg_but_relayout_Click;
 
             Loaded += MainWindow_Loaded;
         }
@@ -169,6 +169,11 @@ namespace Modelisator.MonGraphX
             //If you plan dynamicaly create and destroy GraphArea it is wise to use Dispose() method
             //that ensures that all potential memory-holding objects will be released.
             Area.Dispose();
+        }
+
+        private void Essai(object sender, TouchEventArgs e)
+        {
+            MessageBox.Show("Entrer est saise");
         }
     }
 }
