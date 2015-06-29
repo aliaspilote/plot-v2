@@ -4,91 +4,43 @@
              xmlns:graphsharp="clr-namespace:GraphSharp.Controls;assembly=GraphSharp.Controls"
              xmlns:local="clr-namespace:Modelisator.GraphSharpe"
              xmlns:zoom="clr-namespace:WPFExtensions.Controls;assembly=WPFExtensions" 
-             Height="350" Width="525">
-    <UserControl.Resources>
+             VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Height="335" Width="592" MaxHeight="700" MaxWidth="1200" >
+    <Grid>
+        <Grid.Resources>
+            <local:ActiveConverter x:Key="activeConverter"/>
+            <DataTemplate DataType="{x:Type local:SampleVertex}">
+                <Border  Background="{Binding Path=Active, Converter={StaticResource activeConverter}, NotifyOnTargetUpdated=True}"
+					BorderBrush="LightGray" 
+					BorderThickness="1,1,1,1"
+					CornerRadius="10,10,10,10"
+					Padding="10,10,10,10"
+					HorizontalAlignment="Center"
+					VerticalAlignment="Center"
+					Cursor="Hand">
+                    <Border.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem x:Name="Change" Click="MenuItem_Click" Tag="{Binding}">
+                                <MenuItem.Header>
+                                    <TextBlock HorizontalAlignment="Left">Change</TextBlock>
+                                </MenuItem.Header>
+                            </MenuItem>
+                        </ContextMenu>
+                    </Border.ContextMenu>
+                    <Border.ToolTip>
+                        <ToolTip>
+                            <TextBlock Text="{Binding Text}" />
+                        </ToolTip>
+                    </Border.ToolTip>
+                    <TextBlock Text="{Binding Text}" TextAlignment="Center" TextWrapping="Wrap" />
+                </Border>
+            </DataTemplate>
+        </Grid.Resources>
 
-
-        <DataTemplate x:Key="demoTemplate" DataType="{x:Type local:PocVertex}">
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <Image x:Name="img" Source="../Images/boy.ico" Width="20" Height="20" />
-                <TextBlock Text="{Binding Path=ID, Mode=OneWay}" Foreground="White" />
-            </StackPanel>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding IsMale}" Value="false">
-                    <Setter TargetName="img" Property="Source"
-                                Value="../Images/girl.ico" />
-                </DataTrigger>
-            </DataTemplate.Triggers>
-        </DataTemplate>
-
-        <Style TargetType="{x:Type graphsharp:VertexControl}">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type graphsharp:VertexControl}">
-                        <Border BorderBrush="White" 
-                                    Background="Black"
-							        BorderThickness="2"
-							        CornerRadius="10,10,10,10"
-							        Padding="{TemplateBinding Padding}">
-
-                            <StackPanel Orientation="Vertical">
-
-                                <Expander IsExpanded="True">
-                                    <ContentPresenter Content="{TemplateBinding Vertex}" 
-                                            ContentTemplate="{StaticResource demoTemplate}"/>
-                                </Expander>
-                                <Expander IsExpanded="True">
-                                    <ContentPresenter Content="{TemplateBinding Vertex}" 
-                                            ContentTemplate="{StaticResource demoTemplate}"/>
-                                </Expander>
-                                <Expander IsExpanded="True">
-                                    <ContentPresenter Content="{TemplateBinding Vertex}" 
-                                            ContentTemplate="{StaticResource demoTemplate}"/>
-                                </Expander>
-                                <Expander IsExpanded="True">
-                                    <ContentPresenter Content="{TemplateBinding Vertex}" 
-                                            ContentTemplate="{StaticResource demoTemplate}"/>
-                                </Expander>
-
-                            </StackPanel>
-
-
-
-
-                            <Border.Effect>
-                                <DropShadowEffect BlurRadius="2" Color="LightGray" 
-                                    Opacity="0.3" Direction="315"/>
-                            </Border.Effect>
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
-
-
-        <Style TargetType="{x:Type graphsharp:EdgeControl}">
-            <Style.Resources>
-                <ToolTip x:Key="ToolTipContent">
-                    <StackPanel>
-                        <TextBlock FontWeight="Bold" Text="Edge Information"/>
-                        <TextBlock Text="{Binding ID}"/>
-                    </StackPanel>
-                </ToolTip>
-            </Style.Resources>
-            <Setter Property="ToolTip" Value="{StaticResource ToolTipContent}"/>
-        </Style>
-
-
-
-
-
-    </UserControl.Resources>
-    <zoom:ZoomControl Grid.Row="1"  Zoom="0.2" ZoomBoxOpacity="0.5" Background="#ff656565">
-
-        <local:PocGraphLayout x:Name="graphLayout" Margin="10" Graph="{Binding Path=Graph}" 
-                              LayoutAlgorithmType="{Binding Path=LayoutAlgorithmType, Mode=OneWay}" 
-                              OverlapRemovalAlgorithmType="FSA" HighlightAlgorithmType="Simple">
-            </local:PocGraphLayout>
-    </zoom:ZoomControl>
-
+        <zoom:ZoomControl Name="zoomControl">
+            <graphsharp:GraphLayout x:Name="graphLayout"
+                                    Graph="{Binding Path=Graph}"
+                                    LayoutAlgorithmType="{Binding Path=LayoutAlgorithm}"
+                                    OverlapRemovalAlgorithmType="FSA" />
+        </zoom:ZoomControl>
+    </Grid>
 </UserControl>

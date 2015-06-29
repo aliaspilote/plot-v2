@@ -6,18 +6,14 @@
 ///////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-
-
-
 using Modelisator.Model;
+
 namespace Modelisator.Model {
 	public class GrandeurPhysique {
 
-        private int  m_iM;
+        private int     m_iM;
         private bool    m_Calcule;
 		private string  m_Description;
 		private bool    m_EstPremier;

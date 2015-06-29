@@ -4,10 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-    <Grid  VerticalAlignment="Stretch"   HorizontalAlignment="Stretch" >
-        <StackPanel DockPanel.Dock="Bottom"  MinWidth="75" MinHeight="75" Height="Auto" Width="Auto" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-            <Label Content="Informations :" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
-            <TextBox TextWrapping="Wrap" Name="m_InfoText" MinHeight="60"/>
-        </StackPanel>
+    <Grid   HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Label Content="Informations :" HorizontalAlignment="Stretch"  VerticalAlignment="Stretch" />
+        <TextBox TextWrapping="Wrap" Margin="0,25,0,0" Name="m_InfoText" />
     </Grid>
 </UserControl>

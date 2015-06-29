@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelisator.Forms.View;
 using Modelisator.Model;
+using Modelisator.MonGraphX;
 using Modelisator.View;
-using Modelisator.GraphSharpe;
 
 namespace Modelisator.ViewModel
 {
@@ -17,15 +16,12 @@ namespace Modelisator.ViewModel
         { }
         public EspaceTravail_ViewModel(Contexte ctx)
         {
-            GrapProduitGPForm_View EssaiGrap = new GrapProduitGPForm_View();
-            MainWindowViewModel VM = new MainWindowViewModel();
-            MainWindowsGraphShaper V = new MainWindowsGraphShaper();
-            V.DataContext = VM;
+            MonGraph_ViewModel MonGraph_ViewModel = new MonGraph_ViewModel(ctx);
 
 
             View = new EspaceTravail_View_UserControl();
            // View.GridEspaceTravail.Children.Add(EssaiGrap);
-            View.GridEspaceTravail.Children.Add(V);
+            View.GridEspaceTravail.Children.Add(MonGraph_ViewModel.View);
             Model = new EspaceTravail_Model(ctx);
         }
 

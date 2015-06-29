@@ -20,7 +20,7 @@
         <Grid Grid.Row="1" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
@@ -39,7 +39,7 @@
                             <Grid Grid.Row="0" Grid.Column="0" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
                             <Grid Name="m_ProduitChoix_ContentPanel" HorizontalAlignment="Left" Width="Auto" Height="Auto"></Grid>
                             </Grid>
-                            <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                            <Grid Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Stretch">
                             <Grid Name="m_Info_ContentPanel" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Width="Auto" Height="Auto" ></Grid>
                             </Grid>
                         </Grid>

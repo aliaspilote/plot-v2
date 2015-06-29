@@ -7,7 +7,6 @@
 ///////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelisator.Model;
@@ -23,7 +22,9 @@ namespace Modelisator.Model {
 		        new Produit("Chaise"),
 		        new Produit("Velo"),
 		        new Produit("Table"),
-		        new Produit("Hiba")
+		        new Produit("Mur"),
+		        new Produit("Tableau"),
+		        new Produit("Pompe")
 		    };
         }
 

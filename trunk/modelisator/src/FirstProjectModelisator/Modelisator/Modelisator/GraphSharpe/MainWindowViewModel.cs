@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using Modelisator.Model;
 
 
 namespace Modelisator.GraphSharpe
@@ -21,12 +22,19 @@ namespace Modelisator.GraphSharpe
         {
             Graph = new PocGraph(true);
 
+            Produit.InitialiserGPs();
             List<PocVertex> existingVertices = new List<PocVertex>();
-            existingVertices.Add(new PocVertex("Sacha Barber", true)); //0
-            existingVertices.Add(new PocVertex("Sarah Barber", false)); //1
-            existingVertices.Add(new PocVertex("Marlon Grech", true)); //2
-            existingVertices.Add(new PocVertex("Daniel Vaughan", true)); //3
-            existingVertices.Add(new PocVertex("Bea Costa", false)); //4
+            existingVertices.Add(new PocVertex(Produit.GrandeurPhysiques["p"])); //0
+            existingVertices.Add(new PocVertex(Produit.GrandeurPhysiques["X1"])); //1
+            existingVertices.Add(new PocVertex(Produit.GrandeurPhysiques["Tmax"])); //2
+            existingVertices.Add(new PocVertex(Produit.GrandeurPhysiques["p0"])); //3
+            existingVertices.Add(new PocVertex(Produit.GrandeurPhysiques["dV"])); //4
+
+            //existingVertices.Add(new PocVertex("Sacha Barber", true)); //0
+            //existingVertices.Add(new PocVertex("Sarah Barber", false)); //1
+            //existingVertices.Add(new PocVertex("Marlon Grech", true)); //2
+            //existingVertices.Add(new PocVertex("Daniel Vaughan", true)); //3
+            //existingVertices.Add(new PocVertex("Bea Costa", false)); //4
 
             foreach (PocVertex vertex in existingVertices)
                 Graph.AddVertex(vertex);
