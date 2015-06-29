@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6CBA0F36-D9E3-434C-A1CC-018F82999A62}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProjetSI73</RootNamespace>
+    <AssemblyName>ProjetSI73</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractFactory\Automobile.cs" />
+    <Compile Include="AbstractFactory\AutomobileElectricite.cs" />
+    <Compile Include="AbstractFactory\AutomobileEssence.cs" />
+    <Compile Include="AbstractFactory\FabriqueVehicule.cs" />
+    <Compile Include="AbstractFactory\FabriqueVehiculeElectricite.cs" />
+    <Compile Include="AbstractFactory\FabriqueVehiculeEssence.cs" />
+    <Compile Include="AbstractFactory\Scooter.cs" />
+    <Compile Include="AbstractFactory\ScooterElectricite.cs" />
+    <Compile Include="AbstractFactory\ScooterEssence.cs" />
+    <Compile Include="Adapter\ComposantPdf.cs" />
+    <Compile Include="Adapter\Document.cs" />
+    <Compile Include="Adapter\DocumentHtml.cs" />
+    <Compile Include="Adapter\DocumentPdf.cs" />
+    <Compile Include="Bridge\FormAppletImpl.cs" />
+    <Compile Include="Bridge\FormHtmlImpl.cs" />
+    <Compile Include="Bridge\FormImmatriculationFrance.cs" />
+    <Compile Include="Bridge\FormImmatriculationLuxembourg.cs" />
+    <Compile Include="Bridge\FormulaireImmatriculation.cs" />
+    <Compile Include="Bridge\FormulaireImpl.cs" />
+    <Compile Include="Builder\ConstructeurLiasseVehicule.cs" />
+    <Compile Include="Builder\ConstructeurLiasseVehiculeHtml.cs" />
+    <Compile Include="Builder\ConstructeurLiasseVehiculePdf.cs" />
+    <Compile Include="Builder\Liasse.cs" />
+    <Compile Include="Builder\LiasseHtml.cs" />
+    <Compile Include="Builder\LiassePdf.cs" />
+    <Compile Include="Builder\Vendeur.cs" />
+    <Compile Include="ChainOfResponsability\Marque.cs" />
+    <Compile Include="ChainOfResponsability\Modele.cs" />
+    <Compile Include="ChainOfResponsability\ObjetBase.cs" />
+    <Compile Include="ChainOfResponsability\Vehicule.cs" />
+    <Compile Include="Command\Catalogue.cs" />
+    <Compile Include="Command\CommandeSolder.cs" />
+    <Compile Include="Command\Vehicule.cs" />
+    <Compile Include="Composite\Societe.cs" />
+    <Compile Include="Composite\SocieteMere.cs" />
+    <Compile Include="Composite\SocieteSansFiliale.cs" />
+    <Compile Include="Decorator\ComposantGraphiqueVehicule.cs" />
+    <Compile Include="Decorator\Decorateur.cs" />
+    <Compile Include="Decorator\MarqueDecorateur.cs" />
+    <Compile Include="Decorator\ModeleDecorateur.cs" />
+    <Compile Include="Decorator\VueVehicule.cs" />
+    <Compile Include="Facade\Catalogue.cs" />
+    <Compile Include="Facade\ComposantCatalogue.cs" />
+    <Compile Include="Facade\ComposantGestionDocument.cs" />
+    <Compile Include="Facade\GestionDocument.cs" />
+    <Compile Include="Facade\WebServiceAuto.cs" />
+    <Compile Include="Facade\WebServiceAutoImpl.cs" />
+    <Compile Include="FactoryMethod\Client.cs" />
+    <Compile Include="FactoryMethod\ClientComptant.cs" />
+    <Compile Include="FactoryMethod\ClientCredit.cs" />
+    <Compile Include="FactoryMethod\Commande.cs" />
+    <Compile Include="FactoryMethod\CommandeComptant.cs" />
+    <Compile Include="FactoryMethod\CommandeCredit.cs" />
+    <Compile Include="Flyweight\FabriqueOption.cs" />
+    <Compile Include="Flyweight\OptionVehicule.cs" />
+    <Compile Include="Flyweight\VehiculeCommande.cs" />
+    <Compile Include="Interpreter\Expression.cs" />
+    <Compile Include="Interpreter\MotCle.cs" />
+    <Compile Include="Interpreter\OperateurBinaire.cs" />
+    <Compile Include="Interpreter\OperateurEt.cs" />
+    <Compile Include="Interpreter\OperateurOu.cs" />
+    <Compile Include="Iterator\Catalogue.cs" />
+    <Compile Include="Iterator\CatalogueVehicule.cs" />
+    <Compile Include="Iterator\Element.cs" />
+    <Compile Include="Iterator\Iterateur.cs" />
+    <Compile Include="Iterator\IterateurVehicule.cs" />
+    <Compile Include="Iterator\Vehicule.cs" />
+    <Compile Include="Mediator\Bouton.cs" />
+    <Compile Include="Mediator\Controle.cs" />
+    <Compile Include="Mediator\Formulaire.cs" />
+    <Compile Include="Mediator\PopupMenu.cs" />
+    <Compile Include="Mediator\ZoneSaisie.cs" />
+    <Compile Include="Mementoo\ChariotOption.cs" />
+    <Compile Include="Mementoo\Memento.cs" />
+    <Compile Include="Mementoo\MementoImpl.cs" />
+    <Compile Include="Mementoo\OptionVehicule.cs" />
+    <Compile Include="Observer\Observateur.cs" />
+    <Compile Include="Observer\Sujet.cs" />
+    <Compile Include="Observer\Vehicule.cs" />
+    <Compile Include="Observer\VueVehicule.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Prototype\BonDeCommande.cs" />
+    <Compile Include="Prototype\CertificatCession.cs" />
+    <Compile Include="Prototype\DemandeImmatriculation.cs" />
+    <Compile Include="Prototype\Document.cs" />
+    <Compile Include="Prototype\Liasse.cs" />
+    <Compile Include="Prototype\LiasseClient.cs" />
+    <Compile Include="Prototype\LiasseVierge.cs" />
+    <Compile Include="Proxy\Animation.cs" />
+    <Compile Include="Proxy\AnimationProxy.cs" />
+    <Compile Include="Proxy\Film.cs" />
+    <Compile Include="Singleton\Vendeur.cs" />
+    <Compile Include="State\Commande.cs" />
+    <Compile Include="State\CommandeEnCours.cs" />
+    <Compile Include="State\CommandeLivree.cs" />
+    <Compile Include="TemplateMethod\CommandeLuxembourg.cs" />
+    <Compile Include="State\CommandeValidee.cs" />
+    <Compile Include="State\EtatCommande.cs" />
+    <Compile Include="State\Produit.cs" />
+    <Compile Include="Strategy\DessinCatalogue.cs" />
+    <Compile Include="Strategy\DessinTroisVehiculesLigne.cs" />
+    <Compile Include="Strategy\DessinUnVehiculeLigne.cs" />
+    <Compile Include="Strategy\VueCatalogue.cs" />
+    <Compile Include="Strategy\VueVehicule.cs" />
+    <Compile Include="TemplateMethod\Commande.cs" />
+    <Compile Include="TemplateMethod\CommandeFrance.cs" />
+    <Compile Include="Visitor\Societe.cs" />
+    <Compile Include="Visitor\SocieteMere.cs" />
+    <Compile Include="Visitor\SocieteSansFiliale.cs" />
+    <Compile Include="Visitor\Visiteur.cs" />
+    <Compile Include="Visitor\VisiteurMailingCommercial.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
