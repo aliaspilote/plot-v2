@@ -1,5 +1,7 @@
-﻿using GraphX;
+﻿using System.Linq;
+using GraphX;
 using GraphX.PCL.Common.Models;
+using Modelisator.Model;
 
 namespace Modelisator.MonGraphX
 {
@@ -17,6 +19,10 @@ namespace Modelisator.MonGraphX
         /// Some string property for example purposes
         /// </summary>
         public string Text { get; set; }
+
+        public GrandeurPhysique GP { get; set; }
+
+        public string Unit { get; set; }
  
         #region Calculated or static props
 
@@ -38,6 +44,13 @@ namespace Modelisator.MonGraphX
         public DataVertex(string text = "")
         {
             Text = text;
+            GP = Produit.GrandeurPhysiques[Text];
+            Unit = GP.Unite;
+        }
+        public DataVertex(GrandeurPhysique gp)
+        {
+            Text = gp.Nom;
+            GP = gp;
         }
     }
 }

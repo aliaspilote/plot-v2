@@ -6,12 +6,14 @@
 ///////////////////////////////////////////////////////////
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
 using Modelisator.Model;
 
 namespace Modelisator.Model {
-	public class GrandeurPhysique {
+    public class GrandeurPhysique : INotifyPropertyChanged
+    {
 
         private int     m_iM;
         private bool    m_Calcule;
@@ -21,18 +23,53 @@ namespace Modelisator.Model {
 		private bool    m_Selectionne;
 		private string  m_Unite;
 		private double  m_Valeur;
+        private string imageFullPath;
 
+        protected void OnPropertyChanged(PropertyChangedEventArgs e)
+        {
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if (handler != null)
+                handler(this, e);
+        }
+
+        protected void OnPropertyChanged(string propertyName)
+        {
+            OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void OnValeurChanger(EventArgs e)
+        {
+            EventHandler handler = ValeurChanger;
+            if (handler != null)
+                handler(this, e);
+        }
+
+        public event EventHandler ValeurChanger;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public  List<Equation> Equations;
 
         public GrandeurPhysique() { }
-        public GrandeurPhysique(string nom) { Nom = nom; }
+
+	    public GrandeurPhysique(string nom)
+	    {
+	        Nom = nom;
+            Unite = "[SI]";
+            isCalculate = false;
+            isGiven = false;
+	    }
         public GrandeurPhysique(string nom, int im)
         {
             Nom = nom;
             iM = im;
+            Unite = "[SI]";
+            isCalculate = false;
+            isGiven = false;
         }
 
+	    public bool isCalculate { get; set; }
+        public bool isGiven { get; set; }
 
 		public bool Calcule{
 			get{
@@ -92,8 +129,16 @@ namespace Modelisator.Model {
 			get{
 				return m_Valeur;
 			}
-			set{
-				m_Valeur = value;
+			set
+			{
+			    isGiven = true;
+			    isCalculate = false;
+                if (value != m_Valeur)
+                {
+                    m_Valeur = value;
+                    OnPropertyChanged("Valeur");
+                    OnValeurChanger(EventArgs.Empty);
+                }
 			}
 		}
 
