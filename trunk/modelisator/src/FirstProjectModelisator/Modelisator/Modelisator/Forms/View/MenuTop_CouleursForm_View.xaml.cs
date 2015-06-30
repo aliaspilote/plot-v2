@@ -29,5 +29,17 @@ namespace Modelisator.Forms.View
             get { return m_cmdBoxCouleurs; }
             set { m_cmdBoxCouleurs = value; }
         }
+
+        public Button btn_Import
+        {
+            get { return m_btn_Import; }
+            set { m_btn_Import = value; }
+        }
+
+        public Button brn_Export
+        {
+            get { return m_btn_Export; }
+            set { m_btn_Export = value; }
+        }
     }
 }
