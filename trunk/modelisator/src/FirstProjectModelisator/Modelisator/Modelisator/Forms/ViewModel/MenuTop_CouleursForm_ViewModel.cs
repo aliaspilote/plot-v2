@@ -66,11 +66,11 @@ namespace Modelisator.Forms.ViewModel
             {
                 string filename = saveFileDialog1.FileName;
                 Sauvegarde.export(filename);
-                MessageBox.Show("Export effectuer");
+                MessageBox.Show("Export effectué");
             }
             else
             {
-                MessageBox.Show("Export annuler");
+                MessageBox.Show("Export annulé");
             }
         }
 
@@ -85,11 +85,11 @@ namespace Modelisator.Forms.ViewModel
             {
                 string filename = dlg.FileName;
                 Sauvegarde.import(filename);
-                MessageBox.Show("Import effectuer");
+                MessageBox.Show("Import effectué");
             }
             else
             {
-                MessageBox.Show("Import annuler");
+                MessageBox.Show("Import annulé");
             }
         }
 
