@@ -7,7 +7,13 @@ using System.Threading;
 using System.Windows;
 
 namespace Modelisator.ViewModel
-{
+{    /*
+     * Réalisé par Omar Latreche
+     * omar.latreche@utbm.fr
+     * latreche.omar@gmail.com
+     * 01/07/2015
+     * 
+     */
     public class MainController
     {
 
