@@ -9,6 +9,7 @@ using Modelisator.Forms.Model;
 using Modelisator.Forms.View;
 using Modelisator.Model;
 
+
 namespace Modelisator.Forms.ViewModel
 {
     public class MenuTop_CouleursForm_ViewModel
@@ -48,43 +49,68 @@ namespace Modelisator.Forms.ViewModel
         protected void Export_click(object sender, RoutedEventArgs e)
         {
             //Choix 1
+
+
+                   // Displays a SaveFileDialog so the user can save the Image
+           // assigned to Button2.
+            Microsoft.Win32.SaveFileDialog saveFileDialog1 = new Microsoft.Win32.SaveFileDialog();
+            saveFileDialog1.Filter = "CSV Files|*.csv";
+           saveFileDialog1.Title = "Save an Image File";
+           saveFileDialog1.ShowDialog();
+
+           // If the file name is not an empty string open it for saving.
+           if (saveFileDialog1.FileName != "")
+           {
+               // Saves the Image via a FileStream created by the OpenFile method.
+               System.IO.FileStream fs =
+                  (System.IO.FileStream)saveFileDialog1.OpenFile();
+               //MessageBox.Show(saveFileDialog1.FileName);
+               // Saves the Image in the appropriate ImageFormat based upon the
+               // File type selected in the dialog box.
+               // NOTE that the FilterIndex property is one-based.
+               string filename = saveFileDialog1.FileName;
+               Sauvegarde sauvgarde = new Sauvegarde();
+               sauvgarde.import(filename);
+               fs.Close();
+           }
+
+
+            
+            //Appel de la méthode I/E
+
+            //Choix 2   Remonter l'"evenement au controleur supèrier
+            if (Import_Ev != null)
+                Import_Ev(this, e);
+        }
+
+        protected void Import_click(object sender, RoutedEventArgs e)
+        {
+            //Choix 1
             // Create OpenFileDialog 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
-
 
             // Set filter for file extension and default file extension 
             dlg.DefaultExt = ".png";
             dlg.Filter = "CSV Files|*.csv";
 
-
             // Display OpenFileDialog by calling ShowDialog method 
             Nullable<bool> result = dlg.ShowDialog();
-
 
             // Get the selected file name and display in a TextBox 
             if (result == true)
             {
                 // Open document 
                 string filename = dlg.FileName;
-                MessageBox.Show(filename);
+                //MessageBox.Show(filename);
+                Sauvegarde sauvgarde = new Sauvegarde();
+                sauvgarde.import(filename);
             }
             //Appel de la méthode I/E
 
             //Choix 2
             if (Export_Ev != null)
                 Export_Ev(this, e);
-        }
-
-        protected void Import_click(object sender, RoutedEventArgs e)
-        {
-            //Choix 1
-
-            //Appel de la méthode I/E
-
-            //Choix 2   Remonter l'"evenement au controleur supèrier
-            if (Import_Ev != null)
-                Import_Ev(this, e);
+            
         }
 
         protected void Couleurclick(object sender, RoutedEventArgs e)

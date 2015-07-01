@@ -23,6 +23,7 @@ namespace Modelisator.Model {
 		private bool    m_Selectionne;
 		private string  m_Unite;
 		private double  m_Valeur;
+        private bool    m_entree;
         private string imageFullPath;
 
         protected void OnPropertyChanged(PropertyChangedEventArgs e)
@@ -141,6 +142,18 @@ namespace Modelisator.Model {
                 }
 			}
 		}
+
+        public bool Entree
+        {
+            get
+            {
+                return m_entree;
+            }
+            set
+            {
+                m_entree = value;
+            }
+        }
 
         public int iM
         {
