@@ -86,7 +86,7 @@ namespace Modelisator.ViewModel
 
         private void VueEnsemble_Clik_Action(object sender, EventArgs args)
         {
-            EspaceTravail_ViewModel.RefreshVueGraph();
+            EspaceTravail_ViewModel.RefreshVueGraph("","ENSEMBLE");
         }
     }
 }
