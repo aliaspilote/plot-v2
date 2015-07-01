@@ -16,6 +16,13 @@ using Modelisator.View;
 
 namespace Modelisator
 {
+    /*
+     * Réalisé par Omar Latreche
+     * omar.latreche@utbm.fr
+     * latreche.omar@gmail.com
+     * 01/07/2015
+     * 
+     */
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
