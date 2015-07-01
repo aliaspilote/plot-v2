@@ -86,7 +86,7 @@ namespace Modelisator.Model {
             GrandeurPhysiques.Add("sigma_y", new GrandeurPhysique("sigma_y", 10));
             //GrandeurPhysiques.Add("p", new GrandeurPhysique("p",1));
 	    }
-
+        
 	}//end Produit
 
 }//end namespace Modelisator.Model

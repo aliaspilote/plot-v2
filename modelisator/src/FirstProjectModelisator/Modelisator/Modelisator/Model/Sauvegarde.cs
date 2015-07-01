@@ -70,7 +70,7 @@ namespace Modelisator.Model {
             {
                 var line = reader.ReadLine();
                 var values = line.Split(';');
-                GrandeurPhysique gp = new GrandeurPhysique();
+                /*GrandeurPhysique gp = new GrandeurPhysique();
                 gp.iM = Convert.ToInt16(values[0]);
                 gp.Nom = values[1];
                 gp.Unite = values[2];
@@ -79,7 +79,25 @@ namespace Modelisator.Model {
                 gp.Calcule = Convert.ToBoolean(values[5]);
                 gp.Selectionne = Convert.ToBoolean(values[6]);
                 gp.EstPremier = Convert.ToBoolean(values[7]);
-                Produit.GrandeurPhysiques.Add(gp.Nom, gp);
+                Produit.GrandeurPhysiques.Add(gp.Nom, gp);*/
+
+
+                Produit.GrandeurPhysiques[values[1]].iM = Convert.ToInt16(values[0]);
+                Produit.GrandeurPhysiques[values[1]].Nom = values[1];
+                Produit.GrandeurPhysiques[values[1]].Unite = values[2];
+                Produit.GrandeurPhysiques[values[1]].Valeur = Convert.ToDouble(values[3]);
+                Produit.GrandeurPhysiques[values[1]].Description = values[4];
+                Produit.GrandeurPhysiques[values[1]].Calcule = Convert.ToBoolean(values[5]);
+                Produit.GrandeurPhysiques[values[1]].Selectionne = Convert.ToBoolean(values[6]);
+                Produit.GrandeurPhysiques[values[1]].EstPremier = Convert.ToBoolean(values[7]);
+
+                //Produit.GrandeurPhysiques.Add(gp.Nom, gp);
+
+                /*
+                Produit.GrandeurPhysiques[values[1]].Valeur = Convert.ToDouble(values[3]);
+                Produit.GrandeurPhysiques[values[1]].Calcule = Convert.ToBoolean(values[5]);
+                Produit.GrandeurPhysiques[values[1]].Entree = Convert.ToBoolean(values[8888]);
+                */
             }
 
 
@@ -94,6 +112,16 @@ namespace Modelisator.Model {
 			}
 		}
 
-	}//end Sauvegarde
+
+        internal void import(string filename)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void export(string filename)
+        {
+            throw new NotImplementedException();
+        }
+    }//end Sauvegarde
 
 }//end namespace Modelisator.Model
