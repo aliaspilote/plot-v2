@@ -43,7 +43,12 @@ namespace Modelisator.Model {
 
         public  List<Equation> Equations;
 
-        public GrandeurPhysique() { }
+        public GrandeurPhysique()
+        {
+
+            setCouleurs();
+            setBouleans();
+        }
 
 	    public GrandeurPhysique(string nom)
 	    {

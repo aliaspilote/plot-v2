@@ -106,6 +106,7 @@
     <Compile Include="Model\Relation.cs" />
     <Compile Include="Model\Sauvegarde.cs" />
     <Compile Include="Model\Utilisateur.cs" />
+    <Compile Include="MonGraphX\InputBindingsManager.cs" />
     <Compile Include="MonGraphX\DataEdge.cs" />
     <Compile Include="MonGraphX\DataVertex.cs" />
     <Compile Include="MonGraphX\GraphAreaExample.cs" />

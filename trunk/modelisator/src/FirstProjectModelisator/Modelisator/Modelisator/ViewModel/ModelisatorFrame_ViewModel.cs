@@ -47,6 +47,7 @@ namespace Modelisator.ViewModel
             MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.View.btn_VueEnsemble.IsEnabled = true;
             MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.View.btn_Export.IsEnabled = true;
             MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.View.btn_Import.IsEnabled = true;
+            MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.View.btn_RAZ_GP.IsEnabled = true;
         }
 
         protected void SetupModelisatorFrame()

@@ -43,17 +43,23 @@ namespace Modelisator.Model {
 			}
 		}
 
-        public void export()
+        public static void export(string path)
         {
             string text;
-
-
-            StreamWriter sw = new StreamWriter(m_Chemin);//création du fichier
-            sw.WriteLine("Indice de matrice;Grandeur Physique;Unité;Valeur;Description;Calcule;Selectionnne;EstPremier");
+            StreamWriter sw = new StreamWriter(path);//création du fichier
+            sw.WriteLine("Indice de matrice;Grandeur Physique;Unité;Valeur;Description;Calcule;Selectionnne;EstPremier;Entree");
             foreach (KeyValuePair<string, GrandeurPhysique> gp in Produit.GrandeurPhysiques)
             {
 
-                text = gp.Value.iM + ";" + gp.Value.Nom + ";" + gp.Value.Unite + ";" + gp.Value.Valeur + ";" + gp.Value.Description + ";" + gp.Value.Calcule + ";" + gp.Value.Selectionne + ";" + gp.Value.EstPremier;
+                text = gp.Value.iM + ";"
+                       + gp.Value.Nom + ";"
+                       + gp.Value.Unite + ";"
+                       + gp.Value.Valeur + ";"
+                       + gp.Value.Description + ";"
+                       + gp.Value.Calcule + ";"
+                       + gp.Value.Selectionne + ";"
+                       + gp.Value.EstPremier + ";"
+                       + gp.Value.Entree;
                 sw.WriteLine("{0}", text);//enregistrement de la liste gp.Value.Value dans le fichier 
             }
 
@@ -62,37 +68,22 @@ namespace Modelisator.Model {
 
         }
 
-        public void import()
+        public static void import(string path)
         {
-            var reader = new StreamReader(File.OpenRead(m_Chemin));
+            var reader = new StreamReader(File.OpenRead(path));
             reader.ReadLine(); //On passe les headers du csv.
             while (!reader.EndOfStream)
             {
                 var line = reader.ReadLine();
                 var values = line.Split(';');
-                /*GrandeurPhysique gp = new GrandeurPhysique();
-                gp.iM = Convert.ToInt16(values[0]);
-                gp.Nom = values[1];
-                gp.Unite = values[2];
-                gp.Valeur = Convert.ToDouble(values[3]);
-                gp.Description = values[4];
-                gp.Calcule = Convert.ToBoolean(values[5]);
-                gp.Selectionne = Convert.ToBoolean(values[6]);
-                gp.EstPremier = Convert.ToBoolean(values[7]);
-                Produit.GrandeurPhysiques.Add(gp.Nom, gp);*/
 
-
-                Produit.GrandeurPhysiques[values[1]].iM = Convert.ToInt16(values[0]);
-                Produit.GrandeurPhysiques[values[1]].Nom = values[1];
-                Produit.GrandeurPhysiques[values[1]].Unite = values[2];
                 Produit.GrandeurPhysiques[values[1]].Valeur = Convert.ToDouble(values[3]);
-                Produit.GrandeurPhysiques[values[1]].Description = values[4];
+                //Produit.GrandeurPhysiques[values[1]].Description = values[4];
+                //Produit.GrandeurPhysiques[values[1]].EstPremier = Convert.ToBoolean(values[7]);
+                //Produit.GrandeurPhysiques[values[1]].Selectionne = Convert.ToBoolean(values[6]);
                 Produit.GrandeurPhysiques[values[1]].Calcule = Convert.ToBoolean(values[5]);
-                Produit.GrandeurPhysiques[values[1]].Selectionne = Convert.ToBoolean(values[6]);
-                Produit.GrandeurPhysiques[values[1]].EstPremier = Convert.ToBoolean(values[7]);
-
-                //Produit.GrandeurPhysiques.Add(gp.Nom, gp);
-
+                Produit.GrandeurPhysiques[values[1]].Entree = Convert.ToBoolean(values[8]);
+                
                 /*
                 Produit.GrandeurPhysiques[values[1]].Valeur = Convert.ToDouble(values[3]);
                 Produit.GrandeurPhysiques[values[1]].Calcule = Convert.ToBoolean(values[5]);
@@ -112,16 +103,6 @@ namespace Modelisator.Model {
 			}
 		}
 
-
-        internal void import(string filename)
-        {
-            throw new NotImplementedException();
-        }
-
-        internal void export(string filename)
-        {
-            throw new NotImplementedException();
-        }
     }//end Sauvegarde
 
 }//end namespace Modelisator.Model

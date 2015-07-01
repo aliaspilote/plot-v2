@@ -46,6 +46,11 @@ namespace Modelisator.Forms.View
             get { return m_btn_VueEnsemble; }
             set { m_btn_VueEnsemble = value; }
         }
+         public Button btn_RAZ_GP
+        {
+            get { return m_btn_RAZ_GP; }
+            set { m_btn_RAZ_GP = value; }
+        }
 
 
         

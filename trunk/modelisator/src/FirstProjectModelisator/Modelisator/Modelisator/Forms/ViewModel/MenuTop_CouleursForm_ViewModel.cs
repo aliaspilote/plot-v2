@@ -36,6 +36,7 @@ namespace Modelisator.Forms.ViewModel
             View.btn_Export.Click += Export_click;
             View.btn_Import.Click += Import_click;
             View.btn_VueEnsemble.Click += VueEnsemble_click;
+            View.btn_RAZ_GP.Click += RAZ_GP_click;
         }
         public MenuTop_CouleursForm_View View
         {
@@ -56,70 +57,48 @@ namespace Modelisator.Forms.ViewModel
 
         protected void Export_click(object sender, RoutedEventArgs e)
         {
-            //Choix 1
-
-
-                   // Displays a SaveFileDialog so the user can save the Image
-           // assigned to Button2.
             Microsoft.Win32.SaveFileDialog saveFileDialog1 = new Microsoft.Win32.SaveFileDialog();
             saveFileDialog1.Filter = "CSV Files|*.csv";
-           saveFileDialog1.Title = "Save an Image File";
-           saveFileDialog1.ShowDialog();
+            saveFileDialog1.Title = "Exporter l'espace de travail";
+            saveFileDialog1.ShowDialog();
 
-           // If the file name is not an empty string open it for saving.
-           if (saveFileDialog1.FileName != "")
-           {
-               // Saves the Image via a FileStream created by the OpenFile method.
-               System.IO.FileStream fs =
-                  (System.IO.FileStream)saveFileDialog1.OpenFile();
-               //MessageBox.Show(saveFileDialog1.FileName);
-               // Saves the Image in the appropriate ImageFormat based upon the
-               // File type selected in the dialog box.
-               // NOTE that the FilterIndex property is one-based.
-               string filename = saveFileDialog1.FileName;
-               Sauvegarde sauvgarde = new Sauvegarde();
-               sauvgarde.import(filename);
-               fs.Close();
-           }
-
-
-            
-            //Appel de la méthode I/E
-
-            //Choix 2   Remonter l'"evenement au controleur supèrier
-            if (Import_Ev != null)
-                Import_Ev(this, e);
+            if (saveFileDialog1.FileName != "")
+            {
+                string filename = saveFileDialog1.FileName;
+                Sauvegarde.export(filename);
+                MessageBox.Show("Export effectuer");
+            }
+            else
+            {
+                MessageBox.Show("Export annuler");
+            }
         }
 
         protected void Import_click(object sender, RoutedEventArgs e)
         {
-            //Choix 1
-            // Create OpenFileDialog 
             Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
-
-            // Set filter for file extension and default file extension 
             dlg.DefaultExt = ".png";
             dlg.Filter = "CSV Files|*.csv";
-
-            // Display OpenFileDialog by calling ShowDialog method 
+            dlg.Title = "Importer l'espace de travail";
             Nullable<bool> result = dlg.ShowDialog();
-
-            // Get the selected file name and display in a TextBox 
             if (result == true)
             {
-                // Open document 
                 string filename = dlg.FileName;
-                //MessageBox.Show(filename);
-                Sauvegarde sauvgarde = new Sauvegarde();
-                sauvgarde.import(filename);
+                Sauvegarde.import(filename);
+                MessageBox.Show("Import effectuer");
             }
-            //Appel de la méthode I/E
-
-            //Choix 2
-            if (Export_Ev != null)
-                Export_Ev(this, e);
-            
+            else
+            {
+                MessageBox.Show("Import annuler");
+            }
         }
+
+        protected void RAZ_GP_click(object sender, RoutedEventArgs e)
+        {
+            Model.RAZ_GP_valeur();
+            MessageBox.Show("Remise à zéro de la valeur des grandeurs physiques.");
+        }
+
 
         protected void Couleurclick(object sender, RoutedEventArgs e)
         {
