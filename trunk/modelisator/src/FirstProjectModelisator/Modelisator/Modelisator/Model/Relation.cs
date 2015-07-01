@@ -112,12 +112,16 @@ namespace Modelisator.Model {
             MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["R"].iM] = 11; //[8][7]
             MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["sigma"].iM] = 11; //[8][6]
             MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["delta_t"].iM] = 17; //[8][11]
+            MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["lifespan"].iM] = 20; //[8][12]
+            MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["C"].iM] = 20; //[8][13]
 
             //tu
             MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["p"].iM] = 12; //[9][0]
             MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["R"].iM] = 12; //[9][7]
             MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["sigma_y"].iM] = 12; //[9][10]
             MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["delta_t"].iM] = 18; //[9][11]
+            MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["lifespan"].iM] = 21; //[9][12]
+            MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["C"].iM] = 21; //[9][13]
 
             //sigma_y
             MatriceRelations[Produit.GrandeurPhysiques["sigma_y"].iM][Produit.GrandeurPhysiques["p"].iM] = 15; //[10][0]
@@ -127,6 +131,16 @@ namespace Modelisator.Model {
             //delta_t
             MatriceRelations[Produit.GrandeurPhysiques["delta_t"].iM][Produit.GrandeurPhysiques["t"].iM] = 16; //[11][8]
             MatriceRelations[Produit.GrandeurPhysiques["delta_t"].iM][Produit.GrandeurPhysiques["tu"].iM] = 16; //[11][9]
+
+            //lifespan
+            MatriceRelations[Produit.GrandeurPhysiques["lifespan"].iM][Produit.GrandeurPhysiques["t"].iM] = 19; //[12][8]
+            MatriceRelations[Produit.GrandeurPhysiques["lifespan"].iM][Produit.GrandeurPhysiques["tu"].iM] = 19; //[12][9]
+            MatriceRelations[Produit.GrandeurPhysiques["lifespan"].iM][Produit.GrandeurPhysiques["C"].iM] = 19; //[12][13]
+
+            //C
+            MatriceRelations[Produit.GrandeurPhysiques["C"].iM][Produit.GrandeurPhysiques["t"].iM] = 22; //[13][8]
+            MatriceRelations[Produit.GrandeurPhysiques["C"].iM][Produit.GrandeurPhysiques["tu"].iM] = 22; //[13][9]
+            MatriceRelations[Produit.GrandeurPhysiques["C"].iM][Produit.GrandeurPhysiques["lifespan"].iM] = 22; //[13][12]
  
 
         }

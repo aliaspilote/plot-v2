@@ -220,6 +220,49 @@ namespace Modelisator.Model
                         }
                     break;
 
+                case 19:
+                    if (!Produit.GrandeurPhysiques["lifespan"].Entree)
+                        if ((Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["tu"].Entree || Produit.GrandeurPhysiques["tu"].Calcule) &&
+                            (Produit.GrandeurPhysiques["C"].Entree || Produit.GrandeurPhysiques["C"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["lifespan"].Valeur = equation19(Produit.GrandeurPhysiques["t"].Valeur, Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["C"].Valeur);
+                            Produit.GrandeurPhysiques["lifespan"].Calcule = true;
+                        }
+                    break;
+
+                case 20:
+                    if (!Produit.GrandeurPhysiques["t"].Entree)
+                        if ((Produit.GrandeurPhysiques["lifespan"].Entree || Produit.GrandeurPhysiques["lifespan"].Calcule) &&
+                            (Produit.GrandeurPhysiques["tu"].Entree || Produit.GrandeurPhysiques["tu"].Calcule) &&
+                            (Produit.GrandeurPhysiques["C"].Entree || Produit.GrandeurPhysiques["C"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["t"].Valeur = equation20(Produit.GrandeurPhysiques["lifespan"].Valeur, Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["C"].Valeur);
+                            Produit.GrandeurPhysiques["t"].Calcule = true;
+                        }
+                    break;
+
+                case 21:
+                    if (!Produit.GrandeurPhysiques["tu"].Entree)
+                        if ((Produit.GrandeurPhysiques["lifespan"].Entree || Produit.GrandeurPhysiques["lifespan"].Calcule) &&
+                            (Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["C"].Entree || Produit.GrandeurPhysiques["C"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["tu"].Valeur = equation21(Produit.GrandeurPhysiques["lifespan"].Valeur, Produit.GrandeurPhysiques["t"].Valeur, Produit.GrandeurPhysiques["C"].Valeur);
+                            Produit.GrandeurPhysiques["tu"].Calcule = true;
+                        }
+                    break;
+
+                case 22:
+                    if (!Produit.GrandeurPhysiques["C"].Entree)
+                        if ((Produit.GrandeurPhysiques["lifespan"].Entree || Produit.GrandeurPhysiques["lifespan"].Calcule) &&
+                            (Produit.GrandeurPhysiques["tu"].Entree || Produit.GrandeurPhysiques["tu"].Calcule) &&
+                            (Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["C"].Valeur = equation22(Produit.GrandeurPhysiques["t"].Valeur, Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["lifespan"].Valeur);
+                            Produit.GrandeurPhysiques["C"].Calcule = true;
+                        }
+                    break;
 
                 default:
 
