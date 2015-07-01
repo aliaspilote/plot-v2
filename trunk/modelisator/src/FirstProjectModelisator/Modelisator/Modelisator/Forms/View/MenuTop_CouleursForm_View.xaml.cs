@@ -36,10 +36,18 @@ namespace Modelisator.Forms.View
             set { m_btn_Import = value; }
         }
 
-        public Button brn_Export
+        public Button btn_Export
         {
             get { return m_btn_Export; }
             set { m_btn_Export = value; }
         }
+        public Button btn_VueEnsemble
+        {
+            get { return m_btn_VueEnsemble; }
+            set { m_btn_VueEnsemble = value; }
+        }
+
+
+        
     }
 }

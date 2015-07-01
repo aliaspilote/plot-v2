@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using GraphX.Controls;
+using GraphX.Controls.Animations;
+using GraphX.Controls.Models;
 using GraphX.PCL.Common.Enums;
 using GraphX.PCL.Logic.Algorithms.LayoutAlgorithms;
 using Modelisator.Model;
@@ -24,7 +26,10 @@ namespace Modelisator.MonGraphX
     /// </summary>
     public partial class MonGraph_UserControl : UserControl
     {
-        public MonGraph_UserControl()
+
+        public event MouseEventHandler SelectionGP;
+
+        public MonGraph_UserControl(string FOCUS = "")
         {
             InitializeComponent();
 
@@ -35,7 +40,7 @@ namespace Modelisator.MonGraphX
             zoomctrl.ZoomToFill();
 
             //Lets setup GraphArea settings
-            GraphArea_Setup();
+            GraphArea_Setup(FOCUS);
 
             //gg_but_randomgraph.Click += gg_but_randomgraph_Click;
             //gg_but_relayout.Click += gg_but_relayout_Click;
@@ -88,14 +93,16 @@ namespace Modelisator.MonGraphX
             //This method sets edges labels visibility. It is also applied to all edges in Area.EdgesList. You can also set property for
             //each edge individually using property, for ex: Area.EdgesList[0].ShowLabel = true;
             Area.ShowAllEdgesLabels(true);
+                //Area.MoveAnimation = AnimationFactory.CreateMoveAnimation(MoveAnimation.Move, TimeSpan.FromSeconds(5));
+            //Area.MouseOverAnimation = AnimationFactory.CreateMouseOverAnimation(MouseOverAnimation.Scale, .3);
 
             zoomctrl.ZoomToFill();
         }
 
-        private GraphExample Graph_Setup()
+        private GraphExample Graph_Setup(string FOCUS = "")
         {
             MonGraph_Model Mgrap = new MonGraph_Model(new Contexte());
-            return Mgrap.Graph_Setup();
+            return Mgrap.Graph_Setup(FOCUS);
 
         }
             
@@ -130,18 +137,18 @@ namespace Modelisator.MonGraphX
             return dataGraph;
         }
 
-        private void GraphArea_Setup()
+        public void GraphArea_Setup(string FOCUS ="")
         {
             //Lets create logic core and filled data graph with edges and vertices
-            var logicCore = new GXLogicCoreExample() { Graph = Graph_Setup() };
+            var logicCore = new GXLogicCoreExample() { Graph = Graph_Setup(FOCUS) };
             //This property sets layout algorithm that will be used to calculate vertices positions
             //Different algorithms uses different values and some of them uses edge Weight property.
-            logicCore.DefaultLayoutAlgorithm = LayoutAlgorithmTypeEnum.KK;
+            logicCore.DefaultLayoutAlgorithm = LayoutAlgorithmTypeEnum.BoundedFR;
             //Now we can set parameters for selected algorithm using AlgorithmFactory property. This property provides methods for
             //creating all available algorithms and algo parameters.
-            logicCore.DefaultLayoutAlgorithmParams = logicCore.AlgorithmFactory.CreateLayoutParameters(LayoutAlgorithmTypeEnum.KK);
+            //logicCore.DefaultLayoutAlgorithmParams = logicCore.AlgorithmFactory.CreateLayoutParameters(LayoutAlgorithmTypeEnum.KK);
             //Unfortunately to change algo parameters you need to specify params type which is different for every algorithm.
-            ((KKLayoutParameters)logicCore.DefaultLayoutAlgorithmParams).MaxIterations = 100;
+            //((KKLayoutParameters)logicCore.DefaultLayoutAlgorithmParams).MaxIterations = 100;
 
             //This property sets vertex overlap removal algorithm.
             //Such algorithms help to arrange vertices in the layout so no one overlaps each other.
@@ -174,6 +181,12 @@ namespace Modelisator.MonGraphX
         private void Essai(object sender, TouchEventArgs e)
         {
             MessageBox.Show("Entrer est saise");
+        }
+
+        private void PanelNoeud_OnMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (SelectionGP != null)
+                SelectionGP(this, e);
         }
     }
 }

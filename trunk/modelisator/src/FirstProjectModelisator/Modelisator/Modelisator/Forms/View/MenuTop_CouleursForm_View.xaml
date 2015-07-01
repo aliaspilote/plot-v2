@@ -3,7 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="using:ButtonStylesMetro"
              mc:Ignorable="d" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -13,9 +15,10 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Grid Grid.Row="0" Grid.Column="0" >
+        <Grid Grid.Row="0" Grid.Column="3" >
             <ComboBox Name="m_cmdBoxCouleurs" ItemsSource="{Binding }" >
             <ComboBox.ItemTemplate>
                 <DataTemplate>
@@ -31,11 +34,15 @@
         </ComboBox>
         </Grid>
 
-        <Grid Grid.Row="0" Grid.Column="1" >
-            <Button Content="Import" Name="m_btn_Import"></Button>
+        <Grid Grid.Row="0" Grid.Column="2" Margin="5,0">
+            <Button Content="Import" Name="m_btn_Import" IsEnabled="False"></Button>
         </Grid>
-        <Grid Grid.Row="0" Grid.Column="2" >
-            <Button Content="Export" Name="m_btn_Export"></Button>
+        <Grid Grid.Row="0" Grid.Column="1" Margin="5,0" >
+            <Button Content="Export" Name="m_btn_Export" IsEnabled="False"> </Button>
+           
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="0" Margin="5,0" >
+            <Button Content="Vue d'ensemble" Name="m_btn_VueEnsemble" IsEnabled="False"></Button>
         </Grid>
     </Grid>
 </UserControl>
