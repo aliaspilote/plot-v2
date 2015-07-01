@@ -111,16 +111,23 @@ namespace Modelisator.Model {
             MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["p"].iM] = 11; //[8][0]
             MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["R"].iM] = 11; //[8][7]
             MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["sigma"].iM] = 11; //[8][6]
+            MatriceRelations[Produit.GrandeurPhysiques["t"].iM][Produit.GrandeurPhysiques["delta_t"].iM] = 17; //[8][11]
 
             //tu
             MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["p"].iM] = 12; //[9][0]
             MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["R"].iM] = 12; //[9][7]
             MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["sigma_y"].iM] = 12; //[9][10]
+            MatriceRelations[Produit.GrandeurPhysiques["tu"].iM][Produit.GrandeurPhysiques["delta_t"].iM] = 18; //[9][11]
 
             //sigma_y
             MatriceRelations[Produit.GrandeurPhysiques["sigma_y"].iM][Produit.GrandeurPhysiques["p"].iM] = 15; //[10][0]
             MatriceRelations[Produit.GrandeurPhysiques["sigma_y"].iM][Produit.GrandeurPhysiques["R"].iM] = 15; //[10][7]
             MatriceRelations[Produit.GrandeurPhysiques["sigma_y"].iM][Produit.GrandeurPhysiques["tu"].iM] = 15; //[10][9]
+
+            //delta_t
+            MatriceRelations[Produit.GrandeurPhysiques["delta_t"].iM][Produit.GrandeurPhysiques["t"].iM] = 16; //[11][8]
+            MatriceRelations[Produit.GrandeurPhysiques["delta_t"].iM][Produit.GrandeurPhysiques["tu"].iM] = 16; //[11][9]
+ 
 
         }
 

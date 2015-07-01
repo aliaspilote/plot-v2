@@ -28,7 +28,7 @@ namespace Modelisator.Model
             switch (indiceEqu)
             {
                 case 1:
-                    if (!Produit.GrandeurPhysiques["p"].Entree) // Verifie que le résulta de l'equation n'est pas une donnée d'entrée
+                    if (!Produit.GrandeurPhysiques["p"].Entree) // Verifie que le résultat de l'equation n'est pas une donnée d'entrée
                         if ((Produit.GrandeurPhysiques["X1"].Entree || Produit.GrandeurPhysiques["X1"].Calcule) &&
                             (Produit.GrandeurPhysiques["Tmax"].Entree || Produit.GrandeurPhysiques["Tmax"].Calcule) &&
                             (Produit.GrandeurPhysiques["p0"].Entree || Produit.GrandeurPhysiques["p0"].Calcule))
@@ -187,6 +187,36 @@ namespace Modelisator.Model
                         {
                             Produit.GrandeurPhysiques["sigma_y"].Valeur = equation15(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur);
                             Produit.GrandeurPhysiques["sigma_y"].Calcule = true;
+                        }
+                    break;
+
+                case 16:
+                    if (!Produit.GrandeurPhysiques["delta_t"].Entree)
+                        if ((Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["tu"].Entree || Produit.GrandeurPhysiques["tu"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["delta_t"].Valeur = equation16(Produit.GrandeurPhysiques["t"].Valeur, Produit.GrandeurPhysiques["tu"].Valeur);
+                            Produit.GrandeurPhysiques["delta_t"].Calcule = true;
+                        }
+                    break;
+
+                case 17:
+                    if (!Produit.GrandeurPhysiques["t"].Entree)
+                        if ((Produit.GrandeurPhysiques["delta_t"].Entree || Produit.GrandeurPhysiques["delta_t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["tu"].Entree || Produit.GrandeurPhysiques["tu"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["t"].Valeur = equation16(Produit.GrandeurPhysiques["delta_t"].Valeur, Produit.GrandeurPhysiques["tu"].Valeur);
+                            Produit.GrandeurPhysiques["t"].Calcule = true;
+                        }
+                    break;
+
+                case 18:
+                    if (!Produit.GrandeurPhysiques["tu"].Entree)
+                        if ((Produit.GrandeurPhysiques["delta_t"].Entree || Produit.GrandeurPhysiques["delta_t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["tu"].Valeur = equation16(Produit.GrandeurPhysiques["delta_t"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                            Produit.GrandeurPhysiques["tu"].Calcule = true;
                         }
                     break;
 
@@ -510,7 +540,7 @@ namespace Modelisator.Model
         /// <param name="tu">Useful thichness (mm)</param>
         /// <returns></returns>
 
-        static double equation5o(double t, double tu)
+        static double equation16(double t, double tu)
         {
 
             double delta_t = t - tu;
@@ -524,7 +554,7 @@ namespace Modelisator.Model
         /// <param name="tu">Useful thichness (mm)</param>
         /// <returns></returns>
 
-        static double equation34(double delta_t, double tu)
+        static double equation17(double delta_t, double tu)
         {
 
             double t = delta_t + tu;
@@ -538,7 +568,7 @@ namespace Modelisator.Model
         /// <param name="t"> Thickness (mm)</param>
         /// <returns></returns>
 
-        static double equation35(double delta_t, double t)
+        static double equation18(double delta_t, double t)
         {
 
             double tu = t - delta_t;
@@ -554,7 +584,7 @@ namespace Modelisator.Model
         /// <param name="C">Thickness loss (mm/year)</param>
         /// <returns></returns>
 
-        static double equation6o(double t, double tu, double C)
+        static double equation19(double t, double tu, double C)
         {
 
             double lifespan;
@@ -574,7 +604,7 @@ namespace Modelisator.Model
         /// <param name="C"> Thickness loss (mm/year)</param>
         /// <returns></returns>
 
-        static double equation36(double lifespan, double tu, double C)
+        static double equation20(double lifespan, double tu, double C)
         {
 
             double t;
@@ -590,7 +620,7 @@ namespace Modelisator.Model
         /// <param name="C"> Thickness loss (mm/year)</param>
         /// <returns></returns>
 
-        static double equation37(double lifespan, double t, double C)
+        static double equation21(double lifespan, double t, double C)
         {
 
             double tu;
@@ -606,7 +636,7 @@ namespace Modelisator.Model
         /// <param name="lifespan">Lifespan (year)</param>
         /// <returns></returns>
 
-        static double equation38(double t, double tu, double lifespan)
+        static double equation22(double t, double tu, double lifespan)
         {
 
             double C;
@@ -625,7 +655,7 @@ namespace Modelisator.Model
         /// <param name="tu">Useful thichness (mm)</param>
         /// <returns></returns>
 
-        static double equation7o(double alpha, double sigma_y, double tu)
+        static double equation23(double alpha, double sigma_y, double tu)
         {
 
             double KI = alpha * sigma_y * Math.Sqrt(tu);
@@ -641,7 +671,7 @@ namespace Modelisator.Model
         /// <param name="tu">Useful thichness (mm)</param>
         /// <returns></returns>
 
-        static double equation39(double KI, double sigma_y, double tu)
+        static double equation24(double KI, double sigma_y, double tu)
         {
 
             double alpha;
@@ -660,7 +690,7 @@ namespace Modelisator.Model
         /// <param name="tu">tu : Useful thichness (mm)</param>
         /// <returns></returns>
 
-        static double equation40(double KI, double alpha, double tu)
+        static double equation25(double KI, double alpha, double tu)
         {
 
             double sigma_y;
@@ -672,7 +702,7 @@ namespace Modelisator.Model
         }
 
         // calcul of  Useful thichness (mm)
-        static double equation41(double KI, double alpha, double sigma_y)
+        static double equation26(double KI, double alpha, double sigma_y)
         {
             // KI : Stress intensity factor for flaw size to useful thickness (Mpa racine(m))
             // alpha : Correction factor (dimensionless)
@@ -686,7 +716,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Force of punching (N)
-        static double equation8o(double nu, double t, double sigma_y)
+        static double equation27(double nu, double t, double sigma_y)
         {
             // t : Thickness (mm)
             // sigma_y : Yield strenght (Mpa)
@@ -697,7 +727,7 @@ namespace Modelisator.Model
 
 
         // calcul of Radius of punching hole (m)
-        static double equation42(double Fp, double t, double sigma_y)
+        static double equation28(double Fp, double t, double sigma_y)
         {
             // t : Thickness (mm)
             // sigma_y : Yield strenght (Mpa)
@@ -711,7 +741,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Thickness (mm)
-        static double equation43(double Fp, double nu, double sigma_y)
+        static double equation29(double Fp, double nu, double sigma_y)
         {
             // nu : Radius of punching hole (m)
             // sigma_y : Yield strenght (Mpa)
@@ -725,7 +755,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Yield strenght (Mpa)
-        static double equation44(double Fp, double nu, double t)
+        static double equation30(double Fp, double nu, double t)
         {
             // nu : Radius of punching hole (m)
             // t : Thickness (mm)
@@ -740,7 +770,7 @@ namespace Modelisator.Model
 
 
         // calcul of Volume (mm3)
-        static double equation9o(double R, double h)
+        static double equation31(double R, double h)
         {
             // R : Radius (mm)
             // h : Height (mm)
@@ -750,7 +780,7 @@ namespace Modelisator.Model
 
 
         // calcul of Height (mm)
-        static double equation45(double V, double R)
+        static double equation32(double V, double R)
         {
             // R : Radius (mm)
             // V : Volume (mm3)
@@ -763,7 +793,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Radius (mm)
-        static double equation46(double V, double h)
+        static double equation33(double V, double h)
         {
             // h : Height (mm)
             // V : Volume (mm3)
@@ -778,7 +808,7 @@ namespace Modelisator.Model
 
 
         // calcul of Usuful mass (Kg)
-        static double equation10o(double V, double dV, double pg)
+        static double equation34(double V, double dV, double pg)
         {
             // V : Volume (mm3)
             // dV : Expansion of gas 
@@ -788,7 +818,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Volume (mm3)
-        static double equation47(double Mu, double dV, double pg)
+        static double equation35(double Mu, double dV, double pg)
         {
             // Mu : Usuful mass (Kg)
             // dV : Expansion of gas 
@@ -802,7 +832,7 @@ namespace Modelisator.Model
         }
 
         // calcul of density of gaz (kg/m3)
-        static double equation48(double Mu, double dV, double V)
+        static double equation36(double Mu, double dV, double V)
         {
             // Mu : Usuful mass (Kg)
             // dV : Expansion of gas 
@@ -816,7 +846,7 @@ namespace Modelisator.Model
         }
 
         // calcul ofExpansion of gas 
-        static double equation49(double Mu, double pg, double V)
+        static double equation37(double Mu, double pg, double V)
         {
             // Mu : Usuful mass (Kg)
             // pg :  density of gaz (kg/m3)
@@ -830,7 +860,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Surface (mm2)
-        static double equation11o(double R, double h)
+        static double equation38(double R, double h)
         {
             // R : Radius (mm)
             // h : Height (mm)
@@ -839,7 +869,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Height (mm)
-        static double equation50(double R, double S)
+        static double equation39(double R, double S)
         {
             // R : Radius (mm)
             // S : Surface (mm2)
@@ -852,7 +882,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Radius (mm)
-        static double equation51(double h, double S)
+        static double equation40(double h, double S)
         {
             // h : Height (mm)
             // S : Surface (mm2)
@@ -863,7 +893,7 @@ namespace Modelisator.Model
 
 
         // calcul of Empty mass (Kg)
-        static double equation12o(double S, double t, double ro)
+        static double equation41(double S, double t, double ro)
         {
             // S : Surface (mm2)
             // t : Thickness (mm)
@@ -874,7 +904,7 @@ namespace Modelisator.Model
 
 
         // calcul of Surface (mm2)
-        static double equation52(double Mv, double t, double ro)
+        static double equation42(double Mv, double t, double ro)
         {
             // Mv : Empty mass (Kg)
             // t : Thickness (mm)
@@ -888,7 +918,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Thickness (mm)
-        static double equation53(double Mv, double S, double ro)
+        static double equation43(double Mv, double S, double ro)
         {
             // Mv : Empty mass (Kg)
             // S : Surface (mm2)
@@ -902,7 +932,7 @@ namespace Modelisator.Model
         }
 
         // calcul of  Density of material (kg/m3)
-        static double equation54(double Mv, double S, double t)
+        static double equation44(double Mv, double S, double t)
         {
             // Mv : Empty mass (Kg)
             // S : Surface (mm2)
@@ -916,7 +946,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Total mass (Kg)
-        static double equation13o(double Mv, double Mg)
+        static double equation45(double Mv, double Mg)
         {
             // Mv : Empty mass (Kg)
             // Mg : ...
@@ -925,7 +955,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Empty mass (Kg)
-        static double equation55(double Mt, double Mg)
+        static double equation46(double Mt, double Mg)
         {
             // Mt : Total mass (Kg)
             // Mg : ...
@@ -934,7 +964,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Mg
-        static double equation56(double Mt, double Mv)
+        static double equation47(double Mt, double Mv)
         {
             // Mt : Total mass (Kg)
             // Mv : Empty mass (Kg)
@@ -943,7 +973,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Perimeter (mm)
-        static double equation14o(double R)
+        static double equation48(double R)
         {
             // R : Radius (mm)
             double P = 2 * Math.PI * R;
@@ -951,7 +981,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Radius (mm)
-        static double equation57(double P)
+        static double equation49(double P)
         {
             // P : Perimeter (mm)
             double R = P / (2 * Math.PI);
@@ -959,7 +989,7 @@ namespace Modelisator.Model
         }
 
         // calcul of cost crimping (€)
-        static double esuation15o(double P, double cs)
+        static double esuation50(double P, double cs)
         {
             // P : Perimeter (mm)
             // cs : cost/m (€/m)
@@ -968,7 +998,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Perimeter (mm)
-        static double esuation58(double Cs, double cs)
+        static double esuation51(double Cs, double cs)
         {
             // Cs : cost crimping (€)
             // cs : cost/m (€/m)
@@ -981,7 +1011,7 @@ namespace Modelisator.Model
         }
 
         // calcul of cost/m (€/m)
-        static double esuation59(double Cs, double P)
+        static double esuation52(double Cs, double P)
         {
             // Cs : cost crimping (€)
             // P : Perimeter (mm)
@@ -995,7 +1025,7 @@ namespace Modelisator.Model
 
 
         // calcul of cost of material (€)
-        static double equation16(double Mv, double cm)
+        static double equation53(double Mv, double cm)
         {
             // Mv : Empty mass (Kg)
             // cm : cost/m (€/kg)
@@ -1004,7 +1034,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Empty mass (Kg)
-        static double equation60(double Cm, double cm)
+        static double equation54(double Cm, double cm)
         {
             // Cm : cost of material (€)
             // cm : cost/m (€/kg)
@@ -1017,7 +1047,7 @@ namespace Modelisator.Model
         }
 
         // calcul of cost/m (€/kg)
-        static double equation61(double Cm, double Mv)
+        static double equation55(double Cm, double Mv)
         {
             // Cm : cost of material (€)
             // cm : Empty mass (Kg)
@@ -1030,7 +1060,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Coast of coating (€)
-        static double equation17(double S, double cr)
+        static double equation56(double S, double cr)
         {
             // S : Surface (mm2)
             // cr : cost/m2 (€/m2)
@@ -1039,7 +1069,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Surface (mm2)
-        static double equation62(double Cr, double cr)
+        static double equation57(double Cr, double cr)
         {
             // Cr : Coast of coating (€)
             // cr : cost/m2 (€/m2)
@@ -1052,7 +1082,7 @@ namespace Modelisator.Model
         }
 
         // calcul ofcost/m2 (€/m2)
-        static double equation63(double Cr, double S)
+        static double equation58(double Cr, double S)
         {
             // Cr : Coast of coating (€)
             // S : Surface (mm2)
@@ -1065,37 +1095,37 @@ namespace Modelisator.Model
         }
 
         // calcul of Cost of deep drawing
-        static double equation18()
+        static double equation59()
         {
             return 0;
         }
 
         // calcul of sigma_y
-        static double equation64()
+        static double equation60()
         {
             return 0;
         }
 
         // calcul of t
-        static double equation65()
+        static double equation61()
         {
             return 0;
         }
 
         // calcul of R
-        static double equation66()
+        static double equation62()
         {
             return 0;
         }
 
         // calcul of Series
-        static double equation67()
+        static double equation63()
         {
             return 0;
         }
 
         // calcul of total coast (€)
-        static double equation19(double Cm, double Cs, double Cr, double Ce)
+        static double equation64(double Cm, double Cs, double Cr, double Ce)
         {
             // Cm : cost of material (€)
             // Cs : cost crimping (€)
@@ -1108,7 +1138,7 @@ namespace Modelisator.Model
 
 
         // calcul of cost of material (€)
-        static double equation68(double Ct, double Cs, double Cr, double Ce)
+        static double equation65(double Ct, double Cs, double Cr, double Ce)
         {
             // Ct : total coast (€)
             // Cs : cost crimping (€)
@@ -1120,7 +1150,7 @@ namespace Modelisator.Model
         }
 
         // calcul of cost crimping (€)
-        static double equation69(double Ct, double Cm, double Cr, double Ce)
+        static double equation66(double Ct, double Cm, double Cr, double Ce)
         {
             // Ct : total coast (€)
             // Cm : cost of material (€)
@@ -1132,7 +1162,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Coast of coating (€)
-        static double equation70(double Ct, double Cs, double Cm, double Ce)
+        static double equation67(double Ct, double Cs, double Cm, double Ce)
         {
             // Ct : total coast (€)
             // Cs : cost crimping (€)
@@ -1144,7 +1174,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Cost of deep drawing
-        static double equation71(double Ct, double Cs, double Cr, double Cm)
+        static double equation68(double Ct, double Cs, double Cr, double Cm)
         {
             // Ct : total coast (€)
             // Cs : cost crimping (€)
@@ -1158,7 +1188,7 @@ namespace Modelisator.Model
 
 
         // calcul of Rate of heat flow (W)
-        static double equation20(double Tmin, double T0, double lambda, double t, double S)
+        static double equation69(double Tmin, double T0, double lambda, double t, double S)
         {
             // Lambda : Coefficient of thermal conductivity ( W.m-1.K-1)
             // Tmin : Minimum temperature (°C)
@@ -1176,7 +1206,7 @@ namespace Modelisator.Model
 
 
         // calcul of Coefficient of thermal conductivity ( W.m-1.K-1)
-        static double equation72(double Tmin, double T0, double Q, double t, double S)
+        static double equation70(double Tmin, double T0, double Q, double t, double S)
         {
             // Q : Rate of heat flow (W)
             // Tmin : Minimum temperature (°C)
@@ -1192,7 +1222,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Surface (mm2)
-        static double equation73(double Tmin, double T0, double Q, double t, double lambda)
+        static double equation71(double Tmin, double T0, double Q, double t, double lambda)
         {
             // Q : Rate of heat flow (W)
             // Tmin : Minimum temperature (°C)
@@ -1208,7 +1238,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Thickness (mm)
-        static double equation74(double Tmin, double T0, double lambda, double Q, double S)
+        static double equation72(double Tmin, double T0, double lambda, double Q, double S)
         {
             // Lambda : Coefficient of thermal conductivity ( W.m-1.K-1)
             // Tmin : Minimum temperature (°C)
@@ -1224,7 +1254,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Minimum temperature (°C)
-        static double equation75(double t, double T0, double lambda, double Q, double S)
+        static double equation73(double t, double T0, double lambda, double Q, double S)
         {
             // Lambda : Coefficient of thermal conductivity ( W.m-1.K-1)
             // t : Thickness (mm)
@@ -1241,7 +1271,7 @@ namespace Modelisator.Model
 
 
         // calcul of Boiling point : (°C)
-        static double equation76(double t, double Tmin, double lambda, double Q, double S)
+        static double equation74(double t, double Tmin, double lambda, double Q, double S)
         {
             // Lambda : Coefficient of thermal conductivity ( W.m-1.K-1)
             // t : Thickness (mm)
@@ -1260,7 +1290,7 @@ namespace Modelisator.Model
 
 
         // calcul of Volumetric flow rate of gaz (Kg/s)
-        static double equation21(double Q, double Cl)
+        static double equation75(double Q, double Cl)
         {
             // Q : Rate of heat flow (W)
             //Cl : Latent heat of vaporization of gaz (J/Kg)
@@ -1273,7 +1303,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Rate of heat flow (W)
-        static double equation77(double D, double Cl)
+        static double equation76(double D, double Cl)
         {
             // D : Volumetric flow rate of gaz (Kg/s)
             //Cl : Latent heat of vaporization of gaz (J/Kg)
@@ -1283,7 +1313,7 @@ namespace Modelisator.Model
         }
 
         // calcul of Latent heat of vaporization of gaz (J/Kg)
-        static double equation78(double Q, double D)
+        static double equation77(double Q, double D)
         {
             // Q : Rate of heat flow (W)
             // D : Volumetric flow rate of gaz (Kg/s)
@@ -1297,7 +1327,7 @@ namespace Modelisator.Model
 
 
         // calcul of Power (W)
-        static double equation22(double D, double PCI)
+        static double equation78(double D, double PCI)
         {
             // D : Volumetric flow rate of gaz (Kg/s)
             // PCI : Lower heating value (J/Kg)
