@@ -205,7 +205,7 @@ namespace Modelisator.Model
                         if ((Produit.GrandeurPhysiques["delta_t"].Entree || Produit.GrandeurPhysiques["delta_t"].Calcule) &&
                             (Produit.GrandeurPhysiques["tu"].Entree || Produit.GrandeurPhysiques["tu"].Calcule))
                         {
-                            Produit.GrandeurPhysiques["t"].Valeur = equation16(Produit.GrandeurPhysiques["delta_t"].Valeur, Produit.GrandeurPhysiques["tu"].Valeur);
+                            Produit.GrandeurPhysiques["t"].Valeur = equation17(Produit.GrandeurPhysiques["delta_t"].Valeur, Produit.GrandeurPhysiques["tu"].Valeur);
                             Produit.GrandeurPhysiques["t"].Calcule = true;
                         }
                     break;
@@ -215,10 +215,11 @@ namespace Modelisator.Model
                         if ((Produit.GrandeurPhysiques["delta_t"].Entree || Produit.GrandeurPhysiques["delta_t"].Calcule) &&
                             (Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule))
                         {
-                            Produit.GrandeurPhysiques["tu"].Valeur = equation16(Produit.GrandeurPhysiques["delta_t"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                            Produit.GrandeurPhysiques["tu"].Valeur = equation18(Produit.GrandeurPhysiques["delta_t"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
                             Produit.GrandeurPhysiques["tu"].Calcule = true;
                         }
                     break;
+
 
                 default:
 
