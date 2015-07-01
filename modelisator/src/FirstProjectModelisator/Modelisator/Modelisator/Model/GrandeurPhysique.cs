@@ -247,18 +247,6 @@ namespace Modelisator.Model {
 			}
 		}
 
-        public bool Entree
-        {
-            get
-            {
-                return m_entree;
-            }
-            set
-            {
-                m_entree = value;
-            }
-        }
-
         public int      iM
         {
             get { return m_iM; }
