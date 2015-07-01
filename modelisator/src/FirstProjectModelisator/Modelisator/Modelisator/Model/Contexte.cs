@@ -19,12 +19,13 @@ namespace Modelisator.Model {
 		    ListeProduits = new List<Produit>()
 		    {
 		        new Produit("ButaGaz"),
-		        new Produit("Chaise"),
-		        new Produit("Velo"),
-		        new Produit("Table"),
-		        new Produit("Mur"),
-		        new Produit("Tableau"),
-		        new Produit("Pompe")
+		        new Produit("..."),
+		        new Produit("..."),
+		        new Produit("..."),
+		        new Produit("..."),
+		        new Produit("..."),
+		        new Produit("..."),
+		        new Produit("..."),
 		    };
         }
 

@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Modelisator.Model;
 using System.Threading;
+using System.Windows;
 
 namespace Modelisator.ViewModel
 {
@@ -17,8 +18,9 @@ namespace Modelisator.ViewModel
         public MainController(System.Windows.Application app, MainWindow mainWindow)
         {
 
-            //Thread.Sleep(2000);
+            Thread.Sleep(2000);
             App = app;
+            mainWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
             MainWindow = mainWindow;
             Ctx = new Contexte();
 

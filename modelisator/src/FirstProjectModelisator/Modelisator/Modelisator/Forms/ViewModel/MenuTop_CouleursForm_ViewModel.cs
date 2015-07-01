@@ -17,6 +17,7 @@ namespace Modelisator.Forms.ViewModel
         public event EventHandler<EventArgs> OKCOULEUR;
         public event EventHandler<EventArgs> Import_Ev;
         public event EventHandler<EventArgs> Export_Ev;
+        public event EventHandler<EventArgs> VueEnsemble;
 
 
         public MenuTop_CouleursForm_ViewModel()
@@ -32,8 +33,9 @@ namespace Modelisator.Forms.ViewModel
         protected void ConnectView()
         {
             View.cmdBoxCouleurs.SelectionChanged += Couleurclick;
-            View.brn_Export.Click += Export_click;
+            View.btn_Export.Click += Export_click;
             View.btn_Import.Click += Import_click;
+            View.btn_VueEnsemble.Click += VueEnsemble_click;
         }
         public MenuTop_CouleursForm_View View
         {
@@ -44,6 +46,12 @@ namespace Modelisator.Forms.ViewModel
         {
             get;
             private set;
+        }
+
+        protected void VueEnsemble_click(object sender, RoutedEventArgs e)
+        {
+            if (VueEnsemble != null)
+                VueEnsemble(this, e);
         }
 
         protected void Export_click(object sender, RoutedEventArgs e)

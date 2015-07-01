@@ -51,9 +51,17 @@ namespace Modelisator.ViewModel
         }
         private void CatchSelectedProduit(object sender, EventArgs args)
         {
-            Model.selectionnerProduit((((Button)sender).Content.ToString()));
-            if (ClickBTNProduit != null)
-                ClickBTNProduit(sender, args);
+            if ((((Button) sender).Content.ToString()) == "ButaGaz")
+            {
+                Model.selectionnerProduit((((Button)sender).Content.ToString()));
+                if (ClickBTNProduit != null)
+                    ClickBTNProduit(sender, args);
+            }
+            else
+            {
+                MessageBox.Show("Produit selectionner non implémenté. Merci de choisir un autre produit.");
+            }
+                
         }
     }
 }

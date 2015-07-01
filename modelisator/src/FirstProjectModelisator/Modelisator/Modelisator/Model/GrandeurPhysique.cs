@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Media;
 using Modelisator.Model;
 
 namespace Modelisator.Model {
@@ -38,15 +39,6 @@ namespace Modelisator.Model {
             OnPropertyChanged(new PropertyChangedEventArgs(propertyName));
         }
 
-        protected void OnValeurChanger(EventArgs e)
-        {
-            EventHandler handler = ValeurChanger;
-            if (handler != null)
-                handler(this, e);
-        }
-
-        public event EventHandler ValeurChanger;
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         public  List<Equation> Equations;
@@ -57,31 +49,158 @@ namespace Modelisator.Model {
 	    {
 	        Nom = nom;
             Unite = "[SI]";
-            isCalculate = false;
-            isGiven = false;
+            Description = "Description de la GP " + nom + " est ici.";
+            setCouleurs();
+            setBouleans();
 	    }
         public GrandeurPhysique(string nom, int im)
         {
             Nom = nom;
             iM = im;
             Unite = "[SI]";
-            isCalculate = false;
-            isGiven = false;
+            Description = "Description de la GP " + nom + " est ici.";
+            setCouleurs();
+            setBouleans();
+        }
+        public GrandeurPhysique(string nom, int im, string dsc, bool premier)
+        {
+            Nom = nom;
+            iM = im;
+            Unite = "[SI]";
+            Description = dsc;
+            EstPremier = premier;
+            setBouleans();
+            setCouleurs();
         }
 
-	    public bool isCalculate { get; set; }
-        public bool isGiven { get; set; }
+        public void setBouleans()
+        {
+            Calcule = false;
+            Entree = false;
+            FocusOn = false;
+            Selectionne = false;
+        }
 
-		public bool Calcule{
+        public void setCouleurs()
+        {
+            Calcule_Couleur_Font = new SolidColorBrush(Colors.DarkViolet);
+            Entree_Couleur_Font = new SolidColorBrush(Colors.DarkGreen);
+            Defaut_Couleur_Font = new SolidColorBrush(Colors.Black);
+            Focus_Couleur_BackG = new SolidColorBrush(Colors.DodgerBlue);
+            Defaut_Couleur_BackG = new SolidColorBrush(Colors.White);
+        }
+        private bool m_isCalculate;
+
+        private bool m_isGiven;
+
+        private bool m_focusOn;
+
+        private SolidColorBrush m_CouleurNoeud;
+
+        private SolidColorBrush m_CouleurBackG;
+
+        static SolidColorBrush Calcule_Couleur_Font;
+        static SolidColorBrush Entree_Couleur_Font;
+        static SolidColorBrush Defaut_Couleur_Font;
+        static SolidColorBrush Focus_Couleur_BackG;
+        static SolidColorBrush Defaut_Couleur_BackG;
+
+        public void rafraichirCouleur()
+        {
+            if (Calcule)
+                CouleurNoeud = Calcule_Couleur_Font;
+            else if (Entree)
+                CouleurNoeud = Entree_Couleur_Font;
+            else
+                CouleurNoeud = Defaut_Couleur_Font;
+
+            if (FocusOn)
+                CouleurBackG = Focus_Couleur_BackG;
+            else
+                CouleurBackG = Defaut_Couleur_BackG;
+        }
+
+        public SolidColorBrush CouleurBackG
+        {
+            get
+            {
+                // rafraichirCouleur();
+                return m_CouleurBackG;
+            }
+            set
+            {
+                m_CouleurBackG = value;
+                OnPropertyChanged("CouleurBackG");
+            }
+        }
+
+        public SolidColorBrush CouleurNoeud
+        {
+            get
+            {
+               // rafraichirCouleur();
+                return m_CouleurNoeud;
+            }
+            set
+            {
+                m_CouleurNoeud = value;
+                OnPropertyChanged("CouleurNoeud");
+            }
+        }
+        
+        public bool FocusOn
+        {
+            get
+            {
+                return m_focusOn;
+            }
+            set
+            {
+                m_focusOn = value;
+                rafraichirCouleur();
+            }
+        } public bool Calcule
+        {
+            get
+            {
+                return m_isCalculate;
+            }
+            set
+            {
+                m_isCalculate = value;
+                rafraichirCouleur();
+            }
+        }
+
+        public bool Entree
+        {
+            get
+            {
+                return m_isGiven;
+            }
+            set
+            {
+                m_isGiven = value;
+                rafraichirCouleur();
+            }
+        }
+
+		public double   Valeur{
 			get{
-                return m_Calcule;
+				return m_Valeur;
 			}
-			set{
-                m_Calcule = value;
+			set
+			{
+			    Entree = true;
+                if (value != m_Valeur)
+                {
+                    m_Valeur = value;
+                    OnPropertyChanged("Valeur");
+                }
 			}
 		}
 
-		public string Description{
+		public string   Description{
 			get{
                 return m_Description;
 			}
@@ -117,29 +236,14 @@ namespace Modelisator.Model {
 			}
 		}
 
+
+
 		public string   Unite{
 			get{
 				return m_Unite;
 			}
 			set{
 				m_Unite = value;
-			}
-		}
-
-		public double   Valeur{
-			get{
-				return m_Valeur;
-			}
-			set
-			{
-			    isGiven = true;
-			    isCalculate = false;
-                if (value != m_Valeur)
-                {
-                    m_Valeur = value;
-                    OnPropertyChanged("Valeur");
-                    OnValeurChanger(EventArgs.Empty);
-                }
 			}
 		}
 
@@ -155,7 +259,7 @@ namespace Modelisator.Model {
             }
         }
 
-        public int iM
+        public int      iM
         {
             get { return m_iM; }
             set { m_iM = value; }

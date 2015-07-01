@@ -6,12 +6,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
 using Modelisator.Model;
 
 namespace Modelisator.MonGraphX
 {
     public class MonGraph_ViewModel
     {
+        public MouseEventHandler FocusGraph;
 
         public event PropertyChangedEventHandler EventSaisie;
 
@@ -23,33 +25,51 @@ namespace Modelisator.MonGraphX
             ConnectView(); 
         }
 
-        protected void ConnectView()
+        public void ConnectView()
         {
+            View.SelectionGP += FocusGP;
             foreach (var GP in Produit.GrandeurPhysiques)
             {
-                GP.Value.PropertyChanged += ValurGP_PropertyChanged;
+                GP.Value.PropertyChanged += GP_PropertyChanged;
             }
         }
+        
 
-        private void ValurGP_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        private void FocusGP(object sender, MouseEventArgs e)
         {
-
-            MessageBox.Show("Et voila, Noeud '"+ ((GrandeurPhysique)sender).Nom+"' saisi, reste plus qu'a calculer");
+            PreapationGPselectionnee(((TextBlock)e.Source).Text);
+            if (FocusGraph != null)
+                FocusGraph(this, e);
         }
 
-        protected void SetupView()
+        private void GP_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            //  Nom du noeud modifié            ((GrandeurPhysique)sender).Nom  
+            //  Nom de la propriété modifier    e.PropertyName
+            if (e.PropertyName=="Valeur")
+                Model.CalculerRelation(((GrandeurPhysique)sender));
+        }
+
+        public void PreapationGPselectionnee(string GPnom)
+        {
+            Model.RAZselectionGP();
+            if (GPnom!="")
+            Model.InitialiserVoisinFocuGP(Produit.GrandeurPhysiques[GPnom]);
+        }
+
+        public void SetupView()
         {
 
         }
         public MonGraph_UserControl View
         {
             get;
-            private set;
+            set;
         }
         public MonGraph_Model Model
         {
             get;
-            private set;
+            set;
         }
 
 

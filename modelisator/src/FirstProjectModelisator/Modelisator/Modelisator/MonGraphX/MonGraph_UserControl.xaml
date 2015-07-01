@@ -9,25 +9,16 @@
              d:DesignHeight="300" d:DesignWidth="300">
 <UserControl.Resources>
         <DataTemplate x:Key="demoTemplate" DataType="{x:Type simpleGraph:DataVertex}">
-            <StackPanel Orientation="Horizontal" Margin="5">
-                <TextBlock Name="TextId"  Text="{Binding Path=Text, Mode=OneWay}" Foreground="DimGray" Margin="5" />
-                <TextBox Text="{Binding Path=GP.Valeur, Mode=TwoWay}" Foreground="Gray" Margin="3" />
-                <TextBlock Text="{Binding Path=Unit, Mode=OneWay}" Foreground="Black" Margin="5" />
+            <StackPanel Orientation="Horizontal" Name="PanelNoeud" Background="{Binding GP.CouleurBackG}" >
+                <StackPanel.ToolTip>
+                    <ToolTip>
+                        <TextBlock Text="{Binding Path=GP.Description, Mode=OneWay}" ></TextBlock>
+                    </ToolTip>
+                </StackPanel.ToolTip>
+                <TextBlock Name="TextId"  Text="{Binding Path=Text, Mode=OneWay}" FontWeight="Bold" MouseLeftButtonDown="PanelNoeud_OnMouseLeftButtonDown"  Foreground="Black" Margin="5" />
+                <TextBox Text="{Binding Path=GP.Valeur, Mode=TwoWay, StringFormat=N2}"   Foreground="{Binding GP.CouleurNoeud}" Margin="3" />
+                <TextBlock Text="{Binding Path=Unit, Mode=OneWay}"   Foreground="Black" Margin="5" />
             </StackPanel>
-            <DataTemplate.Triggers>
-                <DataTrigger Binding="{Binding Path=GP.isCalculate}" Value="false">
-                    <Setter TargetName="TextId" Property="Foreground"  Value="Black" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Path=GP.isCalculate}" Value="true">
-                    <Setter TargetName="TextId" Property="Foreground"  Value="OrangeRed" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Path=GP.isGiven}" Value="false">
-                    <Setter TargetName="TextId" Property="Foreground"  Value="Black" />
-                </DataTrigger>
-                <DataTrigger Binding="{Binding Path=GP.isGiven}" Value="true">
-                    <Setter TargetName="TextId" Property="Foreground"  Value="Green" />
-                </DataTrigger>
-            </DataTemplate.Triggers>
     </DataTemplate>
     <Style TargetType="{x:Type graphx:VertexControl}">
             <Setter Property="Template">

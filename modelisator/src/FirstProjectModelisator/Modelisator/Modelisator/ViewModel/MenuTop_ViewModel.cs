@@ -16,6 +16,7 @@ namespace Modelisator.ViewModel
         public MenuTop_StatutForm_ViewModel MenuTopForm_ViewModel;
         public MenuTop_CouleursForm_ViewModel MenuTop_CouleursForm_ViewModel;
         public event EventHandler<EventArgs> OKCOULEUR;
+        public event EventHandler<EventArgs> VueEnsemble;
 
         public MenuTop_ViewModel()
         {
@@ -40,6 +41,13 @@ namespace Modelisator.ViewModel
             View.MenuTopCenter_ContentPanel.Children.Add(MenuTop_CouleursForm_ViewModel.View);
 
             MenuTop_CouleursForm_ViewModel.OKCOULEUR += OKTOP;
+            MenuTop_CouleursForm_ViewModel.VueEnsemble += VuenEnsembleClick;
+        }
+
+        private void VuenEnsembleClick(object sender, EventArgs args)
+        {
+            if (VueEnsemble != null)
+                VueEnsemble(this, args);
         }
 
         private void OKTOP(object sender, EventArgs args)

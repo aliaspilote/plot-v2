@@ -31,16 +31,8 @@ namespace Modelisator.ViewModel
 
         }
 
-        public ModelisatorFram_View_UserControl View
-        {
-            get;
-            private set;
-        }
-        public ModelisatorFrame_Model Model
-        {
-            get;
-            private set;
-        }
+        public ModelisatorFram_View_UserControl View { get; private set; }
+        public ModelisatorFrame_Model Model { get; private set; }
 
         protected void PapierPeintChange(object sender, EventArgs e)
         {
@@ -48,39 +40,41 @@ namespace Modelisator.ViewModel
             Refresh();
         }
 
-        protected void SelectionProduit(object sender, EventArgs e)
+        protected void ChoixProduit_Clik_Action(object sender, EventArgs e)
         {
-            foreach (var p in Ctx.ListeProduits)
-            {
-                if (p.Selectionner)
-                    MessageBox.Show(p.Nom + " a été selectionné, on crée maintenant le graph de cette objet.");
-            }
+            EspaceTravail_ViewModel = new EspaceTravail_ViewModel(Ctx);
+            View.EspaceTravail_ContentPanel.Children.Add(EspaceTravail_ViewModel.View);
+            MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.View.btn_VueEnsemble.IsEnabled = true;
+            MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.View.btn_Export.IsEnabled = true;
+            MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.View.btn_Import.IsEnabled = true;
         }
 
         protected void SetupModelisatorFrame()
         {
-            EspaceTravail_ViewModel = new EspaceTravail_ViewModel(Ctx);
+            
             Info_ViewModel = new Info_ViewModel(Ctx);
             MenuTop_ViewModel = new MenuTop_ViewModel(Ctx);
             ProduitChoix_ViewModel = new ProduitChoix_ViewModel(Ctx);
-            
+
             View.ProduitChoix_ContentPanel.Children.Add(ProduitChoix_ViewModel.View);
-            View.EspaceTravail_ContentPanel.Children.Add(EspaceTravail_ViewModel.View);
             View.Info_ContentPanel.Children.Add(Info_ViewModel.View);
             View.MenuTop_ContentPanel.Children.Add(MenuTop_ViewModel.View);
         }
+
         public void ConnectView()
         {
             View.PapierpeintGrid.DataContext = MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.Model.CouleurBrush;
             MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.OKCOULEUR += PapierPeintChange;
-            ProduitChoix_ViewModel.ClickBTNProduit += SelectionProduit;
+            ProduitChoix_ViewModel.ClickBTNProduit += ChoixProduit_Clik_Action;
+            MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.VueEnsemble += VueEnsemble_Clik_Action;
         }
 
         public void DeconnectView()
         {
             View.PapierpeintGrid.DataContext = null;
             MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.OKCOULEUR -= PapierPeintChange;
-            ProduitChoix_ViewModel.ClickBTNProduit -= SelectionProduit;
+            ProduitChoix_ViewModel.ClickBTNProduit -= ChoixProduit_Clik_Action;
+            MenuTop_ViewModel.MenuTop_CouleursForm_ViewModel.VueEnsemble += VueEnsemble_Clik_Action;
         }
 
         public void Refresh()
@@ -89,5 +83,9 @@ namespace Modelisator.ViewModel
             ConnectView();
         }
 
+        private void VueEnsemble_Clik_Action(object sender, EventArgs args)
+        {
+            EspaceTravail_ViewModel.RefreshVueGraph();
+        }
     }
 }

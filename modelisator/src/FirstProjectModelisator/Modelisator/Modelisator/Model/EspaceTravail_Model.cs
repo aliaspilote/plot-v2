@@ -14,15 +14,7 @@ namespace Modelisator.Model
         public EspaceTravail_Model(Contexte ctx)
         {
             Ctx = ctx;
-        }
-
-        public void BuildeGraph(Produit pdt)
-        {
-            foreach (var GP in Produit.GrandeurPhysiques)
-            {
-                
-            }
-
+            Relation.EnnumRelation();
         }
     }
 }

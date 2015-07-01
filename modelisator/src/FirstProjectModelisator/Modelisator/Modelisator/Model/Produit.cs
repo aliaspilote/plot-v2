@@ -73,17 +73,17 @@ namespace Modelisator.Model {
 
 	    public static void InitialiserGPs()
 	    {
-            GrandeurPhysiques.Add("p", new GrandeurPhysique("p",0));
-            GrandeurPhysiques.Add("X1", new GrandeurPhysique("X1",1));
-            GrandeurPhysiques.Add("Tmax", new GrandeurPhysique("Tmax",2));
-            GrandeurPhysiques.Add("p0", new GrandeurPhysique("p0",3));
-            GrandeurPhysiques.Add("dV", new GrandeurPhysique("dV",4));
-            GrandeurPhysiques.Add("alpha_gas", new GrandeurPhysique("alpha_gas",5));
-            GrandeurPhysiques.Add("sigma", new GrandeurPhysique("sigma",6));
-            GrandeurPhysiques.Add("R", new GrandeurPhysique("R",7));
-            GrandeurPhysiques.Add("t", new GrandeurPhysique("t",8));
-            GrandeurPhysiques.Add("tu", new GrandeurPhysique("tu",9));
-            GrandeurPhysiques.Add("sigma_y", new GrandeurPhysique("sigma_y", 10));
+            GrandeurPhysiques.Add("p",          new GrandeurPhysique("p",           0,"Description en cours de rédaction",true  ));
+            GrandeurPhysiques.Add("X1",         new GrandeurPhysique("X1",          1,"Description en cours de rédaction",false  ));
+            GrandeurPhysiques.Add("Tmax",       new GrandeurPhysique("Tmax",        2,"Description en cours de rédaction",true  ));
+            GrandeurPhysiques.Add("p0",         new GrandeurPhysique("p0",          3,"Description en cours de rédaction",true  ));
+            GrandeurPhysiques.Add("dV",         new GrandeurPhysique("dV",          4,"Description en cours de rédaction",true  ));
+            GrandeurPhysiques.Add("alpha_gas",  new GrandeurPhysique("alpha_gas",   5,"Description en cours de rédaction",false  ));
+            GrandeurPhysiques.Add("sigma",      new GrandeurPhysique("sigma",       6,"Description en cours de rédaction",false  ));
+            GrandeurPhysiques.Add("R",          new GrandeurPhysique("R",           7,"Description en cours de rédaction",true  ));
+            GrandeurPhysiques.Add("t",          new GrandeurPhysique("t",           8,"Description en cours de rédaction",true  ));
+            GrandeurPhysiques.Add("tu",         new GrandeurPhysique("tu",          9,"Description en cours de rédaction",false  ));
+            GrandeurPhysiques.Add("sigma_y",    new GrandeurPhysique("sigma_y",     10,"Description en cours de rédaction",false));
             //GrandeurPhysiques.Add("p", new GrandeurPhysique("p",1));
 	    }
         

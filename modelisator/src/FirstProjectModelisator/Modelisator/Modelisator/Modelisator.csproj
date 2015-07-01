@@ -223,17 +223,15 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="splashScreen.PNG">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Images\boy.ico" />
     <Resource Include="Images\girl.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\dice.png" />
     <Resource Include="Images\update.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <SplashScreen Include="splashScreen2.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -23,68 +23,171 @@ namespace Modelisator.Model
 
         private int m_NbrGPConnus;
 
-        public void Calculer(int indiceEqu)
+        public static void Calculer(int indiceEqu)
         {
             switch (indiceEqu)
             {
                 case 1:
-                    Produit.GrandeurPhysiques["p"].Valeur = equation1(Produit.GrandeurPhysiques["X1"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["p0"].Valeur);
+                    if (!Produit.GrandeurPhysiques["p"].Entree) // Verifie que le résulta de l'equation n'est pas une donnée d'entrée
+                        if ((Produit.GrandeurPhysiques["X1"].Entree || Produit.GrandeurPhysiques["X1"].Calcule) &&
+                            (Produit.GrandeurPhysiques["Tmax"].Entree || Produit.GrandeurPhysiques["Tmax"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p0"].Entree || Produit.GrandeurPhysiques["p0"].Calcule))
+                            // Vérifie que les parametres de l'équation ne sont pas null
+                        {
+                            Produit.GrandeurPhysiques["p"].Valeur = equation1(Produit.GrandeurPhysiques["X1"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["p0"].Valeur);
+                            Produit.GrandeurPhysiques["p"].Calcule = true;
+                        }
                     break;
 
                 case 2:
-                    Produit.GrandeurPhysiques["X1"].Valeur = equation2(Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["p0"].Valeur);
+                    if (!Produit.GrandeurPhysiques["X1"].Entree)
+                        if ((Produit.GrandeurPhysiques["p"].Entree || Produit.GrandeurPhysiques["p"].Calcule) &&
+                            (Produit.GrandeurPhysiques["Tmax"].Entree || Produit.GrandeurPhysiques["Tmax"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p0"].Entree || Produit.GrandeurPhysiques["p0"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["X1"].Valeur = equation2(Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["p0"].Valeur);
+                            Produit.GrandeurPhysiques["X1"].Calcule = true;
+                        }
                     break;
 
                 case 3:
-                    Produit.GrandeurPhysiques["Tmax"].Valeur = equation3(Produit.GrandeurPhysiques["X1"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["p0"].Valeur);
+                    if (!Produit.GrandeurPhysiques["Tmax"].Entree)
+                        if ((Produit.GrandeurPhysiques["X1"].Entree || Produit.GrandeurPhysiques["X1"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p"].Entree || Produit.GrandeurPhysiques["p"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p0"].Entree || Produit.GrandeurPhysiques["p0"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["Tmax"].Valeur = equation3(Produit.GrandeurPhysiques["X1"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["p0"].Valeur);
+                            Produit.GrandeurPhysiques["Tmax"].Calcule = true;
+                        }
                     break;
 
                 case 4:
-                    Produit.GrandeurPhysiques["p0"].Valeur = equation4(Produit.GrandeurPhysiques["X1"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["p"].Valeur);
+                    if (!Produit.GrandeurPhysiques["p0"].Entree)
+                        if ((Produit.GrandeurPhysiques["X1"].Entree || Produit.GrandeurPhysiques["X1"].Calcule) &&
+                            (Produit.GrandeurPhysiques["Tmax"].Entree || Produit.GrandeurPhysiques["Tmax"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p"].Entree || Produit.GrandeurPhysiques["p"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["p0"].Valeur = equation4(Produit.GrandeurPhysiques["X1"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["p"].Valeur);
+                            Produit.GrandeurPhysiques["p0"].Calcule = true;
+                        }
                     break;
 
                 case 5:
-                    Produit.GrandeurPhysiques["dV"].Valeur = equation5(Produit.GrandeurPhysiques["alpha_gas"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur);
+                    if (!Produit.GrandeurPhysiques["dV"].Entree)
+                        if ((Produit.GrandeurPhysiques["alpha_gas"].Entree || Produit.GrandeurPhysiques["alpha_gas"].Calcule) &&
+                            (Produit.GrandeurPhysiques["Tmax"].Entree || Produit.GrandeurPhysiques["Tmax"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["dV"].Valeur = equation5(Produit.GrandeurPhysiques["alpha_gas"].Valeur, Produit.GrandeurPhysiques["Tmax"].Valeur);
+                            Produit.GrandeurPhysiques["dV"].Calcule = true;
+                        }
                     break;
 
                 case 6:
-                    Produit.GrandeurPhysiques["Tmax"].Valeur = equation6(Produit.GrandeurPhysiques["alpha_gas"].Valeur, Produit.GrandeurPhysiques["dV"].Valeur);
+                    if (!Produit.GrandeurPhysiques["Tmax"].Entree)
+                        if ((Produit.GrandeurPhysiques["alpha_gas"].Entree || Produit.GrandeurPhysiques["alpha_gas"].Calcule) &&
+                            (Produit.GrandeurPhysiques["dV"].Entree || Produit.GrandeurPhysiques["dV"].Calcule))       
+                        {
+                            Produit.GrandeurPhysiques["Tmax"].Valeur = equation6(Produit.GrandeurPhysiques["alpha_gas"].Valeur, Produit.GrandeurPhysiques["dV"].Valeur);
+                            Produit.GrandeurPhysiques["Tmax"].Calcule = true;
+                        }
                     break;
 
                 case 7:
-                    Produit.GrandeurPhysiques["alpha_gas"].Valeur = equation7(Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["dV"].Valeur);
+                    if (!Produit.GrandeurPhysiques["alpha_gas"].Entree)
+                        if ((Produit.GrandeurPhysiques["dV"].Entree || Produit.GrandeurPhysiques["dV"].Calcule) &&
+                            (Produit.GrandeurPhysiques["Tmax"].Entree || Produit.GrandeurPhysiques["Tmax"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["alpha_gas"].Valeur = equation7(Produit.GrandeurPhysiques["Tmax"].Valeur, Produit.GrandeurPhysiques["dV"].Valeur);
+                            Produit.GrandeurPhysiques["alpha_gas"].Calcule = true;
+                        }
                     break;
 
                 case 8:
-                    Produit.GrandeurPhysiques["sigma"].Valeur = equation8(Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                    if (!Produit.GrandeurPhysiques["sigma"].Entree)
+                        if ((Produit.GrandeurPhysiques["R"].Entree || Produit.GrandeurPhysiques["R"].Calcule) &&
+                            (Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p"].Entree || Produit.GrandeurPhysiques["p"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["sigma"].Valeur = equation8(Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                            Produit.GrandeurPhysiques["sigma"].Calcule = true;
+                        }
                     break;
 
                 case 9:
-                    Produit.GrandeurPhysiques["p"].Valeur = equation9(Produit.GrandeurPhysiques["sigma"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                    if (!Produit.GrandeurPhysiques["p"].Entree)
+                        if ((Produit.GrandeurPhysiques["R"].Entree || Produit.GrandeurPhysiques["R"].Calcule) &&
+                            (Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["sigma"].Entree || Produit.GrandeurPhysiques["sigma"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["p"].Valeur = equation9(Produit.GrandeurPhysiques["sigma"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                            Produit.GrandeurPhysiques["p"].Calcule = true;
+                        }
                     break;
 
                 case 10:
-                    Produit.GrandeurPhysiques["R"].Valeur = equation10(Produit.GrandeurPhysiques["sigma"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                    if (!Produit.GrandeurPhysiques["R"].Entree)
+                        if ((Produit.GrandeurPhysiques["sigma"].Entree || Produit.GrandeurPhysiques["sigma"].Calcule) &&
+                            (Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p"].Entree || Produit.GrandeurPhysiques["p"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["R"].Valeur = equation10(Produit.GrandeurPhysiques["sigma"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["t"].Valeur);
+                            Produit.GrandeurPhysiques["R"].Calcule = true;
+                        }
                     break;
 
                 case 11:
-                    Produit.GrandeurPhysiques["t"].Valeur = equation11(Produit.GrandeurPhysiques["sigma"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur);
+                    if (!Produit.GrandeurPhysiques["t"].Entree)
+                        if ((Produit.GrandeurPhysiques["R"].Entree || Produit.GrandeurPhysiques["R"].Calcule) &&
+                            (Produit.GrandeurPhysiques["sigma"].Entree || Produit.GrandeurPhysiques["sigma"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p"].Entree || Produit.GrandeurPhysiques["p"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["t"].Valeur = equation11(Produit.GrandeurPhysiques["sigma"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur);
+                            Produit.GrandeurPhysiques["t"].Calcule = true;
+                        }
                     break;
 
                 case 12:
-                    Produit.GrandeurPhysiques["tu"].Valeur = equation12(Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["sigma_y"].Valeur);
+                    if (!Produit.GrandeurPhysiques["tu"].Entree)
+                        if ((Produit.GrandeurPhysiques["R"].Entree || Produit.GrandeurPhysiques["R"].Calcule) &&
+                            (Produit.GrandeurPhysiques["sigma_y"].Entree || Produit.GrandeurPhysiques["sigma_y"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p"].Entree || Produit.GrandeurPhysiques["p"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["tu"].Valeur = equation12(Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["sigma_y"].Valeur);
+                            Produit.GrandeurPhysiques["tu"].Calcule = true;
+                        }
                     break;
 
                 case 13:
-                    Produit.GrandeurPhysiques["p"].Valeur = equation13(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["sigma_y"].Valeur);
+                    if (!Produit.GrandeurPhysiques["p"].Entree)
+                        if ((Produit.GrandeurPhysiques["R"].Entree || Produit.GrandeurPhysiques["R"].Calcule) &&
+                            (Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["sigma_y"].Entree || Produit.GrandeurPhysiques["sigma_y"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["p"].Valeur = equation13(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["R"].Valeur, Produit.GrandeurPhysiques["sigma_y"].Valeur);
+                            Produit.GrandeurPhysiques["p"].Calcule = true;
+                        }
                     break;
 
                 case 14:
-                    Produit.GrandeurPhysiques["R"].Valeur = equation14(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["sigma_y"].Valeur);
+                    if (!Produit.GrandeurPhysiques["R"].Entree)
+                        if ((Produit.GrandeurPhysiques["sigma_y"].Entree || Produit.GrandeurPhysiques["sigma_y"].Calcule) &&
+                            (Produit.GrandeurPhysiques["t"].Entree || Produit.GrandeurPhysiques["t"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p"].Entree || Produit.GrandeurPhysiques["p"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["R"].Valeur = equation14(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["sigma_y"].Valeur);
+                            Produit.GrandeurPhysiques["R"].Calcule = true;
+                        }
                     break;
 
                 case 15:
-                    Produit.GrandeurPhysiques["sigma_y"].Valeur = equation15(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur);
+                    if (!Produit.GrandeurPhysiques["sigma_y"].Entree)
+                        if ((Produit.GrandeurPhysiques["tu"].Entree || Produit.GrandeurPhysiques["tu"].Calcule) &&
+                            (Produit.GrandeurPhysiques["p"].Entree || Produit.GrandeurPhysiques["p"].Calcule) &&
+                            (Produit.GrandeurPhysiques["R"].Entree || Produit.GrandeurPhysiques["R"].Calcule))
+                        {
+                            Produit.GrandeurPhysiques["sigma_y"].Valeur = equation15(Produit.GrandeurPhysiques["tu"].Valeur, Produit.GrandeurPhysiques["p"].Valeur, Produit.GrandeurPhysiques["R"].Valeur);
+                            Produit.GrandeurPhysiques["sigma_y"].Calcule = true;
+                        }
                     break;
 
                 default:
@@ -542,7 +645,7 @@ namespace Modelisator.Model
         {
 
             double alpha;
-            if (sigma_y != 0 && tu != 0)
+            if (sigma_y != 0 || tu != 0)
                 alpha = KI / (sigma_y * Math.Sqrt(tu));
             else
                 alpha = -1;
@@ -561,7 +664,7 @@ namespace Modelisator.Model
         {
 
             double sigma_y;
-            if (alpha != 0 && tu != 0)
+            if (alpha != 0 || tu != 0)
                 sigma_y = KI / (alpha * Math.Sqrt(tu));
             else
                 sigma_y = -1;
@@ -575,7 +678,7 @@ namespace Modelisator.Model
             // alpha : Correction factor (dimensionless)
             // sigma_y : Yield strenght (Mpa)
             double tu;
-            if (alpha != 0 && sigma_y != 0)
+            if (alpha != 0 || sigma_y != 0)
                 tu = Math.Pow(KI / (alpha * sigma_y), 2);
             else
                 tu = -1;
@@ -600,7 +703,7 @@ namespace Modelisator.Model
             // sigma_y : Yield strenght (Mpa)
             // Fp : Force of punching (N)
             double nu;
-            if (t != 0 && sigma_y != 0)
+            if (t != 0 || sigma_y != 0)
                 nu = Fp / (2 * Math.PI * t * sigma_y);
             else
                 nu = -1;
@@ -614,7 +717,7 @@ namespace Modelisator.Model
             // sigma_y : Yield strenght (Mpa)
             // Fp : Force of punching (N)
             double t;
-            if (nu != 0 && sigma_y != 0)
+            if (nu != 0 || sigma_y != 0)
                 t = Fp / (2 * Math.PI * nu * sigma_y);
             else
                 t = -1;
@@ -628,7 +731,7 @@ namespace Modelisator.Model
             // t : Thickness (mm)
             // Fp : Force of punching (N)
             double sigma_y;
-            if (nu != 0 && t != 0)
+            if (nu != 0 || t != 0)
                 sigma_y = Fp / (2 * Math.PI * nu * t);
             else
                 sigma_y = -1;
@@ -691,7 +794,7 @@ namespace Modelisator.Model
             // dV : Expansion of gas 
             // pg : density of gaz (kg/m3)
             double V;
-            if (pg != 0 && dV != 1)
+            if (pg != 0 || dV != 1)
                 V = Mu / ((1 - dV) * pg);
             else
                 V = -1;
@@ -705,7 +808,7 @@ namespace Modelisator.Model
             // dV : Expansion of gas 
             // V : Volume (mm3)
             double pg;
-            if (V != 0 && dV != 1)
+            if (V != 0 || dV != 1)
                 pg = Mu / ((1 - dV) * V);
             else
                 pg = -1;
@@ -719,7 +822,7 @@ namespace Modelisator.Model
             // pg :  density of gaz (kg/m3)
             // V : Volume (mm3)
             double dV;
-            if (V != 0 && pg != 0)
+            if (V != 0 || pg != 0)
                 dV = 1 - (Mu / (pg * V));
             else
                 dV = -1;
@@ -777,7 +880,7 @@ namespace Modelisator.Model
             // t : Thickness (mm)
             // ro : Density of material (kg/m3)
             double S;
-            if (t != 0 && ro != 0)
+            if (t != 0 || ro != 0)
                 S = Mv / (t * ro);
             else
                 S = -1;
@@ -791,7 +894,7 @@ namespace Modelisator.Model
             // S : Surface (mm2)
             // ro : Density of material (kg/m3)
             double t;
-            if (S != 0 && ro != 0)
+            if (S != 0 || ro != 0)
                 t = Mv / (S * ro);
             else
                 t = -1;
@@ -805,7 +908,7 @@ namespace Modelisator.Model
             // S : Surface (mm2)
             // t :Thickness (mm)
             double ro;
-            if (S != 0 && t != 0)
+            if (S != 0 || t != 0)
                 ro = Mv / (S * t);
             else
                 ro = -1;
@@ -1081,7 +1184,7 @@ namespace Modelisator.Model
             // S : Surface (mm2)
             // t : Thickness (mm)
             double lambda;
-            if (S != 0 && Tmin != T0)
+            if (S != 0 || Tmin != T0)
                 lambda = Q * t / (S * (Tmin - T0));
             else
                 lambda = -1;
@@ -1097,7 +1200,7 @@ namespace Modelisator.Model
             // lambda : Coefficient of thermal conductivity ( W.m-1.K-1)
             // t : Thickness (mm)
             double S;
-            if (lambda != 0 && Tmin != T0)
+            if (lambda != 0 || Tmin != T0)
                 S = Q * t / (lambda * (Tmin - T0));
             else
                 S = -1;
@@ -1129,7 +1232,7 @@ namespace Modelisator.Model
             // S : Surface (mm2)
             // Q : Rate of heat flow (W)
             double Tmin;
-            if (lambda != 0 && S != 0)
+            if (lambda != 0 || S != 0)
                 Tmin = (Q * t) / (lambda * S) + T0;
             else
                 Tmin = -1;
@@ -1146,7 +1249,7 @@ namespace Modelisator.Model
             // S : Surface (mm2)
             // Q : Rate of heat flow (W)
             double T0;
-            if (lambda != 0 && S != 0)
+            if (lambda != 0 || S != 0)
                 T0 = Tmin - (Q * t) / (lambda * S);
             else
                 T0 = -1;
