@@ -36,16 +36,24 @@ namespace Modelisator.MonGraphX
                     }
                 }  
             }
-            else
+            else if (FOCUS == "ENSEMBLE")
             {
               foreach (var GP in Produit.GrandeurPhysiques)
                 {
-                    //if (GP.Value.EstPremier)
-                    //{
                         var dataVertex = new DataVertex(GP.Key);
                         dataGraph.AddVertex(dataVertex);
-                    //}
                 }  
+            }
+            else
+            {
+                foreach (var GP in Produit.GrandeurPhysiques)
+                {
+                    if (GP.Value.EstPremier)
+                    {
+                    var dataVertex = new DataVertex(GP.Key);
+                    dataGraph.AddVertex(dataVertex);
+                    }
+                }
             }
             
             //Now lets make some edges that will connect our vertices
