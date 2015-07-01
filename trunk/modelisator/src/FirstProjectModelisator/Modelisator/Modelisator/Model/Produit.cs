@@ -84,6 +84,7 @@ namespace Modelisator.Model {
             GrandeurPhysiques.Add("t",          new GrandeurPhysique("t",           8,"Description en cours de rédaction",true  ));
             GrandeurPhysiques.Add("tu",         new GrandeurPhysique("tu",          9,"Description en cours de rédaction",false  ));
             GrandeurPhysiques.Add("sigma_y",    new GrandeurPhysique("sigma_y",     10,"Description en cours de rédaction",false));
+            GrandeurPhysiques.Add("delta_t",    new GrandeurPhysique("delta_t",     11,"Description en cours de rédaction", true));
             //GrandeurPhysiques.Add("p", new GrandeurPhysique("p",1));
 	    }
         
