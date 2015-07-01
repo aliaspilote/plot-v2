@@ -16,6 +16,7 @@
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Row="0" Grid.Column="3" >
@@ -39,10 +40,12 @@
         </Grid>
         <Grid Grid.Row="0" Grid.Column="1" Margin="5,0" >
             <Button Content="Export" Name="m_btn_Export" IsEnabled="False"> </Button>
-           
         </Grid>
         <Grid Grid.Row="0" Grid.Column="0" Margin="5,0" >
             <Button Content="Vue d'ensemble" Name="m_btn_VueEnsemble" IsEnabled="False"></Button>
+        </Grid>
+        <Grid Grid.Row="0" Grid.Column="4" Margin="5,0" >
+            <Button Content="Effacer Valeurs" Name="m_btn_RAZ_GP" IsEnabled="False"></Button>
         </Grid>
     </Grid>
 </UserControl>

@@ -51,6 +51,16 @@ namespace Modelisator.Forms.Model
             }
         }
 
+        public void RAZ_GP_valeur()
+        {
+            foreach (var GP in Produit.GrandeurPhysiques)
+            {
+                GP.Value.Valeur = 0;
+                GP.Value.Entree = false;
+                GP.Value.Calcule = false;
+            }
+        }
+
 
 
 

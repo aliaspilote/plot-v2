@@ -16,7 +16,7 @@
                     </ToolTip>
                 </StackPanel.ToolTip>
                 <TextBlock Name="TextId"  Text="{Binding Path=Text, Mode=OneWay}" FontWeight="Bold" MouseLeftButtonDown="PanelNoeud_OnMouseLeftButtonDown"  Foreground="Black" Margin="5" />
-                <TextBox Text="{Binding Path=GP.Valeur, Mode=TwoWay, StringFormat=N2}"   Foreground="{Binding GP.CouleurNoeud}" Margin="3" />
+                <TextBox Text="{Binding Path=GP.Valeur, Mode=TwoWay, StringFormat=N2}"  simpleGraph:InputBindingsManager.UpdatePropertySourceWhenEnterPressed="TextBox.Text" Foreground="{Binding GP.CouleurNoeud}" Margin="3" />
                 <TextBlock Text="{Binding Path=Unit, Mode=OneWay}"   Foreground="Black" Margin="5" />
             </StackPanel>
     </DataTemplate>
